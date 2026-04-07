@@ -37,9 +37,8 @@ export async function POST(request) {
     value: buildSessionCookieValue(reviewerId),
   });
 
-
-  console.log('[login] verify ok =', ok);
+  console.log('[login] reviewer verified:', reviewerId);
   console.log('[login] about to create cookie');
-  
+
   return response;
 }
