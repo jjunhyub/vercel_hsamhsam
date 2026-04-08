@@ -539,7 +539,7 @@ textarea {
   border: 1px solid rgba(148, 163, 184, 0.22);
   background: rgba(9, 14, 30, 0.96);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-  padding: 0.9rem 0.9rem 0.8rem;
+  padding: 1.15rem 0.9rem 0.8rem;
 }
 
 .imageModalMeta {

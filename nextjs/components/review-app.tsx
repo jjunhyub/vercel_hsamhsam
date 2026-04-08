@@ -40,6 +40,10 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
   const savingRef = useRef(false);
 
   useEffect(() => {
+    annotationsRef.current = annotations;
+  }, [annotations]);
+
+  useEffect(() => {
     let cancelled = false;
 
     fetch(`/translation/full_translation.json?v=${Date.now()}`, {
@@ -160,7 +164,11 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
 
   const handleAnswerChange = useCallback((mode, questionId, value, nodeId = null) => {
     if (!selectedImageId) return;
-    setAnnotations((prev) => applyAnswerChange(prev, selectedImageId, mode, questionId, value, nodeId));
+    setAnnotations((prev) => {
+      const next = applyAnswerChange(prev, selectedImageId, mode, questionId, value, nodeId);
+      annotationsRef.current = next;
+      return next;
+    });
     dirtyRef.current = true;
     setSaveStatus({ status: 'dirty', savedAt: null, message: '저장되지 않은 변경사항' });
   }, [selectedImageId]);
