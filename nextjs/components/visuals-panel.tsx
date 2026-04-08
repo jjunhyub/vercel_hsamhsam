@@ -65,6 +65,11 @@ function FigureImageButton({ figure, onOpen }) {
 
 function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabel }) {
   const activeFigure = figures[activeIndex];
+  const [zoom, setZoom] = useState(1);
+
+  useEffect(() => {
+    setZoom(1);
+  }, [activeIndex, activeFigure?.src]);
 
   useEffect(() => {
     if (!activeFigure) return undefined;
@@ -93,6 +98,16 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabe
   }, [activeFigure, onClose, onNext, onPrev]);
 
   if (!activeFigure) return null;
+
+  const handleWheel = (event) => {
+    event.preventDefault();
+    const delta = event.deltaY < 0 ? 0.16 : -0.16;
+    setZoom((prev) => Math.min(4, Math.max(1, Number((prev + delta).toFixed(2)))));
+  };
+
+  const handleDoubleClick = () => {
+    setZoom((prev) => (prev > 1 ? 1 : 2));
+  };
 
   return (
     <div
@@ -141,8 +156,17 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabe
           </div>
         </div>
 
-        <div className="imageModalFrame">
-          <img className="imageModalImage" src={activeFigure.src} alt={activeFigure.title} />
+        <div
+          className={`imageModalFrame ${zoom > 1 ? 'isZoomed' : ''}`.trim()}
+          onWheel={handleWheel}
+          onDoubleClick={handleDoubleClick}
+        >
+          <img
+            className="imageModalImage"
+            src={activeFigure.src}
+            alt={activeFigure.title}
+            style={{ transform: `scale(${zoom})` }}
+          />
         </div>
       </div>
     </div>

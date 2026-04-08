@@ -611,11 +611,17 @@ textarea {
   overflow: hidden;
 }
 
+.imageModalFrame.isZoomed {
+  cursor: zoom-out;
+}
+
 .imageModalImage {
   display: block;
   width: 80%;
   height: 80%;
   object-fit: contain;
+  transform-origin: center;
+  transition: transform 0.12s ease;
 }
 
 .imageModalClose,
