@@ -252,39 +252,39 @@
           "en": "leg",
           "ko": "다리"
         },
-        "root__teddy_bear": {
+        "root__teddy bear": {
           "en": "teddy bear",
           "ko": "곰인형"
         },
-        "root__teddy_bear__leg": {
+        "root__teddy bear__leg": {
           "en": "leg",
           "ko": "다리"
         },
-        "root__teddy_bear__head": {
+        "root__teddy bear__head": {
           "en": "head",
           "ko": "머리"
         },
-        "root__teddy_bear__head__ear": {
+        "root__teddy bear__head__ear": {
           "en": "ear",
           "ko": "귀"
         },
-        "root__teddy_bear__head__snout": {
+        "root__teddy bear__head__snout": {
           "en": "snout",
           "ko": "주둥이"
         },
-        "root__teddy_bear__head__eye": {
+        "root__teddy bear__head__eye": {
           "en": "eye",
           "ko": "눈"
         },
-        "root__teddy_bear__head__eye__pupil": {
+        "root__teddy bear__head__eye__pupil": {
           "en": "pupil",
           "ko": "동공"
         },
-        "root__teddy_bear__torso": {
+        "root__teddy bear__torso": {
           "en": "torso",
           "ko": "몸통"
         },
-        "root__teddy_bear__arm": {
+        "root__teddy bear__arm": {
           "en": "arm",
           "ko": "팔"
         },
@@ -2174,7 +2174,7 @@
           "en": "ceiling",
           "ko": "천장"
         },
-        "root__napkin_dispenser": {
+        "root__napkin dispenser": {
           "en": "napkin dispenser",
           "ko": "냅킨통"
         },
@@ -2371,7 +2371,7 @@
           "en": "leg",
           "ko": "다리"
         },
-        "root__railroad_track": {
+        "root__railroad track": {
           "en": "railroad track",
           "ko": "철길"
         },
@@ -2770,23 +2770,23 @@
           "en": "paper",
           "ko": "종이"
         },
-        "root__wine_bottle": {
+        "root__wine bottle": {
           "en": "wine bottle",
           "ko": "와인병"
         },
-        "root__wine_bottle__label": {
+        "root__wine bottle__label": {
           "en": "label",
           "ko": "라벨"
         },
-        "root__wine_bottle__neck": {
+        "root__wine bottle__neck": {
           "en": "neck",
           "ko": "목"
         },
-        "root__wine_glass": {
+        "root__wine glass": {
           "en": "wine glass",
           "ko": "와인잔"
         },
-        "root__wine_glass__base": {
+        "root__wine glass__base": {
           "en": "base",
           "ko": "받침"
         },
@@ -3004,15 +3004,15 @@
           "en": "kiosk",
           "ko": "키오스크"
         },
-        "root__kiosk__solar_panel": {
+        "root__kiosk__solar panel": {
           "en": "solar panel",
           "ko": "태양광판"
         },
-        "root__kiosk__solar_panel__cell": {
+        "root__kiosk__solar panel__cell": {
           "en": "cell",
           "ko": "셀"
         },
-        "root__kiosk__solar_panel__frame": {
+        "root__kiosk__solar panel__frame": {
           "en": "frame",
           "ko": "틀"
         },
@@ -3044,11 +3044,11 @@
           "en": "post",
           "ko": "기둥"
         },
-        "root__concrete_block": {
+        "root__concrete block": {
           "en": "concrete block",
           "ko": "콘크리트 블록"
         },
-        "root__concrete_block__bracket": {
+        "root__concrete block__bracket": {
           "en": "bracket",
           "ko": "브래킷"
         },
@@ -3226,7 +3226,7 @@
           "en": "door",
           "ko": "문"
         },
-        "root__airplane__landing_gear": {
+        "root__airplane__landing gear": {
           "en": "landing gear",
           "ko": "착륙장치"
         },
@@ -3663,15 +3663,15 @@
           "en": "building",
           "ko": "건물"
         },
-        "root__building__fire_escape": {
+        "root__building__fire escape": {
           "en": "fire escape",
           "ko": "비상계단"
         },
-        "root__building__fire_escape__railing": {
+        "root__building__fire escape__railing": {
           "en": "railing",
           "ko": "난간"
         },
-        "root__building__fire_escape__ladder": {
+        "root__building__fire escape__ladder": {
           "en": "ladder",
           "ko": "사다리"
         },
@@ -3783,7 +3783,7 @@
           "en": "truck",
           "ko": "트럭"
         },
-        "root__fire_hydrant": {
+        "root__fire hydrant": {
           "en": "fire hydrant",
           "ko": "소화전"
         },
@@ -4865,7 +4865,7 @@
           "en": "countertop",
           "ko": "조리대"
         },
-        "root__cutting_board": {
+        "root__cutting board": {
           "en": "cutting board",
           "ko": "도마"
         },
@@ -4941,15 +4941,15 @@
           "en": "grate",
           "ko": "받침쇠"
         },
-        "root__measuring_cup": {
+        "root__measuring cup": {
           "en": "measuring cup",
           "ko": "계량컵"
         },
-        "root__measuring_cup__handle": {
+        "root__measuring cup__handle": {
           "en": "handle",
           "ko": "손잡이"
         },
-        "root__measuring_cup__handle__logo": {
+        "root__measuring cup__handle__logo": {
           "en": "logo",
           "ko": "로고"
         },
@@ -5066,7 +5066,7 @@
           "en": "surfboard",
           "ko": "서프보드"
         },
-        "root__tactile_paving": {
+        "root__tactile paving": {
           "en": "tactile paving",
           "ko": "점자블록"
         },
@@ -5774,15 +5774,15 @@
           "en": "sign",
           "ko": "표지판"
         },
-        "root__sign__stop_sign": {
+        "root__sign__stop sign": {
           "en": "stop sign",
           "ko": "정지표지판"
         },
-        "root__sign__stop_sign__letter": {
+        "root__sign__stop sign__letter": {
           "en": "letter",
           "ko": "글자"
         },
-        "root__sign__stop_sign__bolt": {
+        "root__sign__stop sign__bolt": {
           "en": "bolt",
           "ko": "볼트"
         },
@@ -5810,7 +5810,7 @@
           "en": "pole",
           "ko": "기둥"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -6157,7 +6157,7 @@
           "en": "shelf",
           "ko": "선반"
         },
-        "root__towel_bar": {
+        "root__towel bar": {
           "en": "towel bar",
           "ko": "수건걸이"
         },
@@ -6416,7 +6416,7 @@
           "en": "head",
           "ko": "머리"
         },
-        "root__bus__window__steering_wheel": {
+        "root__bus__window__steering wheel": {
           "en": "steering wheel",
           "ko": "핸들"
         },
@@ -6576,11 +6576,11 @@
           "en": "screen",
           "ko": "화면"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
-        "root__street_light": {
+        "root__street light": {
           "en": "street light",
           "ko": "가로등"
         },
@@ -7458,7 +7458,7 @@
           "en": "cable",
           "ko": "케이블"
         },
-        "root__others__wrist_rest": {
+        "root__others__wrist rest": {
           "en": "wrist rest",
           "ko": "손목받침"
         }
@@ -8922,47 +8922,47 @@
           "en": "cornice",
           "ko": "처마장식"
         },
-        "root__street_sign": {
+        "root__street sign": {
           "en": "street sign",
           "ko": "도로표지판"
         },
-        "root__street_sign__arrow": {
+        "root__street sign__arrow": {
           "en": "arrow",
           "ko": "화살표"
         },
-        "root__street_sign__arrow__lettering": {
+        "root__street sign__arrow__lettering": {
           "en": "lettering",
           "ko": "글자"
         },
-        "root__street_sign__lettering": {
+        "root__street sign__lettering": {
           "en": "lettering",
           "ko": "글자"
         },
-        "root__street_sign__lettering__letter": {
+        "root__street sign__lettering__letter": {
           "en": "letter",
           "ko": "글자"
         },
-        "root__street_sign__lettering__number": {
+        "root__street sign__lettering__number": {
           "en": "number",
           "ko": "번호"
         },
-        "root__street_sign__plate": {
+        "root__street sign__plate": {
           "en": "plate",
           "ko": "표지판 판"
         },
-        "root__street_sign__plate__border": {
+        "root__street sign__plate__border": {
           "en": "border",
           "ko": "테두리"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
-        "root__traffic_light__visor": {
+        "root__traffic light__visor": {
           "en": "visor",
           "ko": "바이저"
         },
-        "root__traffic_light__bracket": {
+        "root__traffic light__bracket": {
           "en": "bracket",
           "ko": "브래킷"
         },
@@ -10912,7 +10912,7 @@
           "en": "window",
           "ko": "창문"
         },
-        "root__utility_pole": {
+        "root__utility pole": {
           "en": "utility pole",
           "ko": "전신주"
         },
@@ -11666,11 +11666,11 @@
           "en": "tile",
           "ko": "타일"
         },
-        "root__wall__towel_bar": {
+        "root__wall__towel bar": {
           "en": "towel bar",
           "ko": "수건걸이"
         },
-        "root__wall__towel_bar__rod": {
+        "root__wall__towel bar__rod": {
           "en": "rod",
           "ko": "막대"
         },
@@ -11726,7 +11726,7 @@
           "en": "drainpipe",
           "ko": "배수관"
         },
-        "root__toilet_paper": {
+        "root__toilet paper": {
           "en": "toilet paper",
           "ko": "화장지"
         },
@@ -12506,15 +12506,15 @@
           "en": "lane",
           "ko": "차선"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
-        "root__traffic_light__sticker": {
+        "root__traffic light__sticker": {
           "en": "sticker",
           "ko": "스티커"
         },
-        "root__traffic_light__sticker__logo": {
+        "root__traffic light__sticker__logo": {
           "en": "logo",
           "ko": "로고"
         },
@@ -12530,15 +12530,15 @@
           "en": "curb",
           "ko": "연석"
         },
-        "root__palm_tree": {
+        "root__palm tree": {
           "en": "palm tree",
           "ko": "야자수"
         },
-        "root__palm_tree__frond": {
+        "root__palm tree__frond": {
           "en": "frond",
           "ko": "야자잎"
         },
-        "root__palm_tree__trunk": {
+        "root__palm tree__trunk": {
           "en": "trunk",
           "ko": "줄기"
         },
@@ -12582,11 +12582,11 @@
           "en": "window",
           "ko": "창문"
         },
-        "root__street_light": {
+        "root__street light": {
           "en": "street light",
           "ko": "가로등"
         },
-        "root__street_light__pole": {
+        "root__street light__pole": {
           "en": "pole",
           "ko": "기둥"
         },
@@ -13455,51 +13455,51 @@
           "en": "root",
           "ko": "전체 장면"
         },
-        "root__maintenance_train": {
+        "root__maintenance train": {
           "en": "maintenance train",
           "ko": "보수열차"
         },
-        "root__maintenance_train__window": {
+        "root__maintenance train__window": {
           "en": "window",
           "ko": "창문"
         },
-        "root__maintenance_train__window__sticker": {
+        "root__maintenance train__window__sticker": {
           "en": "sticker",
           "ko": "스티커"
         },
-        "root__maintenance_train__door": {
+        "root__maintenance train__door": {
           "en": "door",
           "ko": "문"
         },
-        "root__maintenance_train__door__frame": {
+        "root__maintenance train__door__frame": {
           "en": "frame",
           "ko": "틀"
         },
-        "root__maintenance_train__railing": {
+        "root__maintenance train__railing": {
           "en": "railing",
           "ko": "난간"
         },
-        "root__maintenance_train__railing__post": {
+        "root__maintenance train__railing__post": {
           "en": "post",
           "ko": "기둥"
         },
-        "root__maintenance_train__buffer": {
+        "root__maintenance train__buffer": {
           "en": "buffer",
           "ko": "완충기"
         },
-        "root__maintenance_train__hose": {
+        "root__maintenance train__hose": {
           "en": "hose",
           "ko": "호스"
         },
-        "root__maintenance_train__taillight": {
+        "root__maintenance train__taillight": {
           "en": "taillight",
           "ko": "후미등"
         },
-        "root__maintenance_train__taillight__lens": {
+        "root__maintenance train__taillight__lens": {
           "en": "lens",
           "ko": "렌즈"
         },
-        "root__maintenance_train__wheel": {
+        "root__maintenance train__wheel": {
           "en": "wheel",
           "ko": "바퀴"
         },
@@ -13838,15 +13838,15 @@
           "en": "sole",
           "ko": "밑창"
         },
-        "root__batter__shin_guard": {
+        "root__batter__shin guard": {
           "en": "shin guard",
           "ko": "정강이 보호대"
         },
-        "root__batter__chest_protector": {
+        "root__batter__chest protector": {
           "en": "chest protector",
           "ko": "가슴 보호대"
         },
-        "root__batter__chest_protector__buckle": {
+        "root__batter__chest protector__buckle": {
           "en": "buckle",
           "ko": "버클"
         },
@@ -14748,11 +14748,11 @@
           "en": "tree",
           "ko": "나무"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
-        "root__traffic_light__lens": {
+        "root__traffic light__lens": {
           "en": "lens",
           "ko": "렌즈"
         },
@@ -15761,19 +15761,19 @@
           "en": "bolt",
           "ko": "볼트"
         },
-        "root__palm_tree": {
+        "root__palm tree": {
           "en": "palm tree",
           "ko": "야자수"
         },
-        "root__palm_tree__frond": {
+        "root__palm tree__frond": {
           "en": "frond",
           "ko": "야자잎"
         },
-        "root__palm_tree__trunk": {
+        "root__palm tree__trunk": {
           "en": "trunk",
           "ko": "줄기"
         },
-        "root__utility_pole": {
+        "root__utility pole": {
           "en": "utility pole",
           "ko": "전신주"
         },
@@ -16229,7 +16229,7 @@
           "en": "car",
           "ko": "자동차"
         },
-        "root__car__steering_wheel": {
+        "root__car__steering wheel": {
           "en": "steering wheel",
           "ko": "핸들"
         },
@@ -16467,11 +16467,11 @@
           "en": "leg",
           "ko": "다리"
         },
-        "root__catcher__shin_guard": {
+        "root__catcher__shin guard": {
           "en": "shin guard",
           "ko": "정강이보호대"
         },
-        "root__catcher__shin_guard__shell": {
+        "root__catcher__shin guard__shell": {
           "en": "shell",
           "ko": "껍질"
         },
@@ -18319,7 +18319,7 @@
           "en": "mirror",
           "ko": "거울"
         },
-        "root__car__window__glass__steering_wheel": {
+        "root__car__window__glass__steering wheel": {
           "en": "steering wheel",
           "ko": "핸들"
         },
@@ -18375,35 +18375,35 @@
           "en": "marking",
           "ko": "표시선"
         },
-        "root__parking_meter": {
+        "root__parking meter": {
           "en": "parking meter",
           "ko": "주차미터"
         },
-        "root__parking_meter__panel": {
+        "root__parking meter__panel": {
           "en": "panel",
           "ko": "패널"
         },
-        "root__parking_meter__panel__sign": {
+        "root__parking meter__panel__sign": {
           "en": "sign",
           "ko": "표지판"
         },
-        "root__parking_meter__panel__sign__lettering": {
+        "root__parking meter__panel__sign__lettering": {
           "en": "lettering",
           "ko": "글자"
         },
-        "root__parking_meter__panel__sign__lettering__letter": {
+        "root__parking meter__panel__sign__lettering__letter": {
           "en": "letter",
           "ko": "글자"
         },
-        "root__parking_meter__panel__sign__display": {
+        "root__parking meter__panel__sign__display": {
           "en": "display",
           "ko": "표시부"
         },
-        "root__parking_meter__slot": {
+        "root__parking meter__slot": {
           "en": "slot",
           "ko": "투입구"
         },
-        "root__parking_meter__base": {
+        "root__parking meter__base": {
           "en": "base",
           "ko": "받침대"
         },
@@ -18435,7 +18435,7 @@
           "en": "pole",
           "ko": "기둥"
         },
-        "root__trash_can": {
+        "root__trash can": {
           "en": "trash can",
           "ko": "쓰레기통"
         },
@@ -18753,7 +18753,7 @@
           "en": "skateboard",
           "ko": "스케이트보드"
         },
-        "root__trash_can": {
+        "root__trash can": {
           "en": "trash can",
           "ko": "쓰레기통"
         },
@@ -19423,11 +19423,11 @@
           "en": "bumper",
           "ko": "범퍼"
         },
-        "root__bus__bumper__fog_light": {
+        "root__bus__bumper__fog light": {
           "en": "fog light",
           "ko": "안개등"
         },
-        "root__bus__bumper__license_plate": {
+        "root__bus__bumper__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -19455,11 +19455,11 @@
           "en": "wiper",
           "ko": "와이퍼"
         },
-        "root__palm_tree": {
+        "root__palm tree": {
           "en": "palm tree",
           "ko": "야자수"
         },
-        "root__palm_tree__trunk": {
+        "root__palm tree__trunk": {
           "en": "trunk",
           "ko": "줄기"
         },
@@ -19467,7 +19467,7 @@
           "en": "road",
           "ko": "도로"
         },
-        "root__road__lane_marker": {
+        "root__road__lane marker": {
           "en": "lane marker",
           "ko": "차선표시"
         },
@@ -19543,11 +19543,11 @@
           "en": "shoe",
           "ko": "신발"
         },
-        "root__lamp_post": {
+        "root__lamp post": {
           "en": "lamp post",
           "ko": "가로등"
         },
-        "root__lamp_post__pole": {
+        "root__lamp post__pole": {
           "en": "pole",
           "ko": "기둥"
         },
@@ -20576,15 +20576,15 @@
           "en": "root",
           "ko": "전체 장면"
         },
-        "root__street_sign": {
+        "root__street sign": {
           "en": "street sign",
           "ko": "도로표지판"
         },
-        "root__street_sign__way_sign": {
+        "root__street sign__way sign": {
           "en": "way sign",
           "ko": "방향표지"
         },
-        "root__street_sign__way_sign__letter": {
+        "root__street sign__way sign__letter": {
           "en": "letter",
           "ko": "글자"
         },
@@ -20702,7 +20702,7 @@
           "en": "vent",
           "ko": "통풍구"
         },
-        "root__car__bumper__license_plate": {
+        "root__car__bumper__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -20754,7 +20754,7 @@
           "en": "roof",
           "ko": "지붕"
         },
-        "root__car__license_plate": {
+        "root__car__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -20862,15 +20862,15 @@
           "en": "pavement",
           "ko": "포장면"
         },
-        "root__lamp_post": {
+        "root__lamp post": {
           "en": "lamp post",
           "ko": "가로등"
         },
-        "root__lamp_post__post": {
+        "root__lamp post__post": {
           "en": "post",
           "ko": "기둥"
         },
-        "root__trash_can": {
+        "root__trash can": {
           "en": "trash can",
           "ko": "쓰레기통"
         },
@@ -21872,19 +21872,19 @@
           "en": "root",
           "ko": "전체 장면"
         },
-        "root__palm_tree": {
+        "root__palm tree": {
           "en": "palm tree",
           "ko": "야자수"
         },
-        "root__palm_tree__frond": {
+        "root__palm tree__frond": {
           "en": "frond",
           "ko": "야자잎"
         },
-        "root__palm_tree__trunk": {
+        "root__palm tree__trunk": {
           "en": "trunk",
           "ko": "줄기"
         },
-        "root__palm_tree__trunk__bark": {
+        "root__palm tree__trunk__bark": {
           "en": "bark",
           "ko": "나무껍질"
         },
@@ -21932,7 +21932,7 @@
           "en": "engine",
           "ko": "엔진"
         },
-        "root__airplane__landing_gear": {
+        "root__airplane__landing gear": {
           "en": "landing gear",
           "ko": "착륙장치"
         },
@@ -21940,11 +21940,11 @@
           "en": "tail",
           "ko": "꼬리"
         },
-        "root__street_light": {
+        "root__street light": {
           "en": "street light",
           "ko": "가로등"
         },
-        "root__street_light__pole": {
+        "root__street light__pole": {
           "en": "pole",
           "ko": "기둥"
         },
@@ -22369,11 +22369,11 @@
           "en": "sky",
           "ko": "하늘"
         },
-        "root__utility_pole": {
+        "root__utility pole": {
           "en": "utility pole",
           "ko": "전신주"
         },
-        "root__utility_pole__pole": {
+        "root__utility pole__pole": {
           "en": "pole",
           "ko": "기둥"
         },
@@ -22385,11 +22385,11 @@
           "en": "base",
           "ko": "받침대"
         },
-        "root__stop_sign": {
+        "root__stop sign": {
           "en": "stop sign",
           "ko": "정지표지판"
         },
-        "root__stop_sign__letter": {
+        "root__stop sign__letter": {
           "en": "letter",
           "ko": "글자"
         },
@@ -22474,7 +22474,7 @@
           "en": "frame",
           "ko": "틀"
         },
-        "root__toilet_paper": {
+        "root__toilet paper": {
           "en": "toilet paper",
           "ko": "화장지"
         },
@@ -22789,11 +22789,11 @@
           "en": "root",
           "ko": "전체 장면"
         },
-        "root__banana_bunch": {
+        "root__banana bunch": {
           "en": "banana bunch",
           "ko": "바나나송이"
         },
-        "root__banana_bunch__banana": {
+        "root__banana bunch__banana": {
           "en": "banana",
           "ko": "바나나"
         },
@@ -23778,7 +23778,7 @@
           "en": "lintel",
           "ko": "인방"
         },
-        "root__building__wall__air_conditioner": {
+        "root__building__wall__air conditioner": {
           "en": "air conditioner",
           "ko": "에어컨"
         },
@@ -23802,19 +23802,19 @@
           "en": "carving",
           "ko": "조각무늬"
         },
-        "root__building__fire_escape": {
+        "root__building__fire escape": {
           "en": "fire escape",
           "ko": "비상계단"
         },
-        "root__building__fire_escape__railing": {
+        "root__building__fire escape__railing": {
           "en": "railing",
           "ko": "난간"
         },
-        "root__building__fire_escape__platform": {
+        "root__building__fire escape__platform": {
           "en": "platform",
           "ko": "발판"
         },
-        "root__building__fire_escape__ladder": {
+        "root__building__fire escape__ladder": {
           "en": "ladder",
           "ko": "사다리"
         },
@@ -23834,7 +23834,7 @@
           "en": "branch",
           "ko": "가지"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -24113,7 +24113,7 @@
           "en": "countertop",
           "ko": "조리대"
         },
-        "root__cutting_board": {
+        "root__cutting board": {
           "en": "cutting board",
           "ko": "도마"
         },
@@ -24125,11 +24125,11 @@
           "en": "stem",
           "ko": "줄기"
         },
-        "root__spice_rack": {
+        "root__spice rack": {
           "en": "spice rack",
           "ko": "양념선반"
         },
-        "root__spice_rack__shelf": {
+        "root__spice rack__shelf": {
           "en": "shelf",
           "ko": "선반"
         },
@@ -24141,11 +24141,11 @@
           "en": "handle",
           "ko": "손잡이"
         },
-        "root__knife_block": {
+        "root__knife block": {
           "en": "knife block",
           "ko": "칼꽂이"
         },
-        "root__knife_block__logo": {
+        "root__knife block__logo": {
           "en": "logo",
           "ko": "로고"
         },
@@ -24569,35 +24569,35 @@
           "en": "sheet",
           "ko": "시트"
         },
-        "root__teddy_bear": {
+        "root__teddy bear": {
           "en": "teddy bear",
           "ko": "곰인형"
         },
-        "root__teddy_bear__head": {
+        "root__teddy bear__head": {
           "en": "head",
           "ko": "머리"
         },
-        "root__teddy_bear__head__ear": {
+        "root__teddy bear__head__ear": {
           "en": "ear",
           "ko": "귀"
         },
-        "root__teddy_bear__head__eye": {
+        "root__teddy bear__head__eye": {
           "en": "eye",
           "ko": "눈"
         },
-        "root__teddy_bear__head__nose": {
+        "root__teddy bear__head__nose": {
           "en": "nose",
           "ko": "코"
         },
-        "root__teddy_bear__torso": {
+        "root__teddy bear__torso": {
           "en": "torso",
           "ko": "몸통"
         },
-        "root__teddy_bear__torso__seam": {
+        "root__teddy bear__torso__seam": {
           "en": "seam",
           "ko": "솔기"
         },
-        "root__teddy_bear__arm": {
+        "root__teddy bear__arm": {
           "en": "arm",
           "ko": "팔"
         },
@@ -25061,7 +25061,7 @@
           "en": "hinge",
           "ko": "경첩"
         },
-        "root__towel_rack": {
+        "root__towel rack": {
           "en": "towel rack",
           "ko": "수건걸이"
         },
@@ -25069,7 +25069,7 @@
           "en": "doorknob",
           "ko": "문손잡이"
         },
-        "root__toilet_paper_holder": {
+        "root__toilet paper holder": {
           "en": "toilet paper holder",
           "ko": "휴지걸이"
         },
@@ -25441,15 +25441,15 @@
           "en": "wrist",
           "ko": "손목"
         },
-        "root__person__tank_top": {
+        "root__person__tank top": {
           "en": "tank top",
           "ko": "민소매"
         },
-        "root__person__tank_top__strap": {
+        "root__person__tank top__strap": {
           "en": "strap",
           "ko": "끈"
         },
-        "root__person__tank_top__neckline": {
+        "root__person__tank top__neckline": {
           "en": "neckline",
           "ko": "목둘레"
         },
@@ -25493,7 +25493,7 @@
           "en": "wall",
           "ko": "벽"
         },
-        "root__wall__switch_plate": {
+        "root__wall__switch plate": {
           "en": "switch plate",
           "ko": "스위치판"
         },
@@ -25573,7 +25573,7 @@
           "en": "bag",
           "ko": "가방"
         },
-        "root__dish_rack": {
+        "root__dish rack": {
           "en": "dish rack",
           "ko": "식기건조대"
         },
@@ -25905,35 +25905,35 @@
           "en": "tip",
           "ko": "끝"
         },
-        "root__shopping_cart": {
+        "root__shopping cart": {
           "en": "shopping cart",
           "ko": "쇼핑카트"
         },
-        "root__shopping_cart__basket": {
+        "root__shopping cart__basket": {
           "en": "basket",
           "ko": "바구니"
         },
-        "root__shopping_cart__basket__sign": {
+        "root__shopping cart__basket__sign": {
           "en": "sign",
           "ko": "표지판"
         },
-        "root__shopping_cart__basket__sign__panel": {
+        "root__shopping cart__basket__sign__panel": {
           "en": "panel",
           "ko": "패널"
         },
-        "root__shopping_cart__basket__sign__panel__arrow": {
+        "root__shopping cart__basket__sign__panel__arrow": {
           "en": "arrow",
           "ko": "화살표"
         },
-        "root__shopping_cart__wheel": {
+        "root__shopping cart__wheel": {
           "en": "wheel",
           "ko": "바퀴"
         },
-        "root__shopping_cart__wheel__rim": {
+        "root__shopping cart__wheel__rim": {
           "en": "rim",
           "ko": "림"
         },
-        "root__shopping_cart__wheel__rim__hub": {
+        "root__shopping cart__wheel__rim__hub": {
           "en": "hub",
           "ko": "허브"
         },
@@ -26445,7 +26445,7 @@
           "en": "base",
           "ko": "받침"
         },
-        "root__light_bulb": {
+        "root__light bulb": {
           "en": "light bulb",
           "ko": "전구"
         },
@@ -26822,55 +26822,55 @@
           "en": "root",
           "ko": "전체 장면"
         },
-        "root__parking_meter": {
+        "root__parking meter": {
           "en": "parking meter",
           "ko": "주차미터"
         },
-        "root__parking_meter__panel": {
+        "root__parking meter__panel": {
           "en": "panel",
           "ko": "패널"
         },
-        "root__parking_meter__panel__instruction": {
+        "root__parking meter__panel__instruction": {
           "en": "instruction",
           "ko": "안내문"
         },
-        "root__parking_meter__panel__instruction__illustration": {
+        "root__parking meter__panel__instruction__illustration": {
           "en": "illustration",
           "ko": "삽화"
         },
-        "root__parking_meter__panel__instruction__number": {
+        "root__parking meter__panel__instruction__number": {
           "en": "number",
           "ko": "번호"
         },
-        "root__parking_meter__panel__instruction__logo": {
+        "root__parking meter__panel__instruction__logo": {
           "en": "logo",
           "ko": "로고"
         },
-        "root__parking_meter__panel__bezel": {
+        "root__parking meter__panel__bezel": {
           "en": "bezel",
           "ko": "테두리"
         },
-        "root__parking_meter__panel__bezel__screen": {
+        "root__parking meter__panel__bezel__screen": {
           "en": "screen",
           "ko": "화면"
         },
-        "root__parking_meter__panel__bezel__screen__digit": {
+        "root__parking meter__panel__bezel__screen__digit": {
           "en": "digit",
           "ko": "숫자"
         },
-        "root__parking_meter__cap": {
+        "root__parking meter__cap": {
           "en": "cap",
           "ko": "마개"
         },
-        "root__parking_meter__receipt": {
+        "root__parking meter__receipt": {
           "en": "receipt",
           "ko": "영수증"
         },
-        "root__parking_meter__button": {
+        "root__parking meter__button": {
           "en": "button",
           "ko": "버튼"
         },
-        "root__parking_meter__slot": {
+        "root__parking meter__slot": {
           "en": "slot",
           "ko": "투입구"
         },
@@ -26894,7 +26894,7 @@
           "en": "lid",
           "ko": "뚜껑"
         },
-        "root__car__trunk__license_plate": {
+        "root__car__trunk__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -28298,7 +28298,7 @@
           "en": "arm",
           "ko": "팔"
         },
-        "root__person__arm__upper_arm": {
+        "root__person__arm__upper arm": {
           "en": "upper arm",
           "ko": "윗팔"
         },
@@ -29537,11 +29537,11 @@
           "en": "floor",
           "ko": "바닥"
         },
-        "root__washing_machine": {
+        "root__washing machine": {
           "en": "washing machine",
           "ko": "세탁기"
         },
-        "root__washing_machine__lid": {
+        "root__washing machine__lid": {
           "en": "lid",
           "ko": "뚜껑"
         },
@@ -32921,7 +32921,7 @@
           "en": "engine",
           "ko": "엔진"
         },
-        "root__airplane__landing_gear": {
+        "root__airplane__landing gear": {
           "en": "landing gear",
           "ko": "착륙장치"
         },
@@ -33510,7 +33510,7 @@
           "en": "vent",
           "ko": "통풍구"
         },
-        "root__bus__license_plate": {
+        "root__bus__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -34564,11 +34564,11 @@
           "en": "letter",
           "ko": "글자"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
-        "root__traffic_light__lens": {
+        "root__traffic light__lens": {
           "en": "lens",
           "ko": "렌즈"
         },
@@ -35166,7 +35166,7 @@
           "en": "molding",
           "ko": "몰딩"
         },
-        "root__ceiling__recessed_light": {
+        "root__ceiling__recessed light": {
           "en": "recessed light",
           "ko": "매입등"
         },
@@ -35270,7 +35270,7 @@
           "en": "arm",
           "ko": "팔"
         },
-        "root__recessed_light": {
+        "root__recessed light": {
           "en": "recessed light",
           "ko": "매입등"
         },
@@ -35468,11 +35468,11 @@
           "en": "cap",
           "ko": "마개"
         },
-        "root__paper_towel_holder": {
+        "root__paper towel holder": {
           "en": "paper towel holder",
           "ko": "키친타월걸이"
         },
-        "root__utensil_holder": {
+        "root__utensil holder": {
           "en": "utensil holder",
           "ko": "조리도구통"
         },
@@ -35488,7 +35488,7 @@
           "en": "handle",
           "ko": "손잡이"
         },
-        "root__cutting_board": {
+        "root__cutting board": {
           "en": "cutting board",
           "ko": "도마"
         },
@@ -35581,7 +35581,7 @@
           "en": "door",
           "ko": "문"
         },
-        "root__bus__license_plate": {
+        "root__bus__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -35799,11 +35799,11 @@
           "en": "engine",
           "ko": "엔진"
         },
-        "root__airplane__landing_gear": {
+        "root__airplane__landing gear": {
           "en": "landing gear",
           "ko": "착륙장치"
         },
-        "root__airplane__landing_gear__tire": {
+        "root__airplane__landing gear__tire": {
           "en": "tire",
           "ko": "타이어"
         },
@@ -36284,15 +36284,15 @@
           "en": "hedge",
           "ko": "울타리수풀"
         },
-        "root__trash_can": {
+        "root__trash can": {
           "en": "trash can",
           "ko": "쓰레기통"
         },
-        "root__trash_can__opening": {
+        "root__trash can__opening": {
           "en": "opening",
           "ko": "구멍"
         },
-        "root__trash_can__logo": {
+        "root__trash can__logo": {
           "en": "logo",
           "ko": "로고"
         },
@@ -36801,11 +36801,11 @@
           "en": "curtain",
           "ko": "커튼"
         },
-        "root__air_conditioner": {
+        "root__air conditioner": {
           "en": "air conditioner",
           "ko": "에어컨"
         },
-        "root__air_conditioner__vent": {
+        "root__air conditioner__vent": {
           "en": "vent",
           "ko": "통풍구"
         },
@@ -37744,7 +37744,7 @@
           "en": "platform",
           "ko": "승강장"
         },
-        "root__platform__tactile_paving": {
+        "root__platform__tactile paving": {
           "en": "tactile paving",
           "ko": "점자블록"
         },
@@ -37780,19 +37780,19 @@
           "en": "hem",
           "ko": "밑단"
         },
-        "root__woman__tank_top": {
+        "root__woman__tank top": {
           "en": "tank top",
           "ko": "민소매"
         },
-        "root__woman__tank_top__hem": {
+        "root__woman__tank top__hem": {
           "en": "hem",
           "ko": "밑단"
         },
-        "root__woman__tank_top__strap": {
+        "root__woman__tank top__strap": {
           "en": "strap",
           "ko": "끈"
         },
-        "root__woman__tank_top__neckline": {
+        "root__woman__tank top__neckline": {
           "en": "neckline",
           "ko": "목둘레"
         },
@@ -38725,11 +38725,11 @@
           "en": "arrow",
           "ko": "화살표"
         },
-        "root__trash_can": {
+        "root__trash can": {
           "en": "trash can",
           "ko": "쓰레기통"
         },
-        "root__trash_can__lid": {
+        "root__trash can__lid": {
           "en": "lid",
           "ko": "뚜껑"
         },
@@ -38749,7 +38749,7 @@
           "en": "building",
           "ko": "건물"
         },
-        "root__others__traffic_light": {
+        "root__others__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         }
@@ -41417,7 +41417,7 @@
           "en": "pole",
           "ko": "기둥"
         },
-        "root__others__traffic_light": {
+        "root__others__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         }
@@ -41506,15 +41506,15 @@
           "en": "panel",
           "ko": "패널"
         },
-        "root__ventilation_hood": {
+        "root__ventilation hood": {
           "en": "ventilation hood",
           "ko": "환기후드"
         },
-        "root__ventilation_hood__panel": {
+        "root__ventilation hood__panel": {
           "en": "panel",
           "ko": "패널"
         },
-        "root__ventilation_hood__filter": {
+        "root__ventilation hood__filter": {
           "en": "filter",
           "ko": "필터"
         },
@@ -41530,19 +41530,19 @@
           "en": "floor",
           "ko": "바닥"
         },
-        "root__picture_frame": {
+        "root__picture frame": {
           "en": "picture frame",
           "ko": "액자"
         },
-        "root__picture_frame__frame": {
+        "root__picture frame__frame": {
           "en": "frame",
           "ko": "틀"
         },
-        "root__light_fixture": {
+        "root__light fixture": {
           "en": "light fixture",
           "ko": "조명기구"
         },
-        "root__paper_towel": {
+        "root__paper towel": {
           "en": "paper towel",
           "ko": "종이타월"
         },
@@ -41772,11 +41772,11 @@
           "en": "shoe",
           "ko": "신발"
         },
-        "root__palm_tree": {
+        "root__palm tree": {
           "en": "palm tree",
           "ko": "야자수"
         },
-        "root__palm_tree__trunk": {
+        "root__palm tree__trunk": {
           "en": "trunk",
           "ko": "줄기"
         },
@@ -42501,11 +42501,11 @@
           "en": "sand",
           "ko": "모래"
         },
-        "root__palm_tree": {
+        "root__palm tree": {
           "en": "palm tree",
           "ko": "야자수"
         },
-        "root__palm_tree__trunk": {
+        "root__palm tree__trunk": {
           "en": "trunk",
           "ko": "줄기"
         },
@@ -42977,11 +42977,11 @@
           "en": "shadow",
           "ko": "그림자"
         },
-        "root__stop_sign": {
+        "root__stop sign": {
           "en": "stop sign",
           "ko": "정지표지판"
         },
-        "root__stop_sign__letter": {
+        "root__stop sign__letter": {
           "en": "letter",
           "ko": "글자"
         },
@@ -44020,7 +44020,7 @@
           "en": "sidewalk",
           "ko": "보도"
         },
-        "root__utility_pole": {
+        "root__utility pole": {
           "en": "utility pole",
           "ko": "전신주"
         },
@@ -44255,27 +44255,27 @@
           "en": "crack",
           "ko": "금"
         },
-        "root__parking_meter": {
+        "root__parking meter": {
           "en": "parking meter",
           "ko": "주차미터"
         },
-        "root__parking_meter__display": {
+        "root__parking meter__display": {
           "en": "display",
           "ko": "표시부"
         },
-        "root__parking_meter__display__screen": {
+        "root__parking meter__display__screen": {
           "en": "screen",
           "ko": "화면"
         },
-        "root__parking_meter__plate": {
+        "root__parking meter__plate": {
           "en": "plate",
           "ko": "판"
         },
-        "root__parking_meter__plate__hole": {
+        "root__parking meter__plate__hole": {
           "en": "hole",
           "ko": "구멍"
         },
-        "root__parking_meter__button": {
+        "root__parking meter__button": {
           "en": "button",
           "ko": "버튼"
         },
@@ -44355,7 +44355,7 @@
           "en": "taillight",
           "ko": "후미등"
         },
-        "root__car__trunk__license_plate": {
+        "root__car__trunk__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -44956,11 +44956,11 @@
           "en": "conduit",
           "ko": "전선관"
         },
-        "root__corrugated_metal": {
+        "root__corrugated metal": {
           "en": "corrugated metal",
           "ko": "골판금"
         },
-        "root__corrugated_metal__groove": {
+        "root__corrugated metal__groove": {
           "en": "groove",
           "ko": "홈"
         },
@@ -45593,7 +45593,7 @@
           "en": "thumb",
           "ko": "엄지"
         },
-        "root__person__arm__upper_arm": {
+        "root__person__arm__upper arm": {
           "en": "upper arm",
           "ko": "윗팔"
         },
@@ -46042,11 +46042,11 @@
           "en": "joint",
           "ko": "관절"
         },
-        "root__toilet_paper": {
+        "root__toilet paper": {
           "en": "toilet paper",
           "ko": "화장지"
         },
-        "root__toilet_paper_holder": {
+        "root__toilet paper holder": {
           "en": "toilet paper holder",
           "ko": "휴지걸이"
         },
@@ -46228,7 +46228,7 @@
           "en": "shoe",
           "ko": "신발"
         },
-        "root__catcher__shin_guard": {
+        "root__catcher__shin guard": {
           "en": "shin guard",
           "ko": "정강이보호대"
         },
@@ -46620,11 +46620,11 @@
           "en": "wall",
           "ko": "벽"
         },
-        "root__picture_frame": {
+        "root__picture frame": {
           "en": "picture frame",
           "ko": "액자"
         },
-        "root__picture_frame__frame": {
+        "root__picture frame__frame": {
           "en": "frame",
           "ko": "틀"
         },
@@ -46742,7 +46742,7 @@
           "en": "light",
           "ko": "조명"
         },
-        "root__tissue_box": {
+        "root__tissue box": {
           "en": "tissue box",
           "ko": "티슈 상자"
         },
@@ -47585,19 +47585,19 @@
           "en": "others",
           "ko": "기타"
         },
-        "root__others__display_case": {
+        "root__others__display case": {
           "en": "display case",
           "ko": "진열장"
         },
-        "root__others__display_case__glass": {
+        "root__others__display case__glass": {
           "en": "glass",
           "ko": "유리잔"
         },
-        "root__others__display_case__frame": {
+        "root__others__display case__frame": {
           "en": "frame",
           "ko": "틀"
         },
-        "root__others__display_case__shelf": {
+        "root__others__display case__shelf": {
           "en": "shelf",
           "ko": "선반"
         },
@@ -47918,7 +47918,7 @@
           "en": "toy",
           "ko": "장난감"
         },
-        "root__others__disco_ball": {
+        "root__others__disco ball": {
           "en": "disco ball",
           "ko": "미러볼"
         }
@@ -49509,7 +49509,7 @@
           "en": "road",
           "ko": "도로"
         },
-        "root__air_conditioner": {
+        "root__air conditioner": {
           "en": "air conditioner",
           "ko": "에어컨"
         },
@@ -52849,7 +52849,7 @@
           "en": "trunk",
           "ko": "트렁크"
         },
-        "root__car__trunk__license_plate": {
+        "root__car__trunk__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -53106,7 +53106,7 @@
           "en": "bag",
           "ko": "가방"
         },
-        "root__air_conditioner": {
+        "root__air conditioner": {
           "en": "air conditioner",
           "ko": "에어컨"
         },
@@ -53998,19 +53998,19 @@
           "en": "roof",
           "ko": "지붕"
         },
-        "root__utility_pole": {
+        "root__utility pole": {
           "en": "utility pole",
           "ko": "전신주"
         },
-        "root__utility_pole__pole": {
+        "root__utility pole__pole": {
           "en": "pole",
           "ko": "기둥"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
-        "root__traffic_light__lens": {
+        "root__traffic light__lens": {
           "en": "lens",
           "ko": "렌즈"
         },
@@ -54233,15 +54233,15 @@
           "en": "rail",
           "ko": "난간대"
         },
-        "root__palm_tree": {
+        "root__palm tree": {
           "en": "palm tree",
           "ko": "야자수"
         },
-        "root__palm_tree__frond": {
+        "root__palm tree__frond": {
           "en": "frond",
           "ko": "잎"
         },
-        "root__palm_tree__trunk": {
+        "root__palm tree__trunk": {
           "en": "trunk",
           "ko": "줄기"
         },
@@ -54835,11 +54835,11 @@
           "en": "root",
           "ko": "전체 장면"
         },
-        "root__neon_sign": {
+        "root__neon sign": {
           "en": "neon sign",
           "ko": "네온사인"
         },
-        "root__neon_sign__frame": {
+        "root__neon sign__frame": {
           "en": "frame",
           "ko": "틀"
         },
@@ -55889,11 +55889,11 @@
           "en": "post",
           "ko": "기둥"
         },
-        "root__utility_pole": {
+        "root__utility pole": {
           "en": "utility pole",
           "ko": "전신주"
         },
-        "root__utility_pole__pole": {
+        "root__utility pole__pole": {
           "en": "pole",
           "ko": "기둥"
         },
@@ -56555,7 +56555,7 @@
           "en": "post",
           "ko": "기둥"
         },
-        "root__soccer_ball": {
+        "root__soccer ball": {
           "en": "soccer ball",
           "ko": "축구공"
         },
@@ -59275,11 +59275,11 @@
           "en": "bicycle",
           "ko": "자전거"
         },
-        "root__street_lamp": {
+        "root__street lamp": {
           "en": "street lamp",
           "ko": "가로등"
         },
-        "root__street_lamp__post": {
+        "root__street lamp__post": {
           "en": "post",
           "ko": "기둥"
         },
@@ -60100,7 +60100,7 @@
           "en": "pane",
           "ko": "유리판"
         },
-        "root__building__air_conditioner": {
+        "root__building__air conditioner": {
           "en": "air conditioner",
           "ko": "에어컨"
         },
@@ -60120,7 +60120,7 @@
           "en": "stripe",
           "ko": "줄무늬"
         },
-        "root__road__lane_marker": {
+        "root__road__lane marker": {
           "en": "lane marker",
           "ko": "차선 표시"
         },
@@ -60168,7 +60168,7 @@
           "en": "bus",
           "ko": "버스"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -62088,19 +62088,19 @@
           "en": "frame",
           "ko": "틀"
         },
-        "root__oven__control_panel": {
+        "root__oven__control panel": {
           "en": "control panel",
           "ko": "조작 패널"
         },
-        "root__oven__control_panel__knob": {
+        "root__oven__control panel__knob": {
           "en": "knob",
           "ko": "손잡이"
         },
-        "root__oven__control_panel__button": {
+        "root__oven__control panel__button": {
           "en": "button",
           "ko": "버튼"
         },
-        "root__oven__control_panel__logo": {
+        "root__oven__control panel__logo": {
           "en": "logo",
           "ko": "로고"
         },
@@ -62386,15 +62386,15 @@
           "en": "tail",
           "ko": "꼬리"
         },
-        "root__ski_pole": {
+        "root__ski pole": {
           "en": "ski pole",
           "ko": "스키 폴"
         },
-        "root__ski_pole__shaft": {
+        "root__ski pole__shaft": {
           "en": "shaft",
           "ko": "샤프트"
         },
-        "root__ski_pole__tip": {
+        "root__ski pole__tip": {
           "en": "tip",
           "ko": "끝부분"
         },
@@ -63477,35 +63477,35 @@
           "en": "spine",
           "ko": "책등"
         },
-        "root__teddy_bear": {
+        "root__teddy bear": {
           "en": "teddy bear",
           "ko": "곰인형"
         },
-        "root__teddy_bear__leg": {
+        "root__teddy bear__leg": {
           "en": "leg",
           "ko": "다리"
         },
-        "root__teddy_bear__head": {
+        "root__teddy bear__head": {
           "en": "head",
           "ko": "머리"
         },
-        "root__teddy_bear__head__ear": {
+        "root__teddy bear__head__ear": {
           "en": "ear",
           "ko": "귀"
         },
-        "root__teddy_bear__head__snout": {
+        "root__teddy bear__head__snout": {
           "en": "snout",
           "ko": "주둥이"
         },
-        "root__teddy_bear__head__eye": {
+        "root__teddy bear__head__eye": {
           "en": "eye",
           "ko": "눈"
         },
-        "root__teddy_bear__arm": {
+        "root__teddy bear__arm": {
           "en": "arm",
           "ko": "팔"
         },
-        "root__teddy_bear__ribbon": {
+        "root__teddy bear__ribbon": {
           "en": "ribbon",
           "ko": "리본"
         },
@@ -63582,15 +63582,15 @@
           "en": "base",
           "ko": "받침"
         },
-        "root__picture_frame": {
+        "root__picture frame": {
           "en": "picture frame",
           "ko": "액자"
         },
-        "root__picture_frame__artwork": {
+        "root__picture frame__artwork": {
           "en": "artwork",
           "ko": "그림"
         },
-        "root__picture_frame__frame": {
+        "root__picture frame__frame": {
           "en": "frame",
           "ko": "틀"
         },
@@ -64426,27 +64426,27 @@
           "en": "buckle",
           "ko": "버클"
         },
-        "root__teddy_bear": {
+        "root__teddy bear": {
           "en": "teddy bear",
           "ko": "곰인형"
         },
-        "root__teddy_bear__leg": {
+        "root__teddy bear__leg": {
           "en": "leg",
           "ko": "다리"
         },
-        "root__teddy_bear__vest": {
+        "root__teddy bear__vest": {
           "en": "vest",
           "ko": "조끼"
         },
-        "root__teddy_bear__head": {
+        "root__teddy bear__head": {
           "en": "head",
           "ko": "머리"
         },
-        "root__teddy_bear__head__ear": {
+        "root__teddy bear__head__ear": {
           "en": "ear",
           "ko": "귀"
         },
-        "root__teddy_bear__hat": {
+        "root__teddy bear__hat": {
           "en": "hat",
           "ko": "모자"
         },
@@ -64615,11 +64615,11 @@
           "en": "brim",
           "ko": "챙"
         },
-        "root__flip_flop": {
+        "root__flip flop": {
           "en": "flip flop",
           "ko": "슬리퍼"
         },
-        "root__flip_flop__strap": {
+        "root__flip flop__strap": {
           "en": "strap",
           "ko": "끈"
         },
@@ -64869,19 +64869,19 @@
           "en": "tile",
           "ko": "타일"
         },
-        "root__floor__teddy_bear": {
+        "root__floor__teddy bear": {
           "en": "teddy bear",
           "ko": "곰인형"
         },
-        "root__floor__teddy_bear__leg": {
+        "root__floor__teddy bear__leg": {
           "en": "leg",
           "ko": "다리"
         },
-        "root__floor__teddy_bear__head": {
+        "root__floor__teddy bear__head": {
           "en": "head",
           "ko": "머리"
         },
-        "root__floor__teddy_bear__head__ear": {
+        "root__floor__teddy bear__head__ear": {
           "en": "ear",
           "ko": "귀"
         },
@@ -64889,35 +64889,35 @@
           "en": "door",
           "ko": "문"
         },
-        "root__teddy_bear": {
+        "root__teddy bear": {
           "en": "teddy bear",
           "ko": "곰인형"
         },
-        "root__teddy_bear__head": {
+        "root__teddy bear__head": {
           "en": "head",
           "ko": "머리"
         },
-        "root__teddy_bear__head__ear": {
+        "root__teddy bear__head__ear": {
           "en": "ear",
           "ko": "귀"
         },
-        "root__teddy_bear__head__snout": {
+        "root__teddy bear__head__snout": {
           "en": "snout",
           "ko": "주둥이"
         },
-        "root__teddy_bear__head__eye": {
+        "root__teddy bear__head__eye": {
           "en": "eye",
           "ko": "눈"
         },
-        "root__teddy_bear__leg": {
+        "root__teddy bear__leg": {
           "en": "leg",
           "ko": "다리"
         },
-        "root__teddy_bear__paw": {
+        "root__teddy bear__paw": {
           "en": "paw",
           "ko": "발"
         },
-        "root__teddy_bear__arm": {
+        "root__teddy bear__arm": {
           "en": "arm",
           "ko": "팔"
         },
@@ -64957,7 +64957,7 @@
           "en": "display",
           "ko": "디스플레이"
         },
-        "root__others__display__teddy_bear": {
+        "root__others__display__teddy bear": {
           "en": "teddy bear",
           "ko": "곰인형"
         },
@@ -64990,7 +64990,7 @@
           "en": "tile",
           "ko": "타일"
         },
-        "root__ventilation_hood": {
+        "root__ventilation hood": {
           "en": "ventilation hood",
           "ko": "환풍 후드"
         },
@@ -67373,19 +67373,19 @@
           "en": "hand",
           "ko": "손"
         },
-        "root__teddy_bear": {
+        "root__teddy bear": {
           "en": "teddy bear",
           "ko": "곰인형"
         },
-        "root__teddy_bear__head": {
+        "root__teddy bear__head": {
           "en": "head",
           "ko": "머리"
         },
-        "root__teddy_bear__ear": {
+        "root__teddy bear__ear": {
           "en": "ear",
           "ko": "귀"
         },
-        "root__teddy_bear__leg": {
+        "root__teddy bear__leg": {
           "en": "leg",
           "ko": "다리"
         },
@@ -68366,31 +68366,31 @@
           "en": "logo",
           "ko": "로고"
         },
-        "root__catcher__knee_pad": {
+        "root__catcher__knee pad": {
           "en": "knee pad",
           "ko": "무릎보호대"
         },
-        "root__catcher__knee_pad__padding": {
+        "root__catcher__knee pad__padding": {
           "en": "padding",
           "ko": "패딩"
         },
-        "root__catcher__knee_pad__padding__letter": {
+        "root__catcher__knee pad__padding__letter": {
           "en": "letter",
           "ko": "글자"
         },
-        "root__catcher__knee_pad__strap": {
+        "root__catcher__knee pad__strap": {
           "en": "strap",
           "ko": "끈"
         },
-        "root__catcher__shin_guard": {
+        "root__catcher__shin guard": {
           "en": "shin guard",
           "ko": "정강이 보호대"
         },
-        "root__catcher__shin_guard__strap": {
+        "root__catcher__shin guard__strap": {
           "en": "strap",
           "ko": "끈"
         },
-        "root__catcher__shin_guard__buckle": {
+        "root__catcher__shin guard__buckle": {
           "en": "buckle",
           "ko": "버클"
         },
@@ -68846,7 +68846,7 @@
           "en": "tile",
           "ko": "타일"
         },
-        "root__wall__towel_bar": {
+        "root__wall__towel bar": {
           "en": "towel bar",
           "ko": "수건걸이"
         },
@@ -69091,7 +69091,7 @@
           "en": "bumper",
           "ko": "범퍼"
         },
-        "root__car__license_plate": {
+        "root__car__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -70596,7 +70596,7 @@
           "en": "baseboard",
           "ko": "걸레받이"
         },
-        "root__wall__towel_ring": {
+        "root__wall__towel ring": {
           "en": "towel ring",
           "ko": "수건걸이"
         },
@@ -70616,7 +70616,7 @@
           "en": "countertop",
           "ko": "상판"
         },
-        "root__shower_curtain": {
+        "root__shower curtain": {
           "en": "shower curtain",
           "ko": "샤워 커튼"
         },
@@ -70761,7 +70761,7 @@
           "en": "water",
           "ko": "물"
         },
-        "root__toilet_paper": {
+        "root__toilet paper": {
           "en": "toilet paper",
           "ko": "화장지"
         },
@@ -71634,23 +71634,23 @@
           "en": "window",
           "ko": "창문"
         },
-        "root__alarm_clock": {
+        "root__alarm clock": {
           "en": "alarm clock",
           "ko": "자명종"
         },
-        "root__alarm_clock__face": {
+        "root__alarm clock__face": {
           "en": "face",
           "ko": "시계판"
         },
-        "root__alarm_clock__face__hand": {
+        "root__alarm clock__face__hand": {
           "en": "hand",
           "ko": "바늘"
         },
-        "root__alarm_clock__face__numeral": {
+        "root__alarm clock__face__numeral": {
           "en": "numeral",
           "ko": "숫자"
         },
-        "root__alarm_clock__numeral": {
+        "root__alarm clock__numeral": {
           "en": "numeral",
           "ko": "숫자"
         },
@@ -73294,7 +73294,7 @@
           "en": "arm",
           "ko": "팔"
         },
-        "root__boy__flip_flop": {
+        "root__boy__flip flop": {
           "en": "flip flop",
           "ko": "쪼리"
         },
@@ -73314,7 +73314,7 @@
           "en": "car",
           "ko": "자동차"
         },
-        "root__flip_flop": {
+        "root__flip flop": {
           "en": "flip flop",
           "ko": "쪼리"
         },
@@ -73729,7 +73729,7 @@
           "en": "faucet",
           "ko": "수도꼭지"
         },
-        "root__towel_rack": {
+        "root__towel rack": {
           "en": "towel rack",
           "ko": "수건걸이"
         },
@@ -74251,11 +74251,11 @@
           "en": "sign",
           "ko": "표지판"
         },
-        "root__utility_pole": {
+        "root__utility pole": {
           "en": "utility pole",
           "ko": "전신주"
         },
-        "root__utility_pole__pole": {
+        "root__utility pole__pole": {
           "en": "pole",
           "ko": "기둥"
         },
@@ -74385,15 +74385,15 @@
           "en": "ground",
           "ko": "땅"
         },
-        "root__palm_tree": {
+        "root__palm tree": {
           "en": "palm tree",
           "ko": "야자수"
         },
-        "root__palm_tree__trunk": {
+        "root__palm tree__trunk": {
           "en": "trunk",
           "ko": "줄기"
         },
-        "root__palm_tree__trunk__graffiti": {
+        "root__palm tree__trunk__graffiti": {
           "en": "graffiti",
           "ko": "낙서"
         },
@@ -75922,7 +75922,7 @@
           "en": "table",
           "ko": "탁자"
         },
-        "root__baking_sheet": {
+        "root__baking sheet": {
           "en": "baking sheet",
           "ko": "베이킹 팬"
         },
@@ -76997,7 +76997,7 @@
           "en": "soap",
           "ko": "비누"
         },
-        "root__others__toilet_paper": {
+        "root__others__toilet paper": {
           "en": "toilet paper",
           "ko": "화장지"
         },
@@ -77159,7 +77159,7 @@
           "en": "stopper",
           "ko": "마개"
         },
-        "root__paper_towel": {
+        "root__paper towel": {
           "en": "paper towel",
           "ko": "키친타월"
         },
@@ -77949,15 +77949,15 @@
           "en": "letter",
           "ko": "글자"
         },
-        "root__palm_tree": {
+        "root__palm tree": {
           "en": "palm tree",
           "ko": "야자수"
         },
-        "root__palm_tree__trunk": {
+        "root__palm tree__trunk": {
           "en": "trunk",
           "ko": "줄기"
         },
-        "root__palm_tree__frond": {
+        "root__palm tree__frond": {
           "en": "frond",
           "ko": "잎"
         },
@@ -78473,27 +78473,27 @@
           "en": "cable",
           "ko": "케이블"
         },
-        "root__drum_kit": {
+        "root__drum kit": {
           "en": "drum kit",
           "ko": "드럼 세트"
         },
-        "root__drum_kit__drum": {
+        "root__drum kit__drum": {
           "en": "drum",
           "ko": "드럼"
         },
-        "root__drum_kit__stand": {
+        "root__drum kit__stand": {
           "en": "stand",
           "ko": "받침대"
         },
-        "root__drum_kit__stand__pole": {
+        "root__drum kit__stand__pole": {
           "en": "pole",
           "ko": "기둥"
         },
-        "root__drum_kit__cymbal": {
+        "root__drum kit__cymbal": {
           "en": "cymbal",
           "ko": "심벌"
         },
-        "root__drum_kit__microphone": {
+        "root__drum kit__microphone": {
           "en": "microphone",
           "ko": "마이크"
         },
@@ -78776,35 +78776,35 @@
           "en": "knob",
           "ko": "손잡이"
         },
-        "root__food_processor": {
+        "root__food processor": {
           "en": "food processor",
           "ko": "푸드 프로세서"
         },
-        "root__food_processor__bowl": {
+        "root__food processor__bowl": {
           "en": "bowl",
           "ko": "그릇"
         },
-        "root__food_processor__base": {
+        "root__food processor__base": {
           "en": "base",
           "ko": "바닥면"
         },
-        "root__food_processor__base__logo": {
+        "root__food processor__base__logo": {
           "en": "logo",
           "ko": "로고"
         },
-        "root__food_processor__handle": {
+        "root__food processor__handle": {
           "en": "handle",
           "ko": "손잡이"
         },
-        "root__food_processor__spout": {
+        "root__food processor__spout": {
           "en": "spout",
           "ko": "주둥이"
         },
-        "root__food_processor__lid": {
+        "root__food processor__lid": {
           "en": "lid",
           "ko": "뚜껑"
         },
-        "root__food_processor__button": {
+        "root__food processor__button": {
           "en": "button",
           "ko": "버튼"
         },
@@ -78940,7 +78940,7 @@
           "en": "base",
           "ko": "바닥면"
         },
-        "root__others__knife_block": {
+        "root__others__knife block": {
           "en": "knife block",
           "ko": "칼꽂이"
         },
@@ -79286,7 +79286,7 @@
           "en": "tile",
           "ko": "타일"
         },
-        "root__wall__soap_dish": {
+        "root__wall__soap dish": {
           "en": "soap dish",
           "ko": "비누받침"
         },
@@ -79358,7 +79358,7 @@
           "en": "nozzle",
           "ko": "노즐"
         },
-        "root__curtain_rod": {
+        "root__curtain rod": {
           "en": "curtain rod",
           "ko": "커튼 봉"
         },
@@ -79931,7 +79931,7 @@
           "en": "window",
           "ko": "창문"
         },
-        "root__others__traffic_light": {
+        "root__others__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -80745,7 +80745,7 @@
           "en": "shelf",
           "ko": "선반"
         },
-        "root__exercise_bike": {
+        "root__exercise bike": {
           "en": "exercise bike",
           "ko": "실내 자전거"
         },
@@ -80818,7 +80818,7 @@
           "en": "building",
           "ko": "건물"
         },
-        "root__light_pole": {
+        "root__light pole": {
           "en": "light pole",
           "ko": "가로등 기둥"
         },
@@ -82686,7 +82686,7 @@
           "en": "forearm",
           "ko": "아래팔"
         },
-        "root__surfer__arm__upper_arm": {
+        "root__surfer__arm__upper arm": {
           "en": "upper arm",
           "ko": "위팔"
         },
@@ -83155,7 +83155,7 @@
           "en": "tree",
           "ko": "나무"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -84332,11 +84332,11 @@
           "en": "palm",
           "ko": "손바닥"
         },
-        "root__spectator__chest_protector": {
+        "root__spectator__chest protector": {
           "en": "chest protector",
           "ko": "가슴보호대"
         },
-        "root__spectator__chest_protector__strap": {
+        "root__spectator__chest protector__strap": {
           "en": "strap",
           "ko": "끈"
         },
@@ -84344,7 +84344,7 @@
           "en": "grass",
           "ko": "풀"
         },
-        "root__stadium_seat": {
+        "root__stadium seat": {
           "en": "stadium seat",
           "ko": "경기장 좌석"
         },
@@ -86733,23 +86733,23 @@
           "en": "fry",
           "ko": "감자튀김"
         },
-        "root__hot_dog": {
+        "root__hot dog": {
           "en": "hot dog",
           "ko": "핫도그"
         },
-        "root__hot_dog__sausage": {
+        "root__hot dog__sausage": {
           "en": "sausage",
           "ko": "소시지"
         },
-        "root__hot_dog__bun": {
+        "root__hot dog__bun": {
           "en": "bun",
           "ko": "번"
         },
-        "root__hot_dog__mustard": {
+        "root__hot dog__mustard": {
           "en": "mustard",
           "ko": "머스터드"
         },
-        "root__hot_dog__onion": {
+        "root__hot dog__onion": {
           "en": "onion",
           "ko": "양파"
         },
@@ -87228,7 +87228,7 @@
           "en": "binding",
           "ko": "바인딩"
         },
-        "root__ski_pole": {
+        "root__ski pole": {
           "en": "ski pole",
           "ko": "스키 폴"
         },
@@ -87539,11 +87539,11 @@
           "en": "tree",
           "ko": "나무"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
-        "root__traffic_light__lens": {
+        "root__traffic light__lens": {
           "en": "lens",
           "ko": "렌즈"
         },
@@ -88165,7 +88165,7 @@
           "en": "rim",
           "ko": "림"
         },
-        "root__motorcycle__tire__rim__brake_disc": {
+        "root__motorcycle__tire__rim__brake disc": {
           "en": "brake disc",
           "ko": "브레이크 디스크"
         },
@@ -91346,19 +91346,19 @@
           "en": "kite",
           "ko": "연"
         },
-        "root__windsurf_board": {
+        "root__windsurf board": {
           "en": "windsurf board",
           "ko": "윈드서프 보드"
         },
-        "root__windsurf_board__rail": {
+        "root__windsurf board__rail": {
           "en": "rail",
           "ko": "난간대"
         },
-        "root__windsurf_board__nose": {
+        "root__windsurf board__nose": {
           "en": "nose",
           "ko": "코"
         },
-        "root__windsurf_board__tail": {
+        "root__windsurf board__tail": {
           "en": "tail",
           "ko": "꼬리날개"
         },
@@ -94030,7 +94030,7 @@
           "en": "cuff",
           "ko": "소맷부리"
         },
-        "root__cutting_board": {
+        "root__cutting board": {
           "en": "cutting board",
           "ko": "도마"
         },
@@ -94264,19 +94264,19 @@
           "en": "brace",
           "ko": "버팀대"
         },
-        "root__teddy_bear": {
+        "root__teddy bear": {
           "en": "teddy bear",
           "ko": "테디베어"
         },
-        "root__teddy_bear__head": {
+        "root__teddy bear__head": {
           "en": "head",
           "ko": "머리"
         },
-        "root__teddy_bear__arm": {
+        "root__teddy bear__arm": {
           "en": "arm",
           "ko": "팔"
         },
-        "root__teddy_bear__leg": {
+        "root__teddy bear__leg": {
           "en": "leg",
           "ko": "다리"
         },
@@ -94305,15 +94305,15 @@
           "en": "sky",
           "ko": "하늘"
         },
-        "root__palm_tree": {
+        "root__palm tree": {
           "en": "palm tree",
           "ko": "야자수"
         },
-        "root__palm_tree__trunk": {
+        "root__palm tree__trunk": {
           "en": "trunk",
           "ko": "트렁크"
         },
-        "root__palm_tree__frond": {
+        "root__palm tree__frond": {
           "en": "frond",
           "ko": "야자잎"
         },
@@ -94731,7 +94731,7 @@
           "en": "sole",
           "ko": "밑창"
         },
-        "root__trash_can": {
+        "root__trash can": {
           "en": "trash can",
           "ko": "쓰레기통"
         },
@@ -95281,7 +95281,7 @@
           "en": "plate",
           "ko": "접시"
         },
-        "root__cinnamon_stick": {
+        "root__cinnamon stick": {
           "en": "cinnamon stick",
           "ko": "계피 스틱"
         },
@@ -96529,11 +96529,11 @@
           "en": "wall",
           "ko": "벽"
         },
-        "root__wine_glass": {
+        "root__wine glass": {
           "en": "wine glass",
           "ko": "와인잔"
         },
-        "root__wine_glass__stem": {
+        "root__wine glass__stem": {
           "en": "stem",
           "ko": "줄기"
         },
@@ -97337,7 +97337,7 @@
           "en": "grass",
           "ko": "풀"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -97369,7 +97369,7 @@
           "en": "sign",
           "ko": "표지판"
         },
-        "root__others__traffic_light": {
+        "root__others__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -97390,7 +97390,7 @@
           "en": "pole",
           "ko": "기둥"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -99334,7 +99334,7 @@
           "en": "curb",
           "ko": "연석"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -100765,39 +100765,39 @@
           "en": "foliage",
           "ko": "수풀"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
-        "root__traffic_light__signal": {
+        "root__traffic light__signal": {
           "en": "signal",
           "ko": "신호등"
         },
-        "root__traffic_light__signal__pedestrian_signal": {
+        "root__traffic light__signal__pedestrian signal": {
           "en": "pedestrian signal",
           "ko": "보행자 신호등"
         },
-        "root__traffic_light__signal__lens": {
+        "root__traffic light__signal__lens": {
           "en": "lens",
           "ko": "렌즈"
         },
-        "root__street_sign": {
+        "root__street sign": {
           "en": "street sign",
           "ko": "도로 표지판"
         },
-        "root__street_sign__plate": {
+        "root__street sign__plate": {
           "en": "plate",
           "ko": "접시"
         },
-        "root__street_sign__plate__lettering": {
+        "root__street sign__plate__lettering": {
           "en": "lettering",
           "ko": "글자"
         },
-        "root__street_sign__plate__lettering__letter": {
+        "root__street sign__plate__lettering__letter": {
           "en": "letter",
           "ko": "글자"
         },
-        "root__street_sign__plate__arrow": {
+        "root__street sign__plate__arrow": {
           "en": "arrow",
           "ko": "화살표"
         },
@@ -101959,7 +101959,7 @@
           "en": "shade",
           "ko": "갓"
         },
-        "root__towel_rack": {
+        "root__towel rack": {
           "en": "towel rack",
           "ko": "수건걸이"
         },
@@ -103002,7 +103002,7 @@
           "en": "mirror",
           "ko": "거울"
         },
-        "root__car__license_plate": {
+        "root__car__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -103808,7 +103808,7 @@
           "en": "stem",
           "ko": "줄기"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -103848,7 +103848,7 @@
           "en": "railing",
           "ko": "난간"
         },
-        "root__others__traffic_light": {
+        "root__others__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         }
@@ -104526,35 +104526,35 @@
           "en": "root",
           "ko": "전체 장면"
         },
-        "root__bunk_bed": {
+        "root__bunk bed": {
           "en": "bunk bed",
           "ko": "2층 침대"
         },
-        "root__bunk_bed__bed": {
+        "root__bunk bed__bed": {
           "en": "bed",
           "ko": "침대"
         },
-        "root__bunk_bed__bed__mattress": {
+        "root__bunk bed__bed__mattress": {
           "en": "mattress",
           "ko": "매트리스"
         },
-        "root__bunk_bed__bed__mattress__sheet": {
+        "root__bunk bed__bed__mattress__sheet": {
           "en": "sheet",
           "ko": "시트"
         },
-        "root__bunk_bed__bed__pillow": {
+        "root__bunk bed__bed__pillow": {
           "en": "pillow",
           "ko": "베개"
         },
-        "root__bunk_bed__frame": {
+        "root__bunk bed__frame": {
           "en": "frame",
           "ko": "틀"
         },
-        "root__bunk_bed__frame__rail": {
+        "root__bunk bed__frame__rail": {
           "en": "rail",
           "ko": "난간"
         },
-        "root__bunk_bed__frame__rail__bar": {
+        "root__bunk bed__frame__rail__bar": {
           "en": "bar",
           "ko": "바"
         },
@@ -105456,7 +105456,7 @@
           "en": "cloth",
           "ko": "천"
         },
-        "root__others__air_conditioner": {
+        "root__others__air conditioner": {
           "en": "air conditioner",
           "ko": "에어컨"
         },
@@ -105892,15 +105892,15 @@
           "en": "wall",
           "ko": "벽"
         },
-        "root__wine_glass": {
+        "root__wine glass": {
           "en": "wine glass",
           "ko": "와인잔"
         },
-        "root__wine_glass__wine": {
+        "root__wine glass__wine": {
           "en": "wine",
           "ko": "와인"
         },
-        "root__wine_glass__stem": {
+        "root__wine glass__stem": {
           "en": "stem",
           "ko": "줄기"
         },
@@ -105924,15 +105924,15 @@
           "en": "rim",
           "ko": "테두리"
         },
-        "root__picture_frame": {
+        "root__picture frame": {
           "en": "picture frame",
           "ko": "액자"
         },
-        "root__wine_bottle": {
+        "root__wine bottle": {
           "en": "wine bottle",
           "ko": "와인병"
         },
-        "root__wine_bottle__label": {
+        "root__wine bottle__label": {
           "en": "label",
           "ko": "라벨"
         },
@@ -106069,15 +106069,15 @@
           "en": "surface",
           "ko": "표면"
         },
-        "root__trash_can": {
+        "root__trash can": {
           "en": "trash can",
           "ko": "쓰레기통"
         },
-        "root__trash_can__lid": {
+        "root__trash can__lid": {
           "en": "lid",
           "ko": "뚜껑"
         },
-        "root__trash_can__label": {
+        "root__trash can__label": {
           "en": "label",
           "ko": "라벨"
         },
@@ -106125,7 +106125,7 @@
           "en": "bag",
           "ko": "가방"
         },
-        "root__paper_towel": {
+        "root__paper towel": {
           "en": "paper towel",
           "ko": "키친타월"
         },
@@ -106330,19 +106330,19 @@
           "en": "tent",
           "ko": "텐트"
         },
-        "root__hot_dog": {
+        "root__hot dog": {
           "en": "hot dog",
           "ko": "핫도그"
         },
-        "root__hot_dog__bun": {
+        "root__hot dog__bun": {
           "en": "bun",
           "ko": "빵"
         },
-        "root__hot_dog__bun__ketchup": {
+        "root__hot dog__bun__ketchup": {
           "en": "ketchup",
           "ko": "케첩"
         },
-        "root__hot_dog__bun__sausage": {
+        "root__hot dog__bun__sausage": {
           "en": "sausage",
           "ko": "소시지"
         },
@@ -106685,11 +106685,11 @@
           "en": "roof",
           "ko": "지붕"
         },
-        "root__street_light": {
+        "root__street light": {
           "en": "street light",
           "ko": "가로등"
         },
-        "root__street_light__bulb": {
+        "root__street light__bulb": {
           "en": "bulb",
           "ko": "전구"
         },
@@ -106798,15 +106798,15 @@
           "en": "wire",
           "ko": "전선"
         },
-        "root__parking_meter": {
+        "root__parking meter": {
           "en": "parking meter",
           "ko": "주차 요금계기"
         },
-        "root__parking_meter__pole": {
+        "root__parking meter__pole": {
           "en": "pole",
           "ko": "기둥"
         },
-        "root__parking_meter__cap": {
+        "root__parking meter__cap": {
           "en": "cap",
           "ko": "모자"
         },
@@ -107025,7 +107025,7 @@
           "en": "light",
           "ko": "조명"
         },
-        "root__airplane__landing_gear": {
+        "root__airplane__landing gear": {
           "en": "landing gear",
           "ko": "착륙장치"
         },
@@ -107534,7 +107534,7 @@
           "en": "headlight",
           "ko": "전조등"
         },
-        "root__truck__license_plate": {
+        "root__truck__license plate": {
           "en": "license plate",
           "ko": "번호판"
         },
@@ -109826,7 +109826,7 @@
           "en": "floor",
           "ko": "바닥"
         },
-        "root__light_fixture": {
+        "root__light fixture": {
           "en": "light fixture",
           "ko": "조명기구"
         },
@@ -110336,7 +110336,7 @@
           "en": "trunk",
           "ko": "트렁크"
         },
-        "root__car__trunk__brake_light": {
+        "root__car__trunk__brake light": {
           "en": "brake light",
           "ko": "제동등"
         },
@@ -110440,7 +110440,7 @@
           "en": "tree",
           "ko": "나무"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -111454,11 +111454,11 @@
           "en": "wheel",
           "ko": "바퀴"
         },
-        "root__traffic_light": {
+        "root__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
-        "root__traffic_light__lens": {
+        "root__traffic light__lens": {
           "en": "lens",
           "ko": "렌즈"
         },
@@ -112335,7 +112335,7 @@
           "en": "scissors",
           "ko": "가위"
         },
-        "root__scissors__finger_hole": {
+        "root__scissors__finger hole": {
           "en": "finger hole",
           "ko": "손가락 구멍"
         },
@@ -113115,31 +113115,31 @@
           "en": "rim",
           "ko": "테두리"
         },
-        "root__hot_dog": {
+        "root__hot dog": {
           "en": "hot dog",
           "ko": "핫도그"
         },
-        "root__hot_dog__bun": {
+        "root__hot dog__bun": {
           "en": "bun",
           "ko": "빵"
         },
-        "root__hot_dog__bun__crust": {
+        "root__hot dog__bun__crust": {
           "en": "crust",
           "ko": "가장자리 빵"
         },
-        "root__hot_dog__bun__crumb": {
+        "root__hot dog__bun__crumb": {
           "en": "crumb",
           "ko": "부스러기"
         },
-        "root__hot_dog__sausage": {
+        "root__hot dog__sausage": {
           "en": "sausage",
           "ko": "소시지"
         },
-        "root__hot_dog__onion": {
+        "root__hot dog__onion": {
           "en": "onion",
           "ko": "양파"
         },
-        "root__hot_dog__mustard": {
+        "root__hot dog__mustard": {
           "en": "mustard",
           "ko": "머스터드"
         },
@@ -113313,7 +113313,7 @@
           "en": "mountain",
           "ko": "산"
         },
-        "root__light_pole": {
+        "root__light pole": {
           "en": "light pole",
           "ko": "가로등 기둥"
         },
@@ -114131,7 +114131,7 @@
           "en": "tip",
           "ko": "끝"
         },
-        "root__airplane__landing_gear": {
+        "root__airplane__landing gear": {
           "en": "landing gear",
           "ko": "착륙장치"
         },
@@ -116547,11 +116547,11 @@
           "en": "base",
           "ko": "받침"
         },
-        "root__trash_can": {
+        "root__trash can": {
           "en": "trash can",
           "ko": "쓰레기통"
         },
-        "root__trash_can__rim": {
+        "root__trash can__rim": {
           "en": "rim",
           "ko": "림"
         },
@@ -117494,31 +117494,31 @@
           "en": "wheel",
           "ko": "바퀴"
         },
-        "root__traffic_sign": {
+        "root__traffic sign": {
           "en": "traffic sign",
           "ko": "교통표지판"
         },
-        "root__traffic_sign__octagon": {
+        "root__traffic sign__octagon": {
           "en": "octagon",
           "ko": "octagon"
         },
-        "root__traffic_sign__octagon__letter": {
+        "root__traffic sign__octagon__letter": {
           "en": "letter",
           "ko": "글자"
         },
-        "root__traffic_sign__rectangle": {
+        "root__traffic sign__rectangle": {
           "en": "rectangle",
           "ko": "rectangle"
         },
-        "root__traffic_sign__rectangle__symbol": {
+        "root__traffic sign__rectangle__symbol": {
           "en": "symbol",
           "ko": "기호"
         },
-        "root__traffic_sign__rectangle__symbol__circle": {
+        "root__traffic sign__rectangle__symbol__circle": {
           "en": "circle",
           "ko": "circle"
         },
-        "root__traffic_sign__arrow": {
+        "root__traffic sign__arrow": {
           "en": "arrow",
           "ko": "arrow"
         },
@@ -117546,7 +117546,7 @@
           "en": "road",
           "ko": "도로"
         },
-        "root__utility_pole": {
+        "root__utility pole": {
           "en": "utility pole",
           "ko": "전신주"
         },
@@ -118674,35 +118674,35 @@
           "en": "foliage",
           "ko": "수풀"
         },
-        "root__stuffed_animal": {
+        "root__stuffed animal": {
           "en": "stuffed animal",
           "ko": "봉제인형"
         },
-        "root__stuffed_animal__dress": {
+        "root__stuffed animal__dress": {
           "en": "dress",
           "ko": "원피스"
         },
-        "root__stuffed_animal__dress__ribbon": {
+        "root__stuffed animal__dress__ribbon": {
           "en": "ribbon",
           "ko": "ribbon"
         },
-        "root__stuffed_animal__trousers": {
+        "root__stuffed animal__trousers": {
           "en": "trousers",
           "ko": "바지"
         },
-        "root__stuffed_animal__sweater": {
+        "root__stuffed animal__sweater": {
           "en": "sweater",
           "ko": "스웨터"
         },
-        "root__stuffed_animal__head": {
+        "root__stuffed animal__head": {
           "en": "head",
           "ko": "머리"
         },
-        "root__stuffed_animal__arm": {
+        "root__stuffed animal__arm": {
           "en": "arm",
           "ko": "팔"
         },
-        "root__stuffed_animal__foot": {
+        "root__stuffed animal__foot": {
           "en": "foot",
           "ko": "발"
         },
@@ -118726,23 +118726,23 @@
           "en": "tail",
           "ko": "꼬리"
         },
-        "root__window_frame": {
+        "root__window frame": {
           "en": "window frame",
           "ko": "창틀"
         },
-        "root__window_frame__sill": {
+        "root__window frame__sill": {
           "en": "sill",
           "ko": "창턱"
         },
-        "root__window_frame__jamb": {
+        "root__window frame__jamb": {
           "en": "jamb",
           "ko": "문설주"
         },
-        "root__window_frame__jamb__molding": {
+        "root__window frame__jamb__molding": {
           "en": "molding",
           "ko": "몰딩"
         },
-        "root__window_pane": {
+        "root__window pane": {
           "en": "window pane",
           "ko": "창유리"
         },
@@ -119905,7 +119905,7 @@
           "en": "engine",
           "ko": "엔진"
         },
-        "root__airplane__landing_gear": {
+        "root__airplane__landing gear": {
           "en": "landing gear",
           "ko": "착륙장치"
         },
@@ -120561,15 +120561,15 @@
           "en": "head",
           "ko": "머리"
         },
-        "root__stop_sign": {
+        "root__stop sign": {
           "en": "stop sign",
           "ko": "정지 표지판"
         },
-        "root__stop_sign__letter": {
+        "root__stop sign__letter": {
           "en": "letter",
           "ko": "글자"
         },
-        "root__stop_sign__letter__o": {
+        "root__stop sign__letter__o": {
           "en": "o",
           "ko": "o"
         },
@@ -120771,15 +120771,15 @@
           "en": "wing",
           "ko": "날개"
         },
-        "root__airplane__landing_gear": {
+        "root__airplane__landing gear": {
           "en": "landing gear",
           "ko": "착륙장치"
         },
-        "root__airplane__landing_gear__wheel": {
+        "root__airplane__landing gear__wheel": {
           "en": "wheel",
           "ko": "바퀴"
         },
-        "root__airplane__landing_gear__wheel__tire": {
+        "root__airplane__landing gear__wheel__tire": {
           "en": "tire",
           "ko": "타이어"
         },
@@ -121221,7 +121221,7 @@
           "en": "symbol",
           "ko": "기호"
         },
-        "root__others__traffic_light": {
+        "root__others__traffic light": {
           "en": "traffic light",
           "ko": "신호등"
         },
@@ -125665,7 +125665,7 @@
           "en": "hill",
           "ko": "언덕"
         },
-        "root__utility_pole": {
+        "root__utility pole": {
           "en": "utility pole",
           "ko": "전신주"
         },
@@ -125710,59 +125710,59 @@
           "en": "sky",
           "ko": "하늘"
         },
-        "root__parking_meter": {
+        "root__parking meter": {
           "en": "parking meter",
           "ko": "주차 미터기"
         },
-        "root__parking_meter__base": {
+        "root__parking meter__base": {
           "en": "base",
           "ko": "받침대"
         },
-        "root__parking_meter__base__plate": {
+        "root__parking meter__base__plate": {
           "en": "plate",
           "ko": "접시"
         },
-        "root__parking_meter__base__plate__label": {
+        "root__parking meter__base__plate__label": {
           "en": "label",
           "ko": "라벨"
         },
-        "root__parking_meter__base__plate__screw": {
+        "root__parking meter__base__plate__screw": {
           "en": "screw",
           "ko": "screw"
         },
-        "root__parking_meter__base__screw": {
+        "root__parking meter__base__screw": {
           "en": "screw",
           "ko": "screw"
         },
-        "root__parking_meter__lock": {
+        "root__parking meter__lock": {
           "en": "lock",
           "ko": "lock"
         },
-        "root__parking_meter__lock__sticker": {
+        "root__parking meter__lock__sticker": {
           "en": "sticker",
           "ko": "스티커"
         },
-        "root__parking_meter__lock__keyhole": {
+        "root__parking meter__lock__keyhole": {
           "en": "keyhole",
           "ko": "keyhole"
         },
-        "root__parking_meter__plate": {
+        "root__parking meter__plate": {
           "en": "plate",
           "ko": "접시"
         },
-        "root__parking_meter__plate__label": {
+        "root__parking meter__plate__label": {
           "en": "label",
           "ko": "라벨"
         },
-        "root__parking_meter__plate__screw": {
+        "root__parking meter__plate__screw": {
           "en": "screw",
           "ko": "screw"
         },
-        "root__parking_meter__slot": {
+        "root__parking meter__slot": {
           "en": "slot",
           "ko": "투입구"
         },
-        "root__parking_meter__head": {
+        "root__parking meter__head": {
           "en": "head",
           "ko": "머리"
         },
