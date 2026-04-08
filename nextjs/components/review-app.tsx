@@ -16,16 +16,6 @@ import {
 } from '../lib/review-logic';
 import { normalizeTranslationJson } from '../lib/translation';
 
-function downloadJson(filename, payload) {
-  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  link.click();
-  URL.revokeObjectURL(url);
-}
-
 export default function ReviewApp({ reviewerId, records, initialAnnotations, initialSelection }) {
   const [annotations, setAnnotations] = useState(initialAnnotations || {});
   const [selectedImageId, setSelectedImageId] = useState(initialSelection?.imageId || Object.keys(records || {})[0] || null);
@@ -244,12 +234,6 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
             {saveStatus.savedAt ? ` · ${new Date(saveStatus.savedAt).toLocaleString('ko-KR')}` : ''}
           </div>
           <button className="secondaryButton" onClick={() => saveNow(true)}>☁️ 클라우드에 저장</button>
-          <button
-            className="secondaryButton"
-            onClick={() => downloadJson(`annotations_${reviewerId}.json`, annotations)}
-          >
-            현재 annotation JSON 다운로드
-          </button>
           <button className="secondaryButton" onClick={handleLogout}>로그아웃</button>
         </div>
       </header>

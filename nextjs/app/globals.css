@@ -259,6 +259,13 @@ textarea {
   top: 1rem;
 }
 
+.sidebarHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
 .sectionTitle {
   font-size: 1.8rem;
   font-weight: 700;
@@ -270,6 +277,16 @@ textarea {
   font-size: 1.8rem;
   font-weight: 700;
   margin: -0.2rem 0 0.5rem 0;
+}
+
+.sidebarToggleButton {
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  padding: 0.38rem 0.75rem;
+  font-size: 0.88rem;
+  white-space: nowrap;
 }
 
 
@@ -558,6 +575,8 @@ textarea {
   font-size: 1.45rem;
   font-weight: 700;
   justify-self: start;
+  position: relative;
+  top: -0.06rem;
 }
 
 .imageModalContext {
@@ -571,7 +590,7 @@ textarea {
 .imageModalCount {
   color: var(--muted);
   position: relative;
-  top: -0.08rem;
+  top: -0.14rem;
   left: -0.48rem;
   font-size: 1.36rem;
   font-weight: 600;
