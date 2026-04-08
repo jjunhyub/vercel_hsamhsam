@@ -246,6 +246,12 @@ export function nodeProgress(annotations, imageId, record) {
   return [done, actualNodes.length];
 }
 
+export function reviewProgress(annotations, imageId, record) {
+  const [nodeDone, nodeTotal] = nodeProgress(annotations, imageId, record);
+  const treeDone = treeSummaryConfirmed(annotations, imageId) ? 1 : 0;
+  return [nodeDone + treeDone, nodeTotal + 1];
+}
+
 export function missingReport(annotations, imageId, record) {
   const missingNodes = [];
 
@@ -478,14 +484,15 @@ function roundedElbowPath(x1, y1, x2, y2, r) {
   ].join(' ');
 }
 
-export function buildTreeConnectorPaths(record, layout) {
+export function buildTreeConnectorPaths(record, layout, opts = {}) {
   const rows = layout.rows || [];
   const nodeLefts = layout.nodeLefts || {};
   const nodeWidths = layout.nodeWidths || {};
+  const rowOffset = Number(opts?.rowOffset || 0);
   if (!rows.length) return [];
 
   function rowTopY(rowIdx) {
-    return TREE_PANEL_TOP_PAD_PX + rowIdx * (TREE_ROW_HEIGHT_PX + TREE_ROW_GAP_PX);
+    return TREE_PANEL_TOP_PAD_PX + (rowIdx + rowOffset) * (TREE_ROW_HEIGHT_PX + TREE_ROW_GAP_PX);
   }
 
   function buttonTopY(rowIdx) {

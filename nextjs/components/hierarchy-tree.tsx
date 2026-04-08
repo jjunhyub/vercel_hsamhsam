@@ -8,6 +8,7 @@ import {
   TREE_ROW_HEIGHT_PX,
   TREE_SUMMARY_NODE_ID,
   TREE_PANEL_TOP_PAD_PX,
+  TREE_SIDE_PAD_PX,
   TREE_BUTTON_MAX_WIDTH_PX,
   TREE_BUTTON_MIN_WIDTH_PX,
   TREE_BUTTON_BASE_PX,
@@ -16,10 +17,9 @@ import {
   buildTreeConnectorPaths,
   computeHierarchyLayout,
   humanLabel,
-  injectTreeSummaryNode,
   isReviewableNode,
   nodeConfirmed,
-  nodeProgress,
+  reviewProgress,
   treeSummaryConfirmed,
 } from '../lib/review-logic';
 
@@ -52,33 +52,34 @@ export default function HierarchyTree({
 }) {
   const imageId = record?.image_id;
   const displayId = displayImageId(imageId);
-  const [done, total] = nodeProgress(annotations, imageId, record);
+  const [done, total] = reviewProgress(annotations, imageId, record);
   const treeDone = treeSummaryConfirmed(annotations, imageId);
   const treeEnabled = allNodesConfirmed(annotations, imageId, record);
-
-  const layoutRecord = useMemo(() => injectTreeSummaryNode(record), [record]);
+  const summaryLabel = getNodeLabel(imageId, TREE_SUMMARY_NODE_ID, translationMap);
+  const summaryWidth = buttonWidthForLabel(summaryLabel);
 
   const layout = useMemo(
     () =>
-      computeHierarchyLayout(layoutRecord, {
+      computeHierarchyLayout(record, {
         imageId,
         translationMap,
         getNodeLabel,
         getNodeWidth: (nodeId) =>
           buttonWidthForLabel(getNodeLabel(imageId, nodeId, translationMap)),
       }),
-    [layoutRecord, imageId, translationMap]
+    [record, imageId, translationMap]
   );
 
   const connectorPaths = useMemo(
-    () => buildTreeConnectorPaths(layoutRecord, layout),
-    [layoutRecord, layout]
+    () => buildTreeConnectorPaths(record, layout, { rowOffset: 1 }),
+    [record, layout]
   );
 
   const svgHeight =
     TREE_PANEL_TOP_PAD_PX * 2 +
-    layout.rows.length * TREE_ROW_HEIGHT_PX +
-    Math.max(0, layout.rows.length - 1) * TREE_ROW_GAP_PX;
+    (layout.rows.length + 1) * TREE_ROW_HEIGHT_PX +
+    Math.max(0, layout.rows.length) * TREE_ROW_GAP_PX;
+  const canvasWidth = Math.max(layout.treeWidth, summaryWidth + TREE_SIDE_PAD_PX * 2);
 
   return (
     <section
@@ -89,7 +90,7 @@ export default function HierarchyTree({
         <div>
           <h2 className="sectionTitle">Hierarchy View</h2>
           <div className="sectionSubtle">
-            <strong>{displayId}</strong> · 노드 완료 {done}/{total} · 전체 트리 질문 {treeDone ? '완료' : '미완료'}
+            <strong>{displayId}</strong> · 전체 진행률 {done}/{total} · 전체 트리 질문 {treeDone ? '완료' : '미완료'}
           </div>
         </div>
       </div>
@@ -107,7 +108,7 @@ export default function HierarchyTree({
         <div
           className="treeCanvas"
           style={{
-            width: layout.treeWidth,
+            width: canvasWidth,
             minWidth: '100%',
             height: svgHeight,
             position: 'relative',
@@ -116,9 +117,9 @@ export default function HierarchyTree({
         >
           <svg
             className="treeSvg"
-            width={layout.treeWidth}
+            width={canvasWidth}
             height={svgHeight}
-            viewBox={`0 0 ${layout.treeWidth} ${svgHeight}`}
+            viewBox={`0 0 ${canvasWidth} ${svgHeight}`}
             aria-hidden="true"
           >
             <g className="treeConnectorGroup">
@@ -128,37 +129,35 @@ export default function HierarchyTree({
             </g>
           </svg>
 
+          <button
+            type="button"
+            className={[
+              'treeNodeButton',
+              selectedMode === 'tree' ? 'isSelected' : '',
+              treeDone ? 'isDone' : '',
+              !treeEnabled ? 'isMuted' : '',
+            ].join(' ')}
+            style={{
+              left: TREE_SIDE_PAD_PX,
+              top: TREE_PANEL_TOP_PAD_PX + (TREE_ROW_HEIGHT_PX - TREE_BUTTON_HEIGHT_PX) / 2,
+              width: summaryWidth,
+            }}
+            disabled={!treeEnabled}
+            onClick={onSelectTreeSummary}
+          >
+            {summaryLabel}
+          </button>
+
           {layout.rows.flat().map((nodeId) => {
             const rowIndex = layout.rows.findIndex((row) => row.includes(nodeId));
             const top =
               TREE_PANEL_TOP_PAD_PX +
-              rowIndex * (TREE_ROW_HEIGHT_PX + TREE_ROW_GAP_PX) +
+              (rowIndex + 1) * (TREE_ROW_HEIGHT_PX + TREE_ROW_GAP_PX) +
               (TREE_ROW_HEIGHT_PX - TREE_BUTTON_HEIGHT_PX) / 2;
 
             const left = layout.nodeLefts[nodeId];
             const label = getNodeLabel(imageId, nodeId, translationMap);
             const width = Math.max(layout.nodeWidths[nodeId] || 0, buttonWidthForLabel(label));
-
-
-            if (nodeId === TREE_SUMMARY_NODE_ID) {
-              return (
-                <button
-                  key={nodeId}
-                  type="button"
-                  className={[
-                    'treeNodeButton',
-                    selectedMode === 'tree' ? 'isSelected' : '',
-                    treeDone ? 'isDone' : '',
-                    !treeEnabled ? 'isMuted' : '',
-                  ].join(' ')}
-                  style={{ left, top, width }}
-                  disabled={!treeEnabled}
-                  onClick={onSelectTreeSummary}
-                >
-                  {label}
-                </button>
-              );
-            }
 
             const actualNode = record.nodes?.[nodeId];
             const isActual = Boolean(actualNode?.actual);

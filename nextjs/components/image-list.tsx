@@ -2,24 +2,21 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { imageComplete, nodeProgress } from '../lib/review-logic';
+import { imageComplete, reviewProgress } from '../lib/review-logic';
 
 export default function ImageList({
   records,
   annotations,
   selectedImageId,
-  imageSearch,
-  onImageSearch,
   onSelectImage,
 }) {
   const [sortMode, setSortMode] = useState('grouped');
   const imageIds = Object.keys(records || {});
   const filteredItems = useMemo(() => {
-    const search = String(imageSearch || '').toLowerCase();
     const items = imageIds
       .map((imageId, index) => {
         const record = records[imageId];
-        const [done, total] = nodeProgress(annotations, imageId, record);
+        const [done, total] = reviewProgress(annotations, imageId, record);
         const completed = imageComplete(annotations, imageId, record);
         const progress = total > 0 ? (done / total) * 100 : 0;
         const group = completed ? 2 : done > 0 ? 0 : 1;
@@ -33,8 +30,7 @@ export default function ImageList({
           progress,
           group,
         };
-      })
-      .filter((item) => item.imageId.toLowerCase().includes(search));
+      });
 
     if (sortMode === 'default') {
       return items;
@@ -44,7 +40,7 @@ export default function ImageList({
       if (a.group !== b.group) return a.group - b.group;
       return a.index - b.index;
     });
-  }, [annotations, imageIds, imageSearch, records, sortMode]);
+  }, [annotations, imageIds, records, sortMode]);
 
   return (
     <aside className="leftSidebar">
@@ -58,12 +54,6 @@ export default function ImageList({
           {sortMode === 'grouped' ? '우선순위 순' : '기본 순서'}
         </button>
       </div>
-      <input
-        className="textField sidebarSearch"
-        value={imageSearch}
-        onChange={(event) => onImageSearch(event.target.value)}
-        placeholder="image id 검색"
-      />
       <div className="sidebarCount">
         {filteredItems.length}개 표시
         {sortMode === 'grouped' ? ' · 진행중 > 미완료 > 완료' : ''}
@@ -88,7 +78,7 @@ export default function ImageList({
               onClick={() => onSelectImage(imageId)}
             >
               <div className="imageListItemTitle">{icon} {displayId}</div>
-              <div className="imageListItemMeta">노드 진행률: {done}/{total}</div>
+              <div className="imageListItemMeta">전체 진행률: {done}/{total}</div>
               <div className="imageListItemMeta">{progress.toFixed(1)}% 완료</div>
             </button>
           );

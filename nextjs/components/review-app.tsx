@@ -10,9 +10,7 @@ import {
   applyAnswerChange,
   firstReviewableNodeId,
   humanLabel,
-  imageComplete,
   missingReport,
-  nodeProgress,
 } from '../lib/review-logic';
 import { normalizeTranslationJson } from '../lib/translation';
 
@@ -21,7 +19,6 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
   const [selectedImageId, setSelectedImageId] = useState(initialSelection?.imageId || Object.keys(records || {})[0] || null);
   const [selectedMode, setSelectedMode] = useState(initialSelection?.mode || 'node');
   const [selectedNodeId, setSelectedNodeId] = useState(initialSelection?.nodeId || null);
-  const [imageSearch, setImageSearch] = useState('');
   const [translationMap, setTranslationMap] = useState({});
   const [saveStatus, setSaveStatus] = useState({ status: 'idle', savedAt: null, message: '' });
 
@@ -191,11 +188,6 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
     return missingReport(annotations, selectedImageId, selectedRecord);
   }, [annotations, selectedImageId, selectedRecord]);
 
-  const selectedProgress = useMemo(() => {
-    if (!selectedRecord || !selectedImageId) return [0, 0];
-    return nodeProgress(annotations, selectedImageId, selectedRecord);
-  }, [annotations, selectedImageId, selectedRecord]);
-
   if (!imageIds.length) {
     return (
       <main className="appShell">
@@ -216,9 +208,6 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
       </main>
     );
   }
-
-  const [done, total] = selectedProgress;
-  const completed = selectedRecord && selectedImageId ? imageComplete(annotations, selectedImageId, selectedRecord) : false;
 
   return (
     <main className="appShell">
@@ -243,8 +232,6 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
           records={records}
           annotations={annotations}
           selectedImageId={selectedImageId}
-          imageSearch={imageSearch}
-          onImageSearch={setImageSearch}
           onSelectImage={handleSelectImage}
         />
 

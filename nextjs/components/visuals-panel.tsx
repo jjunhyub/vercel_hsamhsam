@@ -369,6 +369,13 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
     leaf
   );
 
+  const derivedReady = useMemo(() => {
+    if (!(assets.root_original && assets.instances_colored)) {
+      return true;
+    }
+    return derivedFigures.every((figure) => Boolean(figure.src));
+  }, [assets.instances_colored, assets.root_original, derivedFigures]);
+
   const figures = useMemo(() => {
     const nextFigures = [];
 
@@ -389,7 +396,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
       nextFigures.push({
         key: `instances-colored-${record.image_id}-${nodeId}`,
         title: '인스턴스',
-        src: buildAssetUrl(record.image_id, assets.instances_colored),
+        src: derivedReady ? buildAssetUrl(record.image_id, assets.instances_colored) : '',
         fullSize: assets.full_size,
       });
     }
@@ -399,6 +406,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
     assets.full_size,
     assets.instances_colored,
     assets.root_original,
+    derivedReady,
     derivedFigures,
     leaf,
     nodeId,
