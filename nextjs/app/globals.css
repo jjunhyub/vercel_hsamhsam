@@ -511,20 +511,6 @@ textarea {
   letter-spacing: 0.04em;
 }
 
-.figureZoomHint {
-  position: absolute;
-  right: 0.6rem;
-  bottom: 0.6rem;
-  z-index: 1;
-  border-radius: 999px;
-  padding: 0.28rem 0.6rem;
-  background: rgba(15, 23, 42, 0.78);
-  border: 1px solid rgba(148, 163, 184, 0.24);
-  color: #e2e8f0;
-  font-size: 0.85rem;
-  backdrop-filter: blur(8px);
-}
-
 .imageModalOverlay {
   position: fixed;
   inset: 0;
@@ -563,15 +549,16 @@ textarea {
 
 .imageModalCount {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1.12rem;
+  font-weight: 600;
 }
 
 .imageModalFrame {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: min(72vh, 900px);
-  max-height: calc(100vh - 9rem);
+  min-height: min(76vh, 960px);
+  max-height: calc(100vh - 7.5rem);
   border-radius: 18px;
   border: 1px solid rgba(148, 163, 184, 0.16);
   background:
@@ -583,7 +570,7 @@ textarea {
 .imageModalImage {
   display: block;
   max-width: 100%;
-  max-height: calc(100vh - 11rem);
+  max-height: calc(100vh - 8.75rem);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -608,7 +595,6 @@ textarea {
   right: 1rem;
   width: 2.5rem;
   height: 2.5rem;
-  font-size: 1.5rem;
   line-height: 1;
 }
 
@@ -616,16 +602,29 @@ textarea {
   top: 50%;
   width: 3rem;
   height: 3rem;
-  font-size: 2rem;
   transform: translateY(-50%);
 }
 
+.imageModalIcon {
+  display: block;
+  line-height: 1;
+  transform: translateY(-0.06em);
+}
+
+.imageModalClose .imageModalIcon {
+  font-size: 1.55rem;
+}
+
+.imageModalNav .imageModalIcon {
+  font-size: 2.1rem;
+}
+
 .imageModalNavLeft {
-  left: 1rem;
+  left: 1.75rem;
 }
 
 .imageModalNavRight {
-  right: 1rem;
+  right: 1.75rem;
 }
 
 .restoredCropImage {

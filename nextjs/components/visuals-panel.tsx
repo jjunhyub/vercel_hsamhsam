@@ -58,7 +58,6 @@ function FigureImageButton({ figure, onOpen }) {
     >
       <AspectFrame width={figure.fullSize?.[0]} height={figure.fullSize?.[1]} className="isInteractive">
         <img className="frameImage" src={figure.src} alt={figure.title} loading="lazy" />
-        <span className="figureZoomHint">클릭해서 확대</span>
       </AspectFrame>
     </button>
   );
@@ -110,7 +109,7 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext }) {
           onClick={onClose}
           aria-label="확대 보기 닫기"
         >
-          ×
+          <span className="imageModalIcon">×</span>
         </button>
 
         {figures.length > 1 ? (
@@ -121,7 +120,7 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext }) {
               onClick={onPrev}
               aria-label="이전 이미지"
             >
-              ‹
+              <span className="imageModalIcon">‹</span>
             </button>
             <button
               type="button"
@@ -129,7 +128,7 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext }) {
               onClick={onNext}
               aria-label="다음 이미지"
             >
-              ›
+              <span className="imageModalIcon">›</span>
             </button>
           </>
         ) : null}
@@ -328,19 +327,19 @@ function useDerivedFigures(imageId, rootPath, coloredPath, fullSize, leaf) {
     () => [
       {
         key: `derived-overlay-${imageId}-${leaf}`,
-        title: `오버레이 <${leaf}>`,
+        title: '오버레이',
         src: derived.overlay,
         fullSize,
       },
       {
         key: `derived-original-${imageId}-${leaf}`,
-        title: `원본 <${leaf}>`,
+        title: '마스크 적용 원본',
         src: derived.maskOriginalFull,
         fullSize,
       },
       {
         key: `derived-mask-${imageId}-${leaf}`,
-        title: `마스크 <${leaf}>`,
+        title: '마스크',
         src: derived.mask,
         fullSize,
       },
@@ -387,7 +386,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
     if (assets.instances_colored) {
       nextFigures.push({
         key: `instances-colored-${record.image_id}-${nodeId}`,
-        title: `인스턴스 <${leaf}>`,
+        title: '인스턴스',
         src: buildAssetUrl(record.image_id, assets.instances_colored),
         fullSize: assets.full_size,
       });
