@@ -534,7 +534,7 @@ textarea {
 .imageModalContent {
   position: relative;
   width: min(92vw, 1400px);
-  max-height: calc(100vh - 4rem);
+  max-height: calc(100vh - 5rem);
   border-radius: 24px;
   border: 1px solid rgba(148, 163, 184, 0.22);
   background: rgba(9, 14, 30, 0.96);
@@ -548,7 +548,7 @@ textarea {
   justify-content: space-between;
   gap: 1rem;
   padding-right: 3rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.55rem;
 }
 
 .imageModalTitle {
@@ -566,8 +566,8 @@ textarea {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: min(80vh, 1040px);
-  max-height: calc(100vh - 6.5rem);
+  min-height: min(76vh, 980px);
+  max-height: calc(100vh - 7.6rem);
   border-radius: 18px;
   border: 1px solid rgba(148, 163, 184, 0.16);
   background:
@@ -578,8 +578,8 @@ textarea {
 
 .imageModalImage {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
 }
 
