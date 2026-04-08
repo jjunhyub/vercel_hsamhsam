@@ -63,7 +63,7 @@ function FigureImageButton({ figure, onOpen }) {
   );
 }
 
-function ImageModal({ figures, activeIndex, onClose, onPrev, onNext }) {
+function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabel }) {
   const activeFigure = figures[activeIndex];
 
   useEffect(() => {
@@ -135,6 +135,7 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext }) {
 
         <div className="imageModalMeta">
           <div className="imageModalTitle">{activeFigure.title}</div>
+          <div className="imageModalContext">{`현재: ${contextLabel}`}</div>
           <div className="imageModalCount">
             {activeIndex + 1} / {figures.length}
           </div>
@@ -478,6 +479,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
         onClose={handleCloseModal}
         onPrev={handlePrevFigure}
         onNext={handleNextFigure}
+        contextLabel={currentNodeLabel}
       />
     </>
   );

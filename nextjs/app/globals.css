@@ -364,7 +364,8 @@ textarea {
   padding: 0.25rem 0.6rem;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.03);
-  font-size: 1.2rem;
+  color: #cbd5e1;
+  font-size: 1.08rem;
   line-height: 1.2;
   white-space: nowrap;
   overflow: visible;
@@ -545,25 +546,35 @@ textarea {
 }
 
 .imageModalMeta {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
   padding-right: 3rem;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.7rem;
 }
 
 .imageModalTitle {
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   font-weight: 700;
+  justify-self: start;
+}
+
+.imageModalContext {
+  color: #dbeafe;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .imageModalCount {
   color: var(--muted);
   position: relative;
-  top: 0.18rem;
+  top: 0.08rem;
   font-size: 1.28rem;
   font-weight: 600;
+  justify-self: end;
 }
 
 .imageModalFrame {
