@@ -14,7 +14,7 @@ import {
   missingReport,
   nodeProgress,
 } from '../lib/review-logic';
-import { normalizeTranslationJson, normalizeTranslationJson } from '../lib/translation';
+import { normalizeTranslationJson } from '../lib/translation';
 
 function downloadJson(filename, payload) {
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
