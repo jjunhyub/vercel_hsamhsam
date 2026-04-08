@@ -356,7 +356,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
   const currentNodeLabel = translatedLabel(record.image_id, nodeId, translationMap);
 
   const pills = useMemo(
-    () => getInspectorPills(record, nodeId, translationMap),
+    () => getInspectorPills(record, nodeId, translationMap).filter((pill) => !pill.startsWith('현재:')),
     [record, nodeId, translationMap]
   );
 
@@ -448,8 +448,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
       <section className="sectionCard">
         <div className="sectionHeaderWithMeta">
           <div>
-            <h2 className="sectionTitle">Visuals</h2>
-            <div className="visualsContextTitle">{currentNodeLabel}</div>
+            <h2 className="sectionTitle">{currentNodeLabel}</h2>
             <div className="statusPillsRow visualsStatusRow">
               {pills.map((pill) => (
                 <span className="statusPill" key={pill}>
