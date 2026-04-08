@@ -19,7 +19,7 @@ import {
   isReviewableNode,
   nodeConfirmed,
   nodeProgress,
-  translatedLabel,
+  humanlabel,
   treeSummaryConfirmed,
 } from '../lib/review-logic';
 
@@ -29,8 +29,12 @@ function buttonWidthForLabel(label) {
   return Math.max(TREE_BUTTON_MIN_WIDTH_PX, Math.min(TREE_BUTTON_MAX_WIDTH_PX, width));
 }
 
-function getNodeLabel(imageId, nodeId, translationMap) {
-  return nodeId === TREE_SUMMARY_NODE_ID ? 'Full-Tree' : translatedLabel(imageId, nodeId, translationMap);
+// function getNodeLabel(imageId, nodeId, translationMap) {
+//   return nodeId === TREE_SUMMARY_NODE_ID ? 'Full-Tree' : translatedLabel(imageId, nodeId, translationMap);
+// }
+
+function getNodeLabel(_imageId, nodeId, _translationMap) {
+  return nodeId === TREE_SUMMARY_NODE_ID ? 'Full-Tree' : humanLabel(nodeId);
 }
 
 export default function HierarchyTree({
