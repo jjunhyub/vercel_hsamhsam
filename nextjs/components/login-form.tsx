@@ -40,9 +40,8 @@ export default function LoginForm() {
 
   return (
     <form className="loginCard" onSubmit={onSubmit}>
-      <div className="loginBadge">Reviewer Access</div>
+      {/* <div className="loginBadge">Reviewer Access</div> */}
       <h1 className="loginTitle">Reviewer Login</h1>
-      <p className="loginSubtitle">Reviewer ID와 비밀번호를 입력하세요.</p>
 
       <label className="fieldLabel" htmlFor="reviewer-id">Reviewer ID</label>
       <input

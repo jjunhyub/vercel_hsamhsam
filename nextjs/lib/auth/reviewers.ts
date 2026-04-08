@@ -30,15 +30,7 @@ export function getReviewerUsers() {
 
 export function verifyReviewerPassword(reviewerId: string, password: string) {
   const entry = REVIEWER_USERS?.[reviewerId];
-
-  console.log('[reviewers] reviewerId =', reviewerId);
-  console.log('[reviewers] password =', password);
-  console.log('[reviewers] entry =', entry);
-
   if (!entry) return false;
-
   const result = entry.password === password;
-  console.log('[reviewers] compare result =', result);
-
   return result;
 }

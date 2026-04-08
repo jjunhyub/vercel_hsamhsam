@@ -30,21 +30,12 @@ Streamlit에서 쓰던 reviewer UI를 Next.js(App Router)로 옮긴 버전입니
 - `SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `SUPABASE_BUCKET`
-- `REVIEWER_USERS_JSON`
 - `SESSION_SECRET`
 
 권장:
 
 - `NEXT_PUBLIC_APP_TITLE`
 - `APP_TITLE`
-
-## reviewer 비밀번호 해시 만들기
-
-```bash
-node scripts/hash-reviewer-passwords.mjs reviewer_a=my-password reviewer_b=another-password
-```
-
-출력된 JSON 전체를 `REVIEWER_USERS_JSON`에 넣으면 됩니다.
 
 ## 설치 / 로컬 실행
 
