@@ -127,6 +127,17 @@ textarea {
   margin-top: 1.5rem;
 }
 
+.loginCard.isPending .textField {
+  opacity: 0.72;
+}
+
+.loginStatusText {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
 .loginBadge {
   display: inline-flex;
   border-radius: 999px;
@@ -567,10 +578,8 @@ textarea {
 
 .imageModalImage {
   display: block;
-  max-width: 100%;
-  max-height: calc(100vh - 7.1rem);
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
