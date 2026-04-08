@@ -65,12 +65,16 @@ const RootOriginalFigure = React.memo(function RootOriginalFigure({
 });
 
 function GeneratedImageFigure({ title, src, fullSize }) {
-  if (!src) return null;
-
   return (
     <FigureCard title={title}>
       <AspectFrame width={fullSize?.[0]} height={fullSize?.[1]}>
-        <img className="frameImage" src={src} alt={title} loading="lazy" />
+        {src ? (
+          <img className="frameImage" src={src} alt={title} loading="lazy" />
+        ) : (
+          <div className="framePlaceholder">
+            <span className="framePlaceholderText">Generating...</span>
+          </div>
+        )}
       </AspectFrame>
     </FigureCard>
   );

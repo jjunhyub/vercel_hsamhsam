@@ -284,9 +284,7 @@ export function getInspectorPills(record, nodeId, translationMap) {
   const currentText = translatedLabel(imageId, nodeId, translationMap);
   const parentText = parentId ? translatedLabel(imageId, parentId, translationMap) : '-';
   const childLabels = children.map((childId) => translatedLabel(imageId, childId, translationMap));
-  const childrenText = childLabels.length
-    ? (childLabels.length > 5 ? `${childLabels.slice(0, 5).join(', ')} 외 ${childLabels.length - 5}개` : childLabels.join(', '))
-    : '-';
+  const childrenText = childLabels.length ? childLabels.join(', ') : '-';
   const prettyPath = translatedPathLabels(imageId, nodeId, translationMap).join(' → ');
 
   return [

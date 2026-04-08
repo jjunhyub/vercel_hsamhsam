@@ -470,6 +470,28 @@ textarea {
   object-fit: contain;
 }
 
+.framePlaceholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(148, 163, 184, 0.08) 0,
+      rgba(148, 163, 184, 0.08) 12px,
+      rgba(148, 163, 184, 0.03) 12px,
+      rgba(148, 163, 184, 0.03) 24px
+    );
+}
+
+.framePlaceholderText {
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
 .restoredCropImage {
   inset: auto;
 }
