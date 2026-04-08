@@ -273,6 +273,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
               {selectedMode === 'node' && selectedNodeId ? (
                 <>
                   <VisualsPanel
+                    key={`${selectedImageId}:${selectedNodeId}`}
                     record={selectedRecord}
                     nodeId={selectedNodeId}
                     translationMap={translationMap}

@@ -4,6 +4,12 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { getInspectorPills, nodeAssets } from '../lib/review-logic';
 
+const EMPTY_DERIVED = {
+  overlay: '',
+  maskOriginalFull: '',
+  mask: '',
+};
+
 function buildAssetUrl(imageId, path) {
   if (!path) return '';
   const params = new URLSearchParams({ imageId: String(imageId), path: String(path) });
@@ -72,11 +78,12 @@ function GeneratedImageFigure({ title, src, fullSize }) {
 
 function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
   const [rootImgEl, setRootImgEl] = useState(null);
-  const [derived, setDerived] = useState({
-    overlay: '',
-    maskOriginalFull: '',
-    mask: '',
-  });
+  const [derived, setDerived] = useState(EMPTY_DERIVED);
+
+  useEffect(() => {
+    setRootImgEl(null);
+    setDerived(EMPTY_DERIVED);
+  }, [imageId, rootPath, coloredPath]);
 
   useEffect(() => {
     let cancelled = false;
@@ -107,11 +114,7 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
     let cancelled = false;
 
     if (!imageId || !coloredPath || !rootImgEl) {
-      setDerived({
-        overlay: '',
-        maskOriginalFull: '',
-        mask: '',
-      });
+      setDerived(EMPTY_DERIVED);
       return;
     }
 
@@ -237,11 +240,7 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
       } catch (error) {
         console.error('Failed to build derived views:', error);
         if (!cancelled) {
-          setDerived({
-            overlay: '',
-            maskOriginalFull: '',
-            mask: '',
-          });
+          setDerived(EMPTY_DERIVED);
         }
       }
     }
@@ -277,13 +276,8 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
 
 export default function VisualsPanel({ record, nodeId, translationMap }) {
   const assets = useMemo(() => nodeAssets(record, nodeId), [record, nodeId]);
-  console.log('assets', assets);
 
   const leaf = String(nodeId || '').split('__').at(-1) || nodeId;
-
-  console.log('imageId:', record?.image_id);
-  console.log('nodeId:', nodeId);
-  console.log('translation entry:', translationMap?.[record?.image_id]?.[nodeId]);
 
   const pills = useMemo(
     () => getInspectorPills(record, nodeId, translationMap),
@@ -303,7 +297,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
 
     assets.root_original && assets.instances_colored ? (
       <DerivedMaskViews
-        key="derived-views"
+        key={`derived-views-${record.image_id}-${nodeId}`}
         imageId={record.image_id}
         rootPath={assets.root_original}
         coloredPath={assets.instances_colored}
@@ -314,7 +308,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
 
     assets.instances_colored ? (
       <DirectImageFigure
-        key="instances-colored"
+        key={`instances-colored-${record.image_id}-${nodeId}`}
         imageId={record.image_id}
         path={assets.instances_colored}
         title={`인스턴스 <${leaf}>`}
