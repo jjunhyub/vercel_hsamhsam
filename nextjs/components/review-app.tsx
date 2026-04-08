@@ -14,7 +14,7 @@ import {
   missingReport,
   nodeProgress,
 } from '../lib/review-logic';
-import { parseTranslationPayload } from '../lib/translation';
+import { normalizeTranslationJson, parseTranslationPayload } from '../lib/translation';
 
 function downloadJson(filename, payload) {
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -49,7 +49,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
       .then((response) => (response.ok ? response.json() : null))
       .then((payload) => {
         if (!cancelled && payload) {
-          setTranslationMap(parseTranslationPayload(payload));
+          setTranslationMap(normalizeTranslationJson(payload));
         }
       })
       .catch(() => {
