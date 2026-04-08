@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { useMemo, useEffect, useState } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { getInspectorPills, nodeAssets } from '../lib/review-logic';
 
 function buildAssetUrl(imageId, path) {
@@ -40,6 +40,23 @@ function DirectImageFigure({ imageId, path, title, fullSize }) {
     </FigureCard>
   );
 }
+
+const RootOriginalFigure = React.memo(function RootOriginalFigure({
+  imageId,
+  path,
+  fullSize,
+}) {
+  if (!path) return null;
+
+  return (
+    <DirectImageFigure
+      imageId={imageId}
+      path={path}
+      title="원본 이미지"
+      fullSize={fullSize}
+    />
+  );
+});
 
 function GeneratedImageFigure({ title, src, fullSize }) {
   if (!src) return null;
@@ -268,11 +285,10 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
 
   const reviewFigures = [
     assets.root_original ? (
-      <DirectImageFigure
-        key="root-original"
+      <RootOriginalFigure
+        key={`root-original-${record.image_id}`}
         imageId={record.image_id}
         path={assets.root_original}
-        title="원본 이미지"
         fullSize={assets.full_size}
       />
     ) : null,

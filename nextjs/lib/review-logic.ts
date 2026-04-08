@@ -310,21 +310,6 @@ export function nodeAssets(record, nodeId) {
     return path.replace(/\.mask\.png$/i, nextSuffix);
   };
 
-  // 이미지를 5장 전부 불러오는 방식
-  // return {
-  //   root_original: record?.root_image_path || null,
-  //   root_overlay: null,
-  //   mask_original: null,
-  //   mask_original_full: node.mask_original_full_path || replaceMaskSuffix(maskPath, '.mask.original.full.png'),
-  //   mask: maskPath,
-  //   instances: [],
-  //   instances_colored: node.instances_colored_path || replaceMaskSuffix(maskPath, '.instances.colored.png'),
-  //   overlay: node.overlay_path || replaceMaskSuffix(maskPath, '.overlay.png'),
-  //   full_size: record?.full_size || null,
-  //   bbox: Array.isArray(bbox)? bbox : bbox ? [bbox.x1, bbox.y1, bbox.x2, bbox.y2] : null,
-  // };
-
-  // 이미지를 2장만 불러오는 방식
   return {
     root_original: record?.root_image_path || null,
     instances_colored: node.instances_colored_path || replaceMaskSuffix(maskPath, '.instances.colored.png'),

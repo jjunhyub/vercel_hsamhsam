@@ -30,13 +30,23 @@ export async function GET(request) {
     const blob = await downloadAssetFromStorage(path);
     const arrayBuffer = await blob.arrayBuffer();
 
+    // return new NextResponse(arrayBuffer, {
+    //   status: 200,
+    //   headers: {
+    //     'Content-Type': blob.type || guessContentType(path),
+    //     'Cache-Control': 'private, max-age=60, stale-while-revalidate=300',
+    //   },
+    // });
+
     return new NextResponse(arrayBuffer, {
       status: 200,
       headers: {
         'Content-Type': blob.type || guessContentType(path),
-        'Cache-Control': 'private, max-age=60, stale-while-revalidate=300',
+        'Cache-Control': 'private, max-age=86400, stale-while-revalidate=604800',
       },
     });
+
+
   } catch (error) {
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
