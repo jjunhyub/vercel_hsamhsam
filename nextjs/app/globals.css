@@ -612,7 +612,11 @@ textarea {
 }
 
 .imageModalFrame.isZoomed {
-  cursor: zoom-out;
+  cursor: grab;
+}
+
+.imageModalFrame.isDragging {
+  cursor: grabbing;
 }
 
 .imageModalImage {
@@ -621,7 +625,10 @@ textarea {
   height: 80%;
   object-fit: contain;
   transform-origin: center;
-  transition: transform 0.12s ease;
+  transition: transform 0.05s linear;
+  will-change: transform;
+  user-select: none;
+  pointer-events: none;
 }
 
 .imageModalClose,

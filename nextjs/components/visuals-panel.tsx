@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { getInspectorPills, nodeAssets, translatedLabel } from '../lib/review-logic';
 
 const EMPTY_DERIVED = {
@@ -66,9 +66,29 @@ function FigureImageButton({ figure, onOpen }) {
 function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabel }) {
   const activeFigure = figures[activeIndex];
   const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const frameRef = useRef(null);
+  const dragRef = useRef(null);
+
+  const clampPan = (nextPan, nextZoom = zoom) => {
+    const frameEl = frameRef.current;
+    if (!frameEl || nextZoom <= 1) return { x: 0, y: 0 };
+
+    const maxX = (frameEl.clientWidth * 0.8 * (nextZoom - 1)) / 2;
+    const maxY = (frameEl.clientHeight * 0.8 * (nextZoom - 1)) / 2;
+
+    return {
+      x: Math.min(maxX, Math.max(-maxX, nextPan.x)),
+      y: Math.min(maxY, Math.max(-maxY, nextPan.y)),
+    };
+  };
 
   useEffect(() => {
     setZoom(1);
+    setPan({ x: 0, y: 0 });
+    dragRef.current = null;
+    setIsDragging(false);
   }, [activeIndex, activeFigure?.src]);
 
   useEffect(() => {
@@ -101,12 +121,54 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabe
 
   const handleWheel = (event) => {
     event.preventDefault();
-    const delta = event.deltaY < 0 ? 0.16 : -0.16;
-    setZoom((prev) => Math.min(4, Math.max(1, Number((prev + delta).toFixed(2)))));
+    const factor = Math.exp(-event.deltaY * 0.0028);
+    setZoom((prev) => {
+      const nextZoom = Math.min(4, Math.max(1, Number((prev * factor).toFixed(2))));
+      setPan((currentPan) => clampPan(currentPan, nextZoom));
+      return nextZoom;
+    });
   };
 
   const handleDoubleClick = () => {
-    setZoom((prev) => (prev > 1 ? 1 : 2));
+    setZoom((prev) => {
+      const nextZoom = prev > 1 ? 1 : 2;
+      setPan({ x: 0, y: 0 });
+      return nextZoom;
+    });
+  };
+
+  const handlePointerDown = (event) => {
+    if (zoom <= 1) return;
+    event.preventDefault();
+    dragRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      originX: pan.x,
+      originY: pan.y,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setIsDragging(true);
+  };
+
+  const handlePointerMove = (event) => {
+    if (!dragRef.current || dragRef.current.pointerId !== event.pointerId) return;
+    const deltaX = event.clientX - dragRef.current.startX;
+    const deltaY = event.clientY - dragRef.current.startY;
+    setPan(
+      clampPan({
+        x: dragRef.current.originX + deltaX,
+        y: dragRef.current.originY + deltaY,
+      }),
+    );
+  };
+
+  const endDrag = (event) => {
+    if (dragRef.current && event.currentTarget.hasPointerCapture?.(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    dragRef.current = null;
+    setIsDragging(false);
   };
 
   return (
@@ -157,15 +219,20 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabe
         </div>
 
         <div
-          className={`imageModalFrame ${zoom > 1 ? 'isZoomed' : ''}`.trim()}
+          ref={frameRef}
+          className={`imageModalFrame ${zoom > 1 ? 'isZoomed' : ''} ${isDragging ? 'isDragging' : ''}`.trim()}
           onWheel={handleWheel}
           onDoubleClick={handleDoubleClick}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
         >
           <img
             className="imageModalImage"
             src={activeFigure.src}
             alt={activeFigure.title}
-            style={{ transform: `scale(${zoom})` }}
+            style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }}
           />
         </div>
       </div>
