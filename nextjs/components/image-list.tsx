@@ -12,6 +12,11 @@ export default function ImageList({
 }) {
   const [sortMode, setSortMode] = useState('grouped');
   const imageIds = Object.keys(records || {});
+  const completedImageCount = useMemo(
+    () => imageIds.filter((imageId) => imageComplete(annotations, imageId, records[imageId])).length,
+    [annotations, imageIds, records]
+  );
+  const overallProgress = imageIds.length ? (completedImageCount / imageIds.length) * 100 : 0;
   const filteredItems = useMemo(() => {
     const items = imageIds
       .map((imageId, index) => {
@@ -55,7 +60,7 @@ export default function ImageList({
         </button>
       </div>
       <div className="sidebarCount">
-        {filteredItems.length}개 표시
+        진행률 {completedImageCount}/{imageIds.length} ({overallProgress.toFixed(1)}%)
         {sortMode === 'grouped' ? ' · 진행중 > 미완료 > 완료' : ''}
       </div>
 
@@ -78,7 +83,7 @@ export default function ImageList({
               onClick={() => onSelectImage(imageId)}
             >
               <div className="imageListItemTitle">{icon} {displayId}</div>
-              <div className="imageListItemMeta">전체 진행률: {done}/{total}</div>
+              <div className="imageListItemMeta">진행률: {done}/{total}</div>
               <div className="imageListItemMeta">{progress.toFixed(1)}% 완료</div>
             </button>
           );

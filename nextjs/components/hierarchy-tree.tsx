@@ -71,14 +71,14 @@ export default function HierarchyTree({
   );
 
   const connectorPaths = useMemo(
-    () => buildTreeConnectorPaths(record, layout, { rowOffset: 1 }),
+    () => buildTreeConnectorPaths(record, layout),
     [record, layout]
   );
 
   const svgHeight =
     TREE_PANEL_TOP_PAD_PX * 2 +
-    (layout.rows.length + 1) * TREE_ROW_HEIGHT_PX +
-    Math.max(0, layout.rows.length) * TREE_ROW_GAP_PX;
+    layout.rows.length * TREE_ROW_HEIGHT_PX +
+    Math.max(0, layout.rows.length - 1) * TREE_ROW_GAP_PX;
   const canvasWidth = Math.max(layout.treeWidth, summaryWidth + TREE_SIDE_PAD_PX * 2);
 
   return (
@@ -152,7 +152,7 @@ export default function HierarchyTree({
             const rowIndex = layout.rows.findIndex((row) => row.includes(nodeId));
             const top =
               TREE_PANEL_TOP_PAD_PX +
-              (rowIndex + 1) * (TREE_ROW_HEIGHT_PX + TREE_ROW_GAP_PX) +
+              rowIndex * (TREE_ROW_HEIGHT_PX + TREE_ROW_GAP_PX) +
               (TREE_ROW_HEIGHT_PX - TREE_BUTTON_HEIGHT_PX) / 2;
 
             const left = layout.nodeLefts[nodeId];
