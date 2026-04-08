@@ -407,12 +407,12 @@ textarea {
 
 .treeNodeButton {
   position: absolute;
-  height: 30px;
+  height: 32px;
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.35);
   background: rgba(255, 255, 255, 0.03);
   color: var(--text);
-  font-weight: 600;
+  font-weight: 500;
 
   display: inline-flex;
   align-items: center;
@@ -422,10 +422,10 @@ textarea {
   overflow: hidden;
   text-overflow: clip;
 
-  padding: 0 0.7rem;
+  padding: 0 0.85rem;
   line-height: 1;
   
-  font-size: 1.1rem;
+  font-size: 1.04rem;
 }
 
 .treeNodeButton.isSelected {
@@ -562,7 +562,7 @@ textarea {
 
 .imageModalContext {
   color: #dbeafe;
-  font-size: 1.1rem;
+  font-size: 1.24rem;
   font-weight: 600;
   text-align: center;
   white-space: nowrap;
@@ -571,9 +571,9 @@ textarea {
 .imageModalCount {
   color: var(--muted);
   position: relative;
-  top: -0.02rem;
-  left: -0.35rem;
-  font-size: 1.28rem;
+  top: -0.08rem;
+  left: -0.48rem;
+  font-size: 1.36rem;
   font-weight: 600;
   justify-self: end;
 }
