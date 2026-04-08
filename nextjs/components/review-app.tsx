@@ -45,7 +45,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
 
   useEffect(() => {
     let cancelled = false;
-    fetch('/translation/full_translated.json')
+    fetch('/translation/full_translation.json')
       .then((response) => (response.ok ? response.json() : null))
       .then((payload) => {
         if (!cancelled && payload) {
@@ -53,7 +53,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
         }
       })
       .catch(() => {
-        // Optional file. Ignore 404 or parse failures.
+        
       });
 
     return () => {

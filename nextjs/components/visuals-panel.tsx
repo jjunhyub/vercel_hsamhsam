@@ -1,8 +1,9 @@
 // @ts-nocheck
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { getInspectorPills, nodeAssets } from '../lib/review-logic';
+import { normalizeTranslationJson } from '@/lib/translation';
 
 function buildAssetUrl(imageId, path) {
   if (!path) return '';
@@ -44,7 +45,9 @@ function DirectImageFigure({ imageId, path, title, fullSize }) {
 export default function VisualsPanel({ record, nodeId, translationMap }) {
   const assets = useMemo(() => nodeAssets(record, nodeId), [record, nodeId]);
   console.log('assets', assets);
+
   const leaf = String(nodeId || '').split('__').at(-1) || nodeId;
+
   const pills = useMemo(
     () => getInspectorPills(record, nodeId, translationMap),
     [record, nodeId, translationMap]
@@ -109,7 +112,9 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
           <h2 className="sectionTitle">Visuals</h2>
           <div className="statusPillsRow">
             {pills.map((pill) => (
-              <span className="statusPill" key={pill}>{pill}</span>
+              <span className="statusPill" key={pill}>
+                {pill}
+              </span>
             ))}
           </div>
         </div>
