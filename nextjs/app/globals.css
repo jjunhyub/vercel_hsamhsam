@@ -448,6 +448,18 @@ textarea {
   margin-bottom: 0.7rem;
 }
 
+.visualsContextTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 0.35rem;
+  color: var(--text);
+}
+
+.visualsStatusRow {
+  margin-top: 0.95rem;
+}
+
 .figureImageButton {
   display: block;
   width: 100%;
@@ -530,7 +542,7 @@ textarea {
   border: 1px solid rgba(148, 163, 184, 0.22);
   background: rgba(9, 14, 30, 0.96);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-  padding: 1.25rem 1.25rem 1rem;
+  padding: 0.9rem 0.9rem 0.8rem;
 }
 
 .imageModalMeta {
@@ -539,7 +551,7 @@ textarea {
   justify-content: space-between;
   gap: 1rem;
   padding-right: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
 }
 
 .imageModalTitle {
@@ -557,8 +569,8 @@ textarea {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: min(76vh, 960px);
-  max-height: calc(100vh - 7.5rem);
+  min-height: min(80vh, 1040px);
+  max-height: calc(100vh - 6.5rem);
   border-radius: 18px;
   border: 1px solid rgba(148, 163, 184, 0.16);
   background:
@@ -570,7 +582,7 @@ textarea {
 .imageModalImage {
   display: block;
   max-width: 100%;
-  max-height: calc(100vh - 8.75rem);
+  max-height: calc(100vh - 7.1rem);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -620,11 +632,11 @@ textarea {
 }
 
 .imageModalNavLeft {
-  left: 1.75rem;
+  left: 2.6rem;
 }
 
 .imageModalNavRight {
-  right: 1.75rem;
+  right: 2.6rem;
 }
 
 .restoredCropImage {

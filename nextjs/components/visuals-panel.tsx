@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
-import { getInspectorPills, nodeAssets } from '../lib/review-logic';
+import { getInspectorPills, nodeAssets, translatedLabel } from '../lib/review-logic';
 
 const EMPTY_DERIVED = {
   overlay: '',
@@ -43,7 +43,7 @@ function FigureImageButton({ figure, onOpen }) {
     return (
       <AspectFrame width={figure.fullSize?.[0]} height={figure.fullSize?.[1]}>
         <div className="framePlaceholder">
-          <span className="framePlaceholderText">Generating...</span>
+          <span className="framePlaceholderText">Loading...</span>
         </div>
       </AspectFrame>
     );
@@ -353,6 +353,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
   const [activeFigureIndex, setActiveFigureIndex] = useState(null);
 
   const leaf = String(nodeId || '').split('__').at(-1) || nodeId;
+  const currentNodeLabel = translatedLabel(record.image_id, nodeId, translationMap);
 
   const pills = useMemo(
     () => getInspectorPills(record, nodeId, translationMap),
@@ -448,7 +449,8 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
         <div className="sectionHeaderWithMeta">
           <div>
             <h2 className="sectionTitle">Visuals</h2>
-            <div className="statusPillsRow">
+            <div className="visualsContextTitle">{currentNodeLabel}</div>
+            <div className="statusPillsRow visualsStatusRow">
               {pills.map((pill) => (
                 <span className="statusPill" key={pill}>
                   {pill}

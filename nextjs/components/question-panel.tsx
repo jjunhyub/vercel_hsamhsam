@@ -3,9 +3,7 @@
 
 import {
   getAnswersBucket,
-  getInspectorPills,
   nodeQuestionsFor,
-  translatedLabel,
   treeQuestionsFor,
 } from '../lib/review-logic';
 
@@ -87,11 +85,7 @@ export default function QuestionPanel({
 
   const headerTitle = mode === 'tree'
     ? '전체 트리 질문'
-    : `${translatedLabel(imageId, nodeId, translationMap)} 노드 질문`;
-
-  // const pills = mode === 'tree'
-  //   ? [`image: ${imageId}`, 'mode: tree summary']
-  //   : getInspectorPills(record, nodeId, translationMap);
+    : '노드 질문';
 
   return (
     <section className="sectionCard">
