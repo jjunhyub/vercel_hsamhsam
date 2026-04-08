@@ -16,7 +16,7 @@ export const TREE_ROOT_GAP_PX =0;
 export const TREE_SIDE_PAD_PX = 10;
 export const TREE_ROW_HEIGHT_PX = 50;
 export const TREE_ROW_GAP_PX = 20;
-export const TREE_PANEL_TOP_PAD_PX = 0;
+export const TREE_PANEL_TOP_PAD_PX = 12;
 
 export function translatedLabel(imageId, nodeId, translationMap) {
   if (!nodeId) return '-';

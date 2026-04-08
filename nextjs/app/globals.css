@@ -571,7 +571,8 @@ textarea {
 .imageModalCount {
   color: var(--muted);
   position: relative;
-  top: 0.08rem;
+  top: -0.02rem;
+  left: -0.35rem;
   font-size: 1.28rem;
   font-weight: 600;
   justify-self: end;
