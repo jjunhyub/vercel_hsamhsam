@@ -298,6 +298,7 @@ textarea {
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.03);
   padding: 0.8rem;
+  color: var(--text);
 }
 
 .imageListItem.isSelected {
@@ -313,6 +314,7 @@ textarea {
 .imageListItemTitle {
   font-weight: 600;
   margin-bottom: 0.3rem;
+  color: #f8fafc;
 }
 
 .contentColumn {
@@ -539,7 +541,7 @@ textarea {
   border: 1px solid rgba(148, 163, 184, 0.22);
   background: rgba(9, 14, 30, 0.96);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-  padding: 1.15rem 0.9rem 0.8rem;
+  padding: 1.5rem 0.9rem 0.8rem;
 }
 
 .imageModalMeta {
@@ -552,13 +554,15 @@ textarea {
 }
 
 .imageModalTitle {
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   font-weight: 700;
 }
 
 .imageModalCount {
   color: var(--muted);
-  font-size: 1.12rem;
+  position: relative;
+  top: 0.18rem;
+  font-size: 1.28rem;
   font-weight: 600;
 }
 

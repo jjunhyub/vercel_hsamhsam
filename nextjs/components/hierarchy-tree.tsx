@@ -33,6 +33,14 @@ function getNodeLabel(_imageId, nodeId, _translationMap) {
   return nodeId === TREE_SUMMARY_NODE_ID ? 'Full-Tree' : humanLabel(nodeId);
 }
 
+function displayImageId(imageId) {
+  const raw = String(imageId || '');
+  if (/^\d+$/.test(raw)) {
+    return String(Number(raw));
+  }
+  return raw.replace(/^0+(?=[A-Za-z0-9])/g, '') || raw;
+}
+
 export default function HierarchyTree({
   record,
   annotations,
@@ -43,6 +51,7 @@ export default function HierarchyTree({
   translationMap,
 }) {
   const imageId = record?.image_id;
+  const displayId = displayImageId(imageId);
   const [done, total] = nodeProgress(annotations, imageId, record);
   const treeDone = treeSummaryConfirmed(annotations, imageId);
   const treeEnabled = allNodesConfirmed(annotations, imageId, record);
@@ -80,7 +89,7 @@ export default function HierarchyTree({
         <div>
           <h2 className="sectionTitle">Hierarchy View</h2>
           <div className="sectionSubtle">
-            <strong>{imageId}</strong> · 노드 완료 {done}/{total} · 전체 트리 질문 {treeDone ? '완료' : '미완료'}
+            <strong>{displayId}</strong> · 노드 완료 {done}/{total} · 전체 트리 질문 {treeDone ? '완료' : '미완료'}
           </div>
         </div>
       </div>
