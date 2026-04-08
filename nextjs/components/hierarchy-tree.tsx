@@ -15,11 +15,11 @@ import {
   allNodesConfirmed,
   buildTreeConnectorPaths,
   computeHierarchyLayout,
+  humanLabel,
   injectTreeSummaryNode,
   isReviewableNode,
   nodeConfirmed,
   nodeProgress,
-  humanlabel,
   treeSummaryConfirmed,
 } from '../lib/review-logic';
 

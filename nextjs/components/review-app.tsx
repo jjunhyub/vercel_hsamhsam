@@ -49,7 +49,6 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
       .then((payload) => {
         if (!cancelled && payload) {
           const parsed = normalizeTranslationJson(payload);
-          console.log('translation loaded for 000000011826:', parsed['000000011826']);
           setTranslationMap(parsed);
         }
       })
