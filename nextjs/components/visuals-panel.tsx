@@ -71,6 +71,7 @@ function GeneratedImageFigure({ title, src, fullSize }) {
 }
 
 function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
+  const [rootImgEl, setRootImgEl] = useState(null);
   const [derived, setDerived] = useState({
     overlay: '',
     maskOriginalFull: '',
@@ -80,7 +81,32 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
   useEffect(() => {
     let cancelled = false;
 
-    if (!imageId || !rootPath || !coloredPath) {
+    if (!imageId || !rootPath) {
+      setRootImgEl(null);
+      return;
+    }
+
+    const rootUrl = buildAssetUrl(imageId, rootPath);
+
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      if (!cancelled) setRootImgEl(img);
+    };
+    img.onerror = () => {
+      if (!cancelled) setRootImgEl(null);
+    };
+    img.src = rootUrl;
+
+    return () => {
+      cancelled = true;
+    };
+  }, [imageId, rootPath]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (!imageId || !coloredPath || !rootImgEl) {
       setDerived({
         overlay: '',
         maskOriginalFull: '',
@@ -89,10 +115,9 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
       return;
     }
 
-    const rootUrl = buildAssetUrl(imageId, rootPath);
     const coloredUrl = buildAssetUrl(imageId, coloredPath);
 
-    async function loadAndBuild() {
+    async function buildDerived() {
       const loadImage = (src) =>
         new Promise((resolve, reject) => {
           const img = new Image();
@@ -103,13 +128,10 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
         });
 
       try {
-        const [rootImg, coloredImg] = await Promise.all([
-          loadImage(rootUrl),
-          loadImage(coloredUrl),
-        ]);
+        const coloredImg = await loadImage(coloredUrl);
 
-        const width = rootImg.naturalWidth || rootImg.width;
-        const height = rootImg.naturalHeight || rootImg.height;
+        const width = rootImgEl.naturalWidth || rootImgEl.width;
+        const height = rootImgEl.naturalHeight || rootImgEl.height;
 
         const rootCanvas = document.createElement('canvas');
         rootCanvas.width = width;
@@ -136,17 +158,9 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
         maskCanvas.height = height;
         const maskCtx = maskCanvas.getContext('2d');
 
-        if (
-          !rootCtx ||
-          !coloredCtx ||
-          !overlayCtx ||
-          !maskOriginalCtx ||
-          !maskCtx
-        ) {
-          return;
-        }
+        if (!rootCtx || !coloredCtx || !overlayCtx || !maskOriginalCtx || !maskCtx) return;
 
-        rootCtx.drawImage(rootImg, 0, 0, width, height);
+        rootCtx.drawImage(rootImgEl, 0, 0, width, height);
         coloredCtx.drawImage(coloredImg, 0, 0, width, height);
 
         const rootImageData = rootCtx.getImageData(0, 0, width, height);
@@ -177,37 +191,31 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
           const ra = rootData[i + 3];
 
           if (isFg) {
-            // 1) overlay: 원본 위에 붉은색 반투명
             overlayData[i] = Math.round(rr * 0.65 + 255 * 0.35);
             overlayData[i + 1] = Math.round(rg * 0.65);
             overlayData[i + 2] = Math.round(rb * 0.65);
             overlayData[i + 3] = ra;
 
-            // 2) mask original full: 마스크 영역만 원본, 나머지는 검정
             maskOriginalData[i] = rr;
             maskOriginalData[i + 1] = rg;
             maskOriginalData[i + 2] = rb;
             maskOriginalData[i + 3] = ra;
 
-            // 3) binary mask: foreground는 흰색
             maskData[i] = 255;
             maskData[i + 1] = 255;
             maskData[i + 2] = 255;
             maskData[i + 3] = 255;
           } else {
-            // overlay는 원본 그대로
             overlayData[i] = rr;
             overlayData[i + 1] = rg;
             overlayData[i + 2] = rb;
             overlayData[i + 3] = ra;
 
-            // mask original full 배경은 검정
             maskOriginalData[i] = 0;
             maskOriginalData[i + 1] = 0;
             maskOriginalData[i + 2] = 0;
             maskOriginalData[i + 3] = 255;
 
-            // binary mask 배경은 검정
             maskData[i] = 0;
             maskData[i + 1] = 0;
             maskData[i + 2] = 0;
@@ -238,12 +246,12 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
       }
     }
 
-    loadAndBuild();
+    buildDerived();
 
     return () => {
       cancelled = true;
     };
-  }, [imageId, rootPath, coloredPath]);
+  }, [imageId, coloredPath, rootImgEl]);
 
   return (
     <>
@@ -314,58 +322,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
       />
     ) : null,
   ].filter(Boolean);
-  // const reviewFigures = [
-  //   assets.root_original ? (
-  //     <DirectImageFigure
-  //       key="root-original"
-  //       imageId={record.image_id}
-  //       path={assets.root_original}
-  //       title="원본 이미지"
-  //       fullSize={assets.full_size}
-  //     />
-  //   ) : null,
-
-  //   assets.overlay ? (
-  //     <DirectImageFigure
-  //       key="overlay"
-  //       imageId={record.image_id}
-  //       path={assets.overlay}
-  //       title={`오버레이 <${leaf}>`}
-  //       fullSize={assets.full_size}
-  //     />
-  //   ) : null,
-
-  //   assets.mask_original_full ? (
-  //     <DirectImageFigure
-  //       key="mask-original-full"
-  //       imageId={record.image_id}
-  //       path={assets.mask_original_full}
-  //       title={`원본 <${leaf}>`}
-  //       fullSize={assets.full_size}
-  //     />
-  //   ) : null,
-
-  //   assets.mask ? (
-  //     <DirectImageFigure
-  //       key="mask"
-  //       imageId={record.image_id}
-  //       path={assets.mask}
-  //       title={`마스크 <${leaf}>`}
-  //       fullSize={assets.full_size}
-  //     />
-  //   ) : null,
-
-  //   assets.instances_colored ? (
-  //     <DirectImageFigure
-  //       key="instances-colored"
-  //       imageId={record.image_id}
-  //       path={assets.instances_colored}
-  //       title={`인스턴스 <${leaf}>`}
-  //       fullSize={assets.full_size}
-  //     />
-  //   ) : null,
-  // ].filter(Boolean);
-
+  
   return (
     <section className="sectionCard">
       <div className="sectionHeaderWithMeta">
