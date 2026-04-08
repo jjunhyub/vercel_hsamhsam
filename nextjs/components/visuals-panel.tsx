@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getInspectorPills, nodeAssets } from '../lib/review-logic';
 
 const EMPTY_DERIVED = {
@@ -25,62 +25,131 @@ function FigureCard({ title, children }) {
   );
 }
 
-function AspectFrame({ width, height, children, dark = true }) {
+function AspectFrame({ width, height, children, dark = true, className = '' }) {
   const w = Math.max(1, Number(width || 1));
   const h = Math.max(1, Number(height || 1));
   return (
-    <div className={`aspectFrame ${dark ? 'isDark' : ''}`} style={{ aspectRatio: `${w} / ${h}` }}>
+    <div
+      className={`aspectFrame ${dark ? 'isDark' : ''} ${className}`.trim()}
+      style={{ aspectRatio: `${w} / ${h}` }}
+    >
       {children}
     </div>
   );
 }
 
-function DirectImageFigure({ imageId, path, title, fullSize }) {
-  if (!path) return null;
-  const url = buildAssetUrl(imageId, path);
-  return (
-    <FigureCard title={title}>
-      <AspectFrame width={fullSize?.[0]} height={fullSize?.[1]}>
-        <img className="frameImage" src={url} alt={title} loading="lazy" />
+function FigureImageButton({ figure, onOpen }) {
+  if (!figure.src) {
+    return (
+      <AspectFrame width={figure.fullSize?.[0]} height={figure.fullSize?.[1]}>
+        <div className="framePlaceholder">
+          <span className="framePlaceholderText">Generating...</span>
+        </div>
       </AspectFrame>
-    </FigureCard>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      className="figureImageButton"
+      onClick={onOpen}
+      aria-label={`${figure.title} 확대 보기`}
+    >
+      <AspectFrame width={figure.fullSize?.[0]} height={figure.fullSize?.[1]} className="isInteractive">
+        <img className="frameImage" src={figure.src} alt={figure.title} loading="lazy" />
+        <span className="figureZoomHint">클릭해서 확대</span>
+      </AspectFrame>
+    </button>
   );
 }
 
-const RootOriginalFigure = React.memo(function RootOriginalFigure({
-  imageId,
-  path,
-  fullSize,
-}) {
-  if (!path) return null;
+function ImageModal({ figures, activeIndex, onClose, onPrev, onNext }) {
+  const activeFigure = figures[activeIndex];
+
+  useEffect(() => {
+    if (!activeFigure) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        onPrev();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        onNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeFigure, onClose, onNext, onPrev]);
+
+  if (!activeFigure) return null;
 
   return (
-    <DirectImageFigure
-      imageId={imageId}
-      path={path}
-      title="원본 이미지"
-      fullSize={fullSize}
-    />
-  );
-});
+    <div
+      className="imageModalOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${activeFigure.title} 확대 보기`}
+      onClick={onClose}
+    >
+      <div className="imageModalContent" onClick={(event) => event.stopPropagation()}>
+        <button
+          type="button"
+          className="imageModalClose"
+          onClick={onClose}
+          aria-label="확대 보기 닫기"
+        >
+          ×
+        </button>
 
-function GeneratedImageFigure({ title, src, fullSize }) {
-  return (
-    <FigureCard title={title}>
-      <AspectFrame width={fullSize?.[0]} height={fullSize?.[1]}>
-        {src ? (
-          <img className="frameImage" src={src} alt={title} loading="lazy" />
-        ) : (
-          <div className="framePlaceholder">
-            <span className="framePlaceholderText">Generating...</span>
+        {figures.length > 1 ? (
+          <>
+            <button
+              type="button"
+              className="imageModalNav imageModalNavLeft"
+              onClick={onPrev}
+              aria-label="이전 이미지"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              className="imageModalNav imageModalNavRight"
+              onClick={onNext}
+              aria-label="다음 이미지"
+            >
+              ›
+            </button>
+          </>
+        ) : null}
+
+        <div className="imageModalMeta">
+          <div className="imageModalTitle">{activeFigure.title}</div>
+          <div className="imageModalCount">
+            {activeIndex + 1} / {figures.length}
           </div>
-        )}
-      </AspectFrame>
-    </FigureCard>
+        </div>
+
+        <div className="imageModalFrame">
+          <img className="imageModalImage" src={activeFigure.src} alt={activeFigure.title} />
+        </div>
+      </div>
+    </div>
   );
 }
 
-function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
+function useDerivedFigures(imageId, rootPath, coloredPath, fullSize, leaf) {
   const [rootImgEl, setRootImgEl] = useState(null);
   const [derived, setDerived] = useState(EMPTY_DERIVED);
 
@@ -94,11 +163,10 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
 
     if (!imageId || !rootPath) {
       setRootImgEl(null);
-      return;
+      return undefined;
     }
 
     const rootUrl = buildAssetUrl(imageId, rootPath);
-
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.onload = () => {
@@ -119,7 +187,7 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
 
     if (!imageId || !coloredPath || !rootImgEl) {
       setDerived(EMPTY_DERIVED);
-      return;
+      return undefined;
     }
 
     const coloredUrl = buildAssetUrl(imageId, coloredPath);
@@ -256,30 +324,34 @@ function DerivedMaskViews({ imageId, rootPath, coloredPath, fullSize, leaf }) {
     };
   }, [imageId, coloredPath, rootImgEl]);
 
-  return (
-    <>
-      <GeneratedImageFigure
-        title={`오버레이 <${leaf}>`}
-        src={derived.overlay}
-        fullSize={fullSize}
-      />
-      <GeneratedImageFigure
-        title={`원본 <${leaf}>`}
-        src={derived.maskOriginalFull}
-        fullSize={fullSize}
-      />
-      <GeneratedImageFigure
-        title={`마스크 <${leaf}>`}
-        src={derived.mask}
-        fullSize={fullSize}
-      />
-    </>
+  return useMemo(
+    () => [
+      {
+        key: `derived-overlay-${imageId}-${leaf}`,
+        title: `오버레이 <${leaf}>`,
+        src: derived.overlay,
+        fullSize,
+      },
+      {
+        key: `derived-original-${imageId}-${leaf}`,
+        title: `원본 <${leaf}>`,
+        src: derived.maskOriginalFull,
+        fullSize,
+      },
+      {
+        key: `derived-mask-${imageId}-${leaf}`,
+        title: `마스크 <${leaf}>`,
+        src: derived.mask,
+        fullSize,
+      },
+    ],
+    [derived.mask, derived.maskOriginalFull, derived.overlay, fullSize, imageId, leaf]
   );
 }
 
-
 export default function VisualsPanel({ record, nodeId, translationMap }) {
   const assets = useMemo(() => nodeAssets(record, nodeId), [record, nodeId]);
+  const [activeFigureIndex, setActiveFigureIndex] = useState(null);
 
   const leaf = String(nodeId || '').split('__').at(-1) || nodeId;
 
@@ -288,59 +360,125 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
     [record, nodeId, translationMap]
   );
 
+  const derivedFigures = useDerivedFigures(
+    record.image_id,
+    assets.root_original,
+    assets.instances_colored,
+    assets.full_size,
+    leaf
+  );
 
-  const reviewFigures = [
-    assets.root_original ? (
-      <RootOriginalFigure
-        key={`root-original-${record.image_id}`}
-        imageId={record.image_id}
-        path={assets.root_original}
-        fullSize={assets.full_size}
-      />
-    ) : null,
+  const figures = useMemo(() => {
+    const nextFigures = [];
 
-    assets.root_original && assets.instances_colored ? (
-      <DerivedMaskViews
-        key={`derived-views-${record.image_id}-${nodeId}`}
-        imageId={record.image_id}
-        rootPath={assets.root_original}
-        coloredPath={assets.instances_colored}
-        fullSize={assets.full_size}
-        leaf={leaf}
-      />
-    ) : null,
+    if (assets.root_original) {
+      nextFigures.push({
+        key: `root-original-${record.image_id}`,
+        title: '원본 이미지',
+        src: buildAssetUrl(record.image_id, assets.root_original),
+        fullSize: assets.full_size,
+      });
+    }
 
-    assets.instances_colored ? (
-      <DirectImageFigure
-        key={`instances-colored-${record.image_id}-${nodeId}`}
-        imageId={record.image_id}
-        path={assets.instances_colored}
-        title={`인스턴스 <${leaf}>`}
-        fullSize={assets.full_size}
-      />
-    ) : null,
-  ].filter(Boolean);
-  
+    if (assets.root_original && assets.instances_colored) {
+      nextFigures.push(...derivedFigures);
+    }
+
+    if (assets.instances_colored) {
+      nextFigures.push({
+        key: `instances-colored-${record.image_id}-${nodeId}`,
+        title: `인스턴스 <${leaf}>`,
+        src: buildAssetUrl(record.image_id, assets.instances_colored),
+        fullSize: assets.full_size,
+      });
+    }
+
+    return nextFigures;
+  }, [
+    assets.full_size,
+    assets.instances_colored,
+    assets.root_original,
+    derivedFigures,
+    leaf,
+    nodeId,
+    record.image_id,
+  ]);
+
+  const modalFigures = useMemo(
+    () => figures.filter((figure) => Boolean(figure.src)),
+    [figures]
+  );
+
+  useEffect(() => {
+    if (activeFigureIndex === null) return;
+    if (!modalFigures.length) {
+      setActiveFigureIndex(null);
+      return;
+    }
+    if (activeFigureIndex >= modalFigures.length) {
+      setActiveFigureIndex(modalFigures.length - 1);
+    }
+  }, [activeFigureIndex, modalFigures]);
+
+  const handleOpenFigure = (figure) => {
+    const nextIndex = modalFigures.findIndex((item) => item.key === figure.key);
+    if (nextIndex >= 0) {
+      setActiveFigureIndex(nextIndex);
+    }
+  };
+
+  const handleCloseModal = () => setActiveFigureIndex(null);
+
+  const handlePrevFigure = () => {
+    setActiveFigureIndex((prev) => {
+      if (prev === null || !modalFigures.length) return prev;
+      return (prev - 1 + modalFigures.length) % modalFigures.length;
+    });
+  };
+
+  const handleNextFigure = () => {
+    setActiveFigureIndex((prev) => {
+      if (prev === null || !modalFigures.length) return prev;
+      return (prev + 1) % modalFigures.length;
+    });
+  };
+
   return (
-    <section className="sectionCard">
-      <div className="sectionHeaderWithMeta">
-        <div>
-          <h2 className="sectionTitle">Visuals</h2>
-          <div className="statusPillsRow">
-            {pills.map((pill) => (
-              <span className="statusPill" key={pill}>
-                {pill}
-              </span>
-            ))}
+    <>
+      <section className="sectionCard">
+        <div className="sectionHeaderWithMeta">
+          <div>
+            <h2 className="sectionTitle">Visuals</h2>
+            <div className="statusPillsRow">
+              {pills.map((pill) => (
+                <span className="statusPill" key={pill}>
+                  {pill}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      {reviewFigures.length ? (
-        <div className="visualsGrid">{reviewFigures}</div>
-      ) : (
-        <div className="emptyBox">노드 검토용 이미지를 찾지 못했습니다.</div>
-      )}
-    </section>
+        {figures.length ? (
+          <div className="visualsGrid">
+            {figures.map((figure) => (
+              <FigureCard key={figure.key} title={figure.title}>
+                <FigureImageButton figure={figure} onOpen={() => handleOpenFigure(figure)} />
+              </FigureCard>
+            ))}
+          </div>
+        ) : (
+          <div className="emptyBox">노드 검토용 이미지를 찾지 못했습니다.</div>
+        )}
+      </section>
+
+      <ImageModal
+        figures={modalFigures}
+        activeIndex={activeFigureIndex}
+        onClose={handleCloseModal}
+        onPrev={handlePrevFigure}
+        onNext={handleNextFigure}
+      />
+    </>
   );
 }
