@@ -56,12 +56,11 @@ export default function ImageList({
           className="sidebarToggleButton"
           onClick={() => setSortMode((prev) => (prev === 'grouped' ? 'default' : 'grouped'))}
         >
-          {sortMode === 'grouped' ? '우선순위 순' : '기본 순서'}
+          {sortMode === 'grouped' ? '추천 순서' : '기본 순서'}
         </button>
       </div>
       <div className="sidebarCount">
         진행률 {completedImageCount}/{imageIds.length} ({overallProgress.toFixed(1)}%)
-        {sortMode === 'grouped' ? ' · 진행중 > 미완료 > 완료' : ''}
       </div>
 
       <div className="imageListScroller">

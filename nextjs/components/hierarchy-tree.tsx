@@ -90,7 +90,7 @@ export default function HierarchyTree({
         <div>
           <h2 className="sectionTitle">Hierarchy View</h2>
           <div className="sectionSubtle">
-            <strong>{displayId}</strong> · 전체 진행률 {done}/{total} · 전체 트리 질문 {treeDone ? '완료' : '미완료'}
+            <strong>{displayId}</strong> · 진행률 {done}/{total} · 전체 트리 질문 {treeDone ? '완료' : '미완료'}
           </div>
         </div>
       </div>

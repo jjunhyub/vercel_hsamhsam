@@ -420,6 +420,13 @@ export function computeHierarchyLayout(record, opts = {}) {
     const children = treeChildren(nodeId);
     if (!children.length) return;
 
+    if (children.length === 1) {
+      const onlyChildId = children[0];
+      const centeredChildLeft = leftX + (subtreeWidths[nodeId] - subtreeWidths[onlyChildId]) / 2;
+      place(onlyChildId, centeredChildLeft, depth + 1);
+      return;
+    }
+
     let childLeft = leftX;
     children.forEach((childId, idx) => {
       place(childId, childLeft, depth + 1);
