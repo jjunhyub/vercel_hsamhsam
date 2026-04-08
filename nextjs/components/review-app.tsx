@@ -40,20 +40,21 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
   const savingRef = useRef(false);
 
   useEffect(() => {
-    annotationsRef.current = annotations;
-  }, [annotations]);
-
-  useEffect(() => {
     let cancelled = false;
-    fetch('/translation/full_translation.json')
+
+    fetch(`/translation/full_translation.json?v=${Date.now()}`, {
+      cache: 'no-store',
+    })
       .then((response) => (response.ok ? response.json() : null))
       .then((payload) => {
         if (!cancelled && payload) {
-          setTranslationMap(normalizeTranslationJson(payload));
+          const parsed = normalizeTranslationJson(payload);
+          console.log('translation loaded for 000000011826:', parsed['000000011826']);
+          setTranslationMap(parsed);
         }
       })
-      .catch(() => {
-        
+      .catch((error) => {
+        console.error('translation load failed:', error);
       });
 
     return () => {

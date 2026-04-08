@@ -51,6 +51,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
   console.log('imageId:', record?.image_id);
   console.log('nodeId:', nodeId);
   console.log('translation entry:', translationMap?.[record?.image_id]?.[nodeId]);
+  
   const pills = useMemo(
     () => getInspectorPills(record, nodeId, translationMap),
     [record, nodeId, translationMap]
