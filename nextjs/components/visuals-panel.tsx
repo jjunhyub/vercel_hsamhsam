@@ -2,13 +2,26 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { getInspectorPills, nodeAssets, translatedLabel } from '../lib/review-logic';
+import { getInspectorPills, nodeAssets, translatedLabel, translatedPathLabels } from '../lib/review-logic';
 
 const EMPTY_DERIVED = {
   overlay: '',
   maskOriginalFull: '',
   mask: '',
 };
+
+function splitPillText(pill) {
+  const text = String(pill || '');
+  const separatorIndex = text.indexOf(':');
+  if (separatorIndex < 0) {
+    return { label: '', value: text };
+  }
+
+  return {
+    label: text.slice(0, separatorIndex).trim(),
+    value: text.slice(separatorIndex + 1).trim(),
+  };
+}
 
 function buildAssetUrl(imageId, path) {
   if (!path) return '';
@@ -448,9 +461,16 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
   const leaf = String(nodeId || '').split('__').at(-1) || nodeId;
   const currentNodeLabel = translatedLabel(record.image_id, nodeId, translationMap);
   const instanceCount = assets.instance_paths?.length || 0;
+  const breadcrumbSegments = useMemo(
+    () => translatedPathLabels(record.image_id, nodeId, translationMap),
+    [nodeId, record.image_id, translationMap]
+  );
 
   const pills = useMemo(
-    () => getInspectorPills(record, nodeId, translationMap).filter((pill) => !pill.startsWith('현재:')),
+    () =>
+      getInspectorPills(record, nodeId, translationMap).filter(
+        (pill) => !pill.startsWith('현재:') && !pill.startsWith('경로:')
+      ),
     [record, nodeId, translationMap]
   );
 
@@ -572,12 +592,34 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
         <div className="sectionHeaderWithMeta">
           <div>
             <h2 className="sectionTitle">{currentNodeLabel}</h2>
+            {breadcrumbSegments.length ? (
+              <div className="visualsBreadcrumb" aria-label="Node path">
+                {breadcrumbSegments.map((segment, index) => (
+                  <React.Fragment key={`${segment}-${index}`}>
+                    <span
+                      className={`breadcrumbSegment ${index === breadcrumbSegments.length - 1 ? 'isCurrent' : ''}`.trim()}
+                    >
+                      {segment}
+                    </span>
+                    {index < breadcrumbSegments.length - 1 ? (
+                      <span className="breadcrumbDivider" aria-hidden="true">
+                        &rsaquo;
+                      </span>
+                    ) : null}
+                  </React.Fragment>
+                ))}
+              </div>
+            ) : null}
             <div className="statusPillsRow visualsStatusRow">
-              {pills.map((pill) => (
-                <span className="statusPill" key={pill}>
-                  {pill}
-                </span>
-              ))}
+              {pills.map((pill) => {
+                const { label, value } = splitPillText(pill);
+                return (
+                  <span className="statusPill" key={pill}>
+                    {label ? <span className="statusPillLabel">{label}</span> : null}
+                    <span className="statusPillValue">{value || pill}</span>
+                  </span>
+                );
+              })}
             </div>
           </div>
           {instanceCount ? (
