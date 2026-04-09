@@ -443,9 +443,11 @@ function useDerivedFigures(imageId, rootPath, coloredPath, fullSize, leaf) {
 export default function VisualsPanel({ record, nodeId, translationMap }) {
   const assets = useMemo(() => nodeAssets(record, nodeId), [record, nodeId]);
   const [activeFigureIndex, setActiveFigureIndex] = useState(null);
+  const [showInstances, setShowInstances] = useState(false);
 
   const leaf = String(nodeId || '').split('__').at(-1) || nodeId;
   const currentNodeLabel = translatedLabel(record.image_id, nodeId, translationMap);
+  const instanceCount = assets.instance_paths?.length || 0;
 
   const pills = useMemo(
     () => getInspectorPills(record, nodeId, translationMap).filter((pill) => !pill.startsWith('현재:')),
@@ -504,9 +506,20 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
     record.image_id,
   ]);
 
+  const instanceFigures = useMemo(
+    () =>
+      (assets.instance_paths || []).map((instancePath, index) => ({
+        key: `instance-${record.image_id}-${nodeId}-${index}`,
+        title: `Instance ${index + 1}`,
+        src: buildAssetUrl(record.image_id, instancePath),
+        fullSize: assets.full_size,
+      })),
+    [assets.full_size, assets.instance_paths, nodeId, record.image_id]
+  );
+
   const modalFigures = useMemo(
-    () => figures.filter((figure) => Boolean(figure.src)),
-    [figures]
+    () => (showInstances ? [...figures, ...instanceFigures] : figures).filter((figure) => Boolean(figure.src)),
+    [figures, instanceFigures, showInstances]
   );
 
   useEffect(() => {
@@ -528,6 +541,16 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
   };
 
   const handleCloseModal = () => setActiveFigureIndex(null);
+
+  const handleToggleInstances = () => {
+    setShowInstances((prev) => {
+      const next = !prev;
+      if (!next) {
+        setActiveFigureIndex(null);
+      }
+      return next;
+    });
+  };
 
   const handlePrevFigure = () => {
     setActiveFigureIndex((prev) => {
@@ -557,6 +580,18 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
               ))}
             </div>
           </div>
+          {instanceCount ? (
+            <div className="visualsHeaderActions">
+              <button
+                type="button"
+                className={`secondaryButton visualsToggleButton ${showInstances ? 'isActive' : ''}`.trim()}
+                onClick={handleToggleInstances}
+                aria-expanded={showInstances}
+              >
+                {showInstances ? `인스턴스 숨기기 (${instanceCount})` : `인스턴스 보기 (${instanceCount})`}
+              </button>
+            </div>
+          ) : null}
         </div>
 
         {figures.length ? (
@@ -570,6 +605,22 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
         ) : (
           <div className="emptyBox">노드 검토용 이미지를 찾지 못했습니다.</div>
         )}
+
+        {showInstances ? (
+          <div className="instancesPanel">
+            <div className="instancesPanelHeader">
+              <div className="instancesPanelTitle">Instances</div>
+              <div className="instancesPanelMeta">{instanceCount} items</div>
+            </div>
+            <div className="instancesGrid">
+              {instanceFigures.map((figure) => (
+                <FigureCard key={figure.key} title={figure.title}>
+                  <FigureImageButton figure={figure} onOpen={() => handleOpenFigure(figure)} />
+                </FigureCard>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </section>
 
       <ImageModal

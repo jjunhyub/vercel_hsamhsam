@@ -91,35 +91,35 @@ export function nodeQuestionsFor(record, nodeId) {
   return [
     {
       id: 'label',
-      label: `Q1. <${currentLabel}>은(는) 마스크가 가리키는 대상을 올바르게 설명하고 있나요?`,
+      label: `Q1. 마스크가 가리키는 대상과 <${currentLabel}> 라벨이 서로 일치하나요?`,
       type: 'single_choice',
-      options: ['맞음', '애매함', '아님', '판단불가'],
+      options: ['맞음', '모호함', '아님', '판단불가'],
       required: true,
     },
     {
       id: 'parent_child',
-      label: `Q2. <${currentLabel}>이 <${parentLabel}>의 올바른 하위 부분/영역/구성요소인가요?`,
+      label: `Q2. <${currentLabel}>이 <${parentLabel}>에 속하는 적절한 하위 요소인가요?`,
       type: 'single_choice',
-      options: ['맞음', '애매함', '아님', '판단불가'],
+      options: ['맞음', '모호함', '아님', '판단불가'],
       required: true,
     },
     {
       id: 'decomposition',
       label: `Q3. <${currentLabel}>은(는) 하위 요소들로 자연스럽고 일관되게 분해되었나요?`,
       type: 'single_choice',
-      options: ['맞음', '애매함', '아님', '판단불가'],
+      options: ['맞음', '모호함', '아님', '판단불가'],
       required: true,
     },
     {
       id: 'mask',
-      label: `Q4. 마스크가 <${currentLabel}>의 시각적 범위를 얼마나 잘 반영하고 있나요?`,
+      label: `Q4. 마스크가 <${currentLabel}>의 시각적 범위를 잘 반영하고 있나요?`,
       type: 'single_choice',
       options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
       required: true,
     },
     {
       id: 'instance',
-      label: `Q5. 동일한 <${currentLabel}> 인스턴스들이 서로 잘 분리되어 있나요?`,
+      label: `Q5. <${currentLabel}>들이 각각 별개의 인스턴스로 구분되어 있나요?`,
       type: 'single_choice',
       options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
       required: true,
@@ -317,6 +317,7 @@ export function nodeAssets(record, nodeId) {
   return {
     root_original: record?.root_image_path || null,
     instances_colored: node.instances_colored_path || replaceMaskSuffix(maskPath, '.instances.colored.png'),
+    instance_paths: Array.isArray(node.instance_paths) ? node.instance_paths : [],
     full_size: record?.full_size || null,
     bbox: Array.isArray(bbox) ? bbox : bbox ? [bbox.x1, bbox.y1, bbox.x2, bbox.y2] : null,
   };

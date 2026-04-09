@@ -483,6 +483,19 @@ textarea {
   margin-top: 0.95rem;
 }
 
+.visualsHeaderActions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.visualsToggleButton.isActive {
+  border-color: rgba(37, 99, 235, 0.6);
+  background: rgba(37, 99, 235, 0.16);
+}
+
 .figureImageButton {
   display: block;
   width: 100%;
@@ -538,6 +551,39 @@ textarea {
   color: var(--muted);
   font-size: 0.95rem;
   letter-spacing: 0.04em;
+}
+
+.instancesPanel {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.instancesPanelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.instancesPanelTitle {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.instancesPanelMeta {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.instancesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 0.25rem;
 }
 
 .imageModalOverlay {
