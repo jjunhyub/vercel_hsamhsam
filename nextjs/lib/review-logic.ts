@@ -91,23 +91,24 @@ export function nodeQuestionsFor(record, nodeId) {
   return [
     {
       id: 'label',
-      label: `Q1. 마스크가 가리키는 대상과 <${currentLabel}> 라벨이 서로 일치하나요?`,
+      // label: `Q1. 마스크가 가리키는 대상과 <${currentLabel}> 라벨이 서로 일치하나요?`,
+      label: `Q1. <${currentLabel}>이 마스크가 가리키는 대상을 올바르게 설명하고 있나요?`,
       type: 'single_choice',
-      options: ['맞음', '모호함', '아님', '판단불가'],
+      options: ['맞음', '대체로 맞음', '부분적으로 맞음', '아님', '판단불가'],
       required: true,
     },
     {
       id: 'parent_child',
       label: `Q2. <${currentLabel}>이 <${parentLabel}>에 속하는 적절한 하위 요소인가요?`,
       type: 'single_choice',
-      options: ['맞음', '모호함', '아님', '판단불가'],
+      options: ['맞음', '대체로 맞음', '부분적으로 맞음', '아님', '판단불가'],
       required: true,
     },
     {
       id: 'decomposition',
-      label: `Q3. <${currentLabel}>은(는) 하위 요소들로 자연스럽고 일관되게 분해되었나요?`,
+      label: `Q3. <${currentLabel}>의 자식들은 <${currentLabel}>로부터 적절하게 분해되었나요?`,
       type: 'single_choice',
-      options: ['맞음', '모호함', '아님', '판단불가'],
+      options: ['맞음', '대체로 맞음', '부분적으로 맞음', '아님', '판단불가'],
       required: true,
     },
     {
@@ -119,14 +120,14 @@ export function nodeQuestionsFor(record, nodeId) {
     },
     {
       id: 'instance',
-      label: `Q5. <${currentLabel}>들이 각각 별개의 인스턴스로 구분되어 있나요?`,
+      label: `Q5. <${currentLabel}>들이 각각 별개의 인스턴스로 잘 구분되어 있나요?`,
       type: 'single_choice',
       options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
       required: true,
     },
     {
       id: 'adopt',
-      label: 'Q6. 이 라벨과 마스크 결과는 데이터로 사용하기에 충분한가요?',
+      label: 'Q6. 현재 노드에서 라벨과 마스크 결과는 데이터로 사용하기에 충분한가요?',
       type: 'single_choice',
       options: ['채택', '보류', '기각', '판단불가'],
       required: true,
@@ -138,23 +139,16 @@ export function treeQuestionsFor() {
   return [
     {
       id: 'overall_consistency',
-      label: '전체 트리 구조가 일관적인가요?',
+      label: '전체 트리가 이미지를 적절히 분해하였나요?',
       type: 'single_choice',
-      options: ['예', '아니오', '애매함'],
+      options: ['맞음', '대체로 맞음', '부분적으로 맞음', '아님', '판단불가'],
       required: true,
     },
     {
       id: 'missing_critical_nodes',
-      label: '치명적으로 빠진 노드가 있나요?',
+      label: '남은 영역에서 놓친 유의미한 요소가 있나요?',
       type: 'single_choice',
       options: ['없음', '있음'],
-      required: true,
-    },
-    {
-      id: 'ontology_fit',
-      label: '현재 taxonomy / ontology가 장면을 잘 설명하나요?',
-      type: 'single_choice',
-      options: ['좋음', '보통', '나쁨'],
       required: true,
     },
     {
