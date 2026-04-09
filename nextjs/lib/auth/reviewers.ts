@@ -22,6 +22,10 @@ const REVIEWER_USERS = {
   user18: { password: '2621' },
   user19: { password: '8582' },
   user20: { password: '0842' },
+  user21: { password: '8868' },
+  user22: { password: '1031' },
+  user23: { password: '9610' },
+  user24: { password: '0613' },
 };
 
 export function getReviewerUsers() {
