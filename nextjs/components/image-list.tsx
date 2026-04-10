@@ -50,7 +50,7 @@ export default function ImageList({
   return (
     <aside className="leftSidebar">
       <div className="sidebarHeaderRow">
-        <div className="sidebarSectionHeader">Images</div>
+        <div className="sidebarSectionHeader">이미지</div>
         <button
           type="button"
           className="sidebarToggleButton"
