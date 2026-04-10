@@ -453,6 +453,120 @@ function useDerivedFigures(imageId, rootPath, coloredPath, fullSize, leaf) {
   );
 }
 
+export function TreeVisualsPanel({ record }) {
+  const [activeFigureIndex, setActiveFigureIndex] = useState(null);
+
+  const figures = useMemo(() => {
+    const imageId = record?.image_id;
+    const fullSize = record?.full_size || null;
+    const nextFigures = [];
+
+    if (record?.root_image_path) {
+      nextFigures.push({
+        key: `tree-root-original-${imageId}`,
+        title: '원본 이미지',
+        src: buildAssetUrl(imageId, record.root_image_path),
+        fullSize,
+      });
+    }
+
+    if (record?.others_others_path) {
+      nextFigures.push({
+        key: `tree-others-others-${imageId}`,
+        title: 'Others / Others',
+        src: buildAssetUrl(imageId, record.others_others_path),
+        fullSize,
+      });
+    }
+
+    if (record?.all_instances_overlay_path) {
+      nextFigures.push({
+        key: `tree-all-instances-overlay-${imageId}`,
+        title: 'All Instances Overlay',
+        src: buildAssetUrl(imageId, record.all_instances_overlay_path),
+        fullSize,
+      });
+    }
+
+    return nextFigures;
+  }, [record]);
+
+  const modalFigures = useMemo(
+    () => figures.filter((figure) => Boolean(figure.src)),
+    [figures]
+  );
+
+  useEffect(() => {
+    if (activeFigureIndex === null) return;
+    if (!modalFigures.length) {
+      setActiveFigureIndex(null);
+      return;
+    }
+    if (activeFigureIndex >= modalFigures.length) {
+      setActiveFigureIndex(modalFigures.length - 1);
+    }
+  }, [activeFigureIndex, modalFigures]);
+
+  const handleOpenFigure = (figure) => {
+    const nextIndex = modalFigures.findIndex((item) => item.key === figure.key);
+    if (nextIndex >= 0) {
+      setActiveFigureIndex(nextIndex);
+    }
+  };
+
+  const handleCloseModal = () => setActiveFigureIndex(null);
+
+  const handlePrevFigure = () => {
+    setActiveFigureIndex((prev) => {
+      if (prev === null || !modalFigures.length) return prev;
+      return (prev - 1 + modalFigures.length) % modalFigures.length;
+    });
+  };
+
+  const handleNextFigure = () => {
+    setActiveFigureIndex((prev) => {
+      if (prev === null || !modalFigures.length) return prev;
+      return (prev + 1) % modalFigures.length;
+    });
+  };
+
+  return (
+    <>
+      <section className="sectionCard">
+        <div className="sectionHeaderWithMeta">
+          <div>
+            <h2 className="sectionTitle">Full Tree Visuals</h2>
+            <div className="sectionSubtle">
+              원본, Others / Others, 전체 overlay를 함께 확인합니다.
+            </div>
+          </div>
+        </div>
+
+        {figures.length ? (
+          <div className="visualsGrid">
+            {figures.map((figure) => (
+              <FigureCard key={figure.key} title={figure.title}>
+                <FigureImageButton figure={figure} onOpen={() => handleOpenFigure(figure)} />
+              </FigureCard>
+            ))}
+          </div>
+        ) : (
+          <div className="emptyBox">전체 트리 검토용 이미지를 찾지 못했습니다.</div>
+        )}
+      </section>
+
+      <ImageModal
+        figures={modalFigures}
+        activeIndex={activeFigureIndex}
+        onClose={handleCloseModal}
+        onPrev={handlePrevFigure}
+        onNext={handleNextFigure}
+        contextLabel="Full Tree"
+      />
+    </>
+  );
+}
+
 export default function VisualsPanel({ record, nodeId, translationMap }) {
   const assets = useMemo(() => nodeAssets(record, nodeId), [record, nodeId]);
   const [activeFigureIndex, setActiveFigureIndex] = useState(null);

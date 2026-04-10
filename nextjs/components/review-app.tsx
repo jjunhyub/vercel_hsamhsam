@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import HierarchyTree from './hierarchy-tree';
 import ImageList from './image-list';
 import QuestionPanel from './question-panel';
-import VisualsPanel from './visuals-panel';
+import VisualsPanel, { TreeVisualsPanel } from './visuals-panel';
 import {
   applyAnswerChange,
   firstReviewableNodeId,
@@ -268,15 +268,21 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
                   />
                 </>
               ) : (
-                <QuestionPanel
-                  record={selectedRecord}
-                  annotations={annotations}
-                  imageId={selectedImageId}
-                  mode="tree"
-                  nodeId={null}
-                  onAnswerChange={handleAnswerChange}
-                  translationMap={translationMap}
-                />
+                <>
+                  <TreeVisualsPanel
+                    key={`${selectedImageId}:tree`}
+                    record={selectedRecord}
+                  />
+                  <QuestionPanel
+                    record={selectedRecord}
+                    annotations={annotations}
+                    imageId={selectedImageId}
+                    mode="tree"
+                    nodeId={null}
+                    onAnswerChange={handleAnswerChange}
+                    translationMap={translationMap}
+                  />
+                </>
               )}
 
               {selectedMissingReport &&

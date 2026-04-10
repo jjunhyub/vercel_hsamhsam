@@ -152,13 +152,6 @@ export function treeQuestionsFor() {
       required: true,
     },
     {
-      id: 'priority_fix',
-      label: '가장 먼저 수정해야 할 우선순위',
-      type: 'single_choice',
-      options: ['없음', '라벨 수정', '마스크 수정', '노드 추가/삭제', 'taxonomy 수정'],
-      required: true,
-    },
-    {
       id: 'summary_comment',
       label: '전체 트리 메모',
       type: 'text',

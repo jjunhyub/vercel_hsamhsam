@@ -95,6 +95,8 @@ export function collectAllowedAssetPaths(record: any) {
 
   add(record?.root_image_path);
   add(record?.root_overlay_path);
+  add(record?.others_others_path);
+  add(record?.all_instances_overlay_path);
 
   for (const nodeId of record?.actual_nodes || []) {
     const node = record?.nodes?.[nodeId] || {};
