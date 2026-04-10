@@ -163,7 +163,7 @@ export default function HierarchyTree({
             const isActual = Boolean(actualNode?.actual);
             const isClickable = isActual && isReviewableNode(nodeId);
             const isSelected = selectedMode === 'node' && selectedNodeId === nodeId;
-            const isDone = isActual ? nodeConfirmed(annotations, record, imageId, nodeId) : false;
+            const isDone = isClickable ? nodeConfirmed(annotations, record, imageId, nodeId) : false;
 
             return (
               <button

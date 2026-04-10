@@ -46,7 +46,8 @@ export function translatedPathLabels(imageId, nodeId, translationMap) {
 }
 
 export function getNodeDepth(nodeId) {
-  return Math.max(0, String(nodeId || '').split('__').length - 1);
+  const parts = String(nodeId || '').split('__').filter(Boolean);
+  return parts.filter((part, index) => index > 0 && part.toLowerCase() !== 'others').length;
 }
 
 export function isReviewableNode(nodeId) {
@@ -62,16 +63,7 @@ export function firstReviewableNodeId(record) {
 
 export function treeDisplayChildren(record, nodeId) {
   if (!record?.nodes?.[nodeId]) return [];
-  const out = [];
-  for (const childId of record.nodes[nodeId].children || []) {
-    const childNode = record.nodes[childId];
-    if (childNode?.actual && !isReviewableNode(childId)) {
-      out.push(...treeDisplayChildren(record, childId));
-    } else {
-      out.push(childId);
-    }
-  }
-  return out;
+  return record.nodes[nodeId].children || [];
 }
 
 export function displayRootIds(record) {
@@ -350,17 +342,7 @@ export function computeHierarchyLayout(record, opts = {}) {
 
   function treeChildren(nodeId) {
     if (nodeId === TREE_SUMMARY_NODE_ID) return [];
-
-    const out = [];
-    for (const childId of record.nodes?.[nodeId]?.children || []) {
-      const childNode = record.nodes?.[childId];
-      if (childNode?.actual && !isReviewableNode(childId)) {
-        out.push(...treeChildren(childId));
-      } else {
-        out.push(childId);
-      }
-    }
-    return out;
+    return record.nodes?.[nodeId]?.children || [];
   }
 
   function buttonWidth(nodeId) {
