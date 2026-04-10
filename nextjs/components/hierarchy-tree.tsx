@@ -30,7 +30,7 @@ function buttonWidthForLabel(label) {
 }
 
 function getNodeLabel(_imageId, nodeId, _translationMap) {
-  return nodeId === TREE_SUMMARY_NODE_ID ? 'Full-Tree' : humanLabel(nodeId);
+  return nodeId === TREE_SUMMARY_NODE_ID ? '전체 트리' : humanLabel(nodeId);
 }
 
 function displayImageId(imageId) {

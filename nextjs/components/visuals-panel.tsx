@@ -473,7 +473,7 @@ export function TreeVisualsPanel({ record }) {
     if (record?.others_others_path) {
       nextFigures.push({
         key: `tree-others-others-${imageId}`,
-        title: 'Others / Others',
+        title: '남은 영역',
         src: buildAssetUrl(imageId, record.others_others_path),
         fullSize,
       });
@@ -482,7 +482,7 @@ export function TreeVisualsPanel({ record }) {
     if (record?.all_instances_overlay_path) {
       nextFigures.push({
         key: `tree-all-instances-overlay-${imageId}`,
-        title: 'All Instances Overlay',
+        title: '전체 오버레이',
         src: buildAssetUrl(imageId, record.all_instances_overlay_path),
         fullSize,
       });
@@ -535,10 +535,7 @@ export function TreeVisualsPanel({ record }) {
       <section className="sectionCard">
         <div className="sectionHeaderWithMeta">
           <div>
-            <h2 className="sectionTitle">Full Tree Visuals</h2>
-            <div className="sectionSubtle">
-              원본, Others / Others, 전체 overlay를 함께 확인합니다.
-            </div>
+            <h2 className="sectionTitle">전체트리 평가</h2>
           </div>
         </div>
 
@@ -561,7 +558,7 @@ export function TreeVisualsPanel({ record }) {
         onClose={handleCloseModal}
         onPrev={handlePrevFigure}
         onNext={handleNextFigure}
-        contextLabel="Full Tree"
+        contextLabel="전체 트리"
       />
     </>
   );
@@ -705,25 +702,27 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
       <section className="sectionCard">
         <div className="sectionHeaderWithMeta">
           <div>
-            <h2 className="sectionTitle">{currentNodeLabel}</h2>
-            {breadcrumbSegments.length ? (
-              <div className="visualsBreadcrumb" aria-label="Node path">
-                {breadcrumbSegments.map((segment, index) => (
-                  <React.Fragment key={`${segment}-${index}`}>
-                    <span
-                      className={`breadcrumbSegment ${index === breadcrumbSegments.length - 1 ? 'isCurrent' : ''}`.trim()}
-                    >
-                      {segment}
-                    </span>
-                    {index < breadcrumbSegments.length - 1 ? (
-                      <span className="breadcrumbDivider" aria-hidden="true">
-                        &rsaquo;
+            <div className="visualsTitleRow">
+              <h2 className="sectionTitle">{currentNodeLabel}</h2>
+              {breadcrumbSegments.length ? (
+                <div className="visualsBreadcrumb" aria-label="Node path">
+                  {breadcrumbSegments.map((segment, index) => (
+                    <React.Fragment key={`${segment}-${index}`}>
+                      <span
+                        className={`breadcrumbSegment ${index === breadcrumbSegments.length - 1 ? 'isCurrent' : ''}`.trim()}
+                      >
+                        {segment}
                       </span>
-                    ) : null}
-                  </React.Fragment>
-                ))}
-              </div>
-            ) : null}
+                      {index < breadcrumbSegments.length - 1 ? (
+                        <span className="breadcrumbDivider" aria-hidden="true">
+                          &rsaquo;
+                        </span>
+                      ) : null}
+                    </React.Fragment>
+                  ))}
+                </div>
+              ) : null}
+            </div>
             <div className="statusPillsRow visualsStatusRow">
               {pills.map((pill) => {
                 const { label, value } = splitPillText(pill);

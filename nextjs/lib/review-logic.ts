@@ -92,14 +92,14 @@ export function nodeQuestionsFor(record, nodeId) {
     {
       id: 'label',
       // label: `Q1. 마스크가 가리키는 대상과 <${currentLabel}> 라벨이 서로 일치하나요?`,
-      label: `Q1. <${currentLabel}>이 마스크가 가리키는 대상을 올바르게 설명하고 있나요?`,
+      label: `Q1. <${currentLabel}>이(가) 마스크가 가리키는 대상을 올바르게 설명하고 있나요?`,
       type: 'single_choice',
       options: ['맞음', '대체로 맞음', '부분적으로 맞음', '아님', '판단불가'],
       required: true,
     },
     {
       id: 'parent_child',
-      label: `Q2. <${currentLabel}>이 <${parentLabel}>에 속하는 적절한 하위 요소인가요?`,
+      label: `Q2. <${currentLabel}>이(가) <${parentLabel}>에 속하는 적절한 하위 요소인가요?`,
       type: 'single_choice',
       options: ['맞음', '대체로 맞음', '부분적으로 맞음', '아님', '판단불가'],
       required: true,
@@ -120,7 +120,7 @@ export function nodeQuestionsFor(record, nodeId) {
     },
     {
       id: 'instance',
-      label: `Q5. <${currentLabel}>들이 각각 별개의 인스턴스로 잘 구분되어 있나요?`,
+      label: `Q5. <${currentLabel}>이 각각 별개의 인스턴스로 잘 구분되어 있나요?`,
       type: 'single_choice',
       options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
       required: true,
