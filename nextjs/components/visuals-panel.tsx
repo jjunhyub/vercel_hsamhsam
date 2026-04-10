@@ -543,7 +543,7 @@ export function TreeVisualsPanel({ record }) {
         </div>
 
         {figures.length ? (
-          <div className="visualsGrid">
+          <div className="visualsGrid treeVisualsGrid">
             {figures.map((figure) => (
               <FigureCard key={figure.key} title={figure.title}>
                 <FigureImageButton figure={figure} onOpen={() => handleOpenFigure(figure)} />

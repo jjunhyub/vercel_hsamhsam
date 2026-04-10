@@ -467,6 +467,10 @@ textarea {
   max-width: 100%;
 }
 
+.treeVisualsGrid {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
 .figureCard {
   border: 1px solid var(--border);
   border-radius: 4px;
