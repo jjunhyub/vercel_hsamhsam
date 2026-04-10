@@ -146,7 +146,7 @@ export function treeQuestionsFor() {
     },
     {
       id: 'missing_critical_nodes',
-      label: '남은 영역에서 놓친 유의미한 요소가 있나요?',
+      label: '남은 영역에 유의미한 요소가 있나요?',
       type: 'single_choice',
       options: ['없음', '조금 있음', '꽤 있음', '많음', '판단불가'],
       required: true,

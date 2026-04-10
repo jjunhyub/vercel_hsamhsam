@@ -30,7 +30,7 @@ function buttonWidthForLabel(label) {
 }
 
 function getNodeLabel(_imageId, nodeId, _translationMap) {
-  return nodeId === TREE_SUMMARY_NODE_ID ? '전체 트리' : humanLabel(nodeId);
+  return nodeId === TREE_SUMMARY_NODE_ID ? 'Full-Tree' : humanLabel(nodeId);
 }
 
 function displayImageId(imageId) {
@@ -88,7 +88,7 @@ export default function HierarchyTree({
     >
       <div className="sectionHeaderWithMeta">
         <div>
-          <h2 className="sectionTitle">Hierarchy View</h2>
+          <h2 className="sectionTitle">전체 트리</h2>
           <div className="sectionSubtle">
             <strong>{displayId}</strong> · 진행률 {done}/{total} · 전체 트리 질문 {treeDone ? '완료' : '미완료'}
           </div>

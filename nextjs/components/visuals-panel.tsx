@@ -535,7 +535,7 @@ export function TreeVisualsPanel({ record }) {
       <section className="sectionCard">
         <div className="sectionHeaderWithMeta">
           <div>
-            <h2 className="sectionTitle">전체트리 평가</h2>
+            <h2 className="sectionTitle">전체 트리 평가</h2>
           </div>
         </div>
 
