@@ -91,7 +91,7 @@ export function nodeQuestionsFor(record, nodeId) {
     },
     {
       id: 'parent_child',
-      label: `Q2. <${currentLabel}>의 자식들이 <${currentLabel}>의 올바른 하위 요소로 적절하게 분해되어 있나요?`,
+      label: `Q2. <${currentLabel}>의 자식들이 <${currentLabel}>의 올바른 하위 요소로 분해되어 있나요?`,
       type: 'single_choice',
       options: ['맞음', '부분적으로 맞음', '아님', '판단불가'],
       required: true,
