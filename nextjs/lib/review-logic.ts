@@ -105,9 +105,9 @@ export function nodeQuestionsFor(record, nodeId) {
     // },
     {
       id: 'mask_extent',
-      label: `Q3. 마스크가 <${currentLabel}>에 해당하는 대상만 포함하고 있나요?`,
+      label: `Q3. 마스크가 <${currentLabel}>이외에 다른 대상을 포함하거나, <${currentLabel}>를 놓치고 있나요?`,
       type: 'multi_choice',
-      options: ['많이 덜 잡음', '약간 덜 잡음', '정확', '약간 더 잡음', '많이 더 잡음', '판단불가'],
+      options: ['많이 놓침', '약간 놓침', '정확', '약간 더 포함', '많이 더 포함', '판단불가'],
       required: true,
     },
     {
