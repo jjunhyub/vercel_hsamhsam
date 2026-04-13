@@ -105,14 +105,14 @@ export function nodeQuestionsFor(record, nodeId) {
     // },
     {
       id: 'mask_extent',
-      label: `Q3. 마스크가 <${currentLabel}>에 해당하는 영역만 포함하고 있나요?`,
+      label: `Q3. 마스크가 <${currentLabel}>에 해당하는 대상만 포함하고 있나요?`,
       type: 'multi_choice',
       options: ['많이 덜 잡음', '약간 덜 잡음', '정확', '약간 더 잡음', '많이 더 잡음', '판단불가'],
       required: true,
     },
     {
       id: 'mask_quality',
-      label: `Q4. 마스크의 윤곽과 모양이 <${currentLabel}>의 시각적 범위를 잘 반영하고 있나요?`,
+      label: `Q4. 마스크의 윤곽과 모양이 <${currentLabel}>의 영역을 잘 반영하고 있나요?`,
       type: 'single_choice',
       options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
       required: true,
@@ -536,6 +536,15 @@ export function applyAnswerChange(annotations, imageId, mode, questionId, value,
   const next = structuredClone(annotations || {});
   const bucket = getAnswersBucket(next, imageId, mode, nodeId);
   bucket.answers[questionId] = value;
+
+  if (mode === 'node' && questionId === 'label' && (value === '아님' || value === '판단불가')) {
+    bucket.answers.parent_child = '판단불가';
+    bucket.answers.mask_extent = ['판단불가'];
+    bucket.answers.mask_quality = '실패';
+    bucket.answers.instance = '판단불가';
+    bucket.answers.adopt = '기각';
+  }
+
   bucket.updated_at = nowIso();
   return next;
 }
