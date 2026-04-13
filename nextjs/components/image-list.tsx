@@ -60,7 +60,7 @@ export default function ImageList({
         </button>
       </div>
       <div className="sidebarCount">
-        진행률 {completedImageCount}/{imageIds.length} ({overallProgress.toFixed(1)}%)
+        전체 진행도 {completedImageCount}/{imageIds.length} ({overallProgress.toFixed(1)}%)
       </div>
 
       <div className="imageListScroller">
@@ -82,7 +82,7 @@ export default function ImageList({
               onClick={() => onSelectImage(imageId)}
             >
               <div className="imageListItemTitle">{icon} {displayId}</div>
-              <div className="imageListItemMeta">진행률: {done}/{total}</div>
+              <div className="imageListItemMeta">진행도: {done}/{total}</div>
               <div className="imageListItemMeta">{progress.toFixed(1)}% 완료</div>
             </button>
           );

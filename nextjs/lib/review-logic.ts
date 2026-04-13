@@ -18,6 +18,14 @@ export const TREE_ROW_HEIGHT_PX = 50;
 export const TREE_ROW_GAP_PX = 24;
 export const TREE_PANEL_TOP_PAD_PX = 12;
 
+const NODE_QUESTION_AUTOFILL_ON_LABEL_REJECT = {
+  decomposition: '판단불가',
+  mask_missing: '판단불가',
+  mask_extra: '판단불가',
+  mask_quality: '실패',
+  instance: '판단불가',
+};
+
 export function translatedLabel(imageId, nodeId, translationMap) {
   if (!nodeId) return '-';
   const base = humanLabel(nodeId);
@@ -74,61 +82,48 @@ export function displayRootIds(record) {
 
 export function nodeQuestionsFor(record, nodeId) {
   const currentLabel = humanLabel(nodeId).replace(/_/g, ' ');
-  const parentId = record?.nodes?.[nodeId]?.parent;
-  const childrenIds = record?.nodes?.[nodeId]?.children || [];
-  const parentLabel = parentId ? humanLabel(parentId) : '없음';
-  const childrenLabels = childrenIds.length ? childrenIds.map((id) => humanLabel(id)) : ['없음'];
-  const childrenText = childrenLabels.join(', ');
 
   return [
     {
       id: 'label',
-      // label: `Q1. 마스크가 가리키는 대상과 <${currentLabel}> 라벨이 서로 일치하나요?`,
-      label: `Q1. <${currentLabel}>이(가) 마스크가 가리키는 대상을 올바르게 설명하고 있나요?`,
+      label: `Q1. 마스크가 가리키는 영역에 <${currentLabel}>이(가) 포함되어 있나요?`,
       type: 'single_choice',
-      options: ['맞음', '부분적으로 맞음', '아님', '판단불가'],
+      options: ['예', '아니오', '판단불가'],
       required: true,
     },
     {
-      id: 'parent_child',
-      label: `Q2. <${currentLabel}>의 자식들이 <${currentLabel}>의 올바른 하위 요소로 분해되어 있나요?`,
+      id: 'decomposition',
+      label: `Q2. <${currentLabel}>의 자식 중 <${currentLabel}>의 하위 요소로 보기 어려운 항목이 있나요?`,
       type: 'single_choice',
-      options: ['맞음', '부분적으로 맞음', '아님', '판단불가'],
+      options: ['없음', '조금 있음', '많이 있음', '판단불가'],
       required: true,
     },
-    // {
-    //   id: 'decomposition',
-    //   label: `Q3. <${currentLabel}>의 자식들은 <${currentLabel}>로부터 적절하게 분해되었나요?`,
-    //   type: 'single_choice',
-    //   options: ['맞음', '부분적으로 맞음', '아님', '판단불가'],
-    //   required: true,
-    // },
     {
-      id: 'mask_extent',
-      label: `Q3. 마스크가 <${currentLabel}>이외에 다른 대상을 포함하거나, <${currentLabel}>를 놓치고 있나요?`,
-      type: 'multi_choice',
-      options: ['많이 놓침', '약간 놓침', '정확', '약간 더 포함', '많이 더 포함', '판단불가'],
+      id: 'mask_missing',
+      label: `Q3. 마스크가 <${currentLabel}>에 해당하는 개체를 놓치고 있나요?`,
+      type: 'single_choice',
+      options: ['놓치지 않음', '약간 놓침', '많이 놓침', '판단불가'],
+      required: true,
+    },
+    {
+      id: 'mask_extra',
+      label: `Q4. 마스크가 <${currentLabel}> 이외의 다른 개체를 포함하고 있나요?`,
+      type: 'single_choice',
+      options: ['포함하지 않음', '약간 포함', '많이 포함', '판단불가'],
       required: true,
     },
     {
       id: 'mask_quality',
-      label: `Q4. 마스크의 윤곽과 모양이 <${currentLabel}>의 영역을 잘 반영하고 있나요?`,
+      label: `Q5. <${currentLabel}>에 해당하는 영역만 보았을 때, 마스크의 윤곽과 모양이 실제 영역을 잘 반영하고 있나요?`,
       type: 'single_choice',
       options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
       required: true,
     },
     {
       id: 'instance',
-      label: `Q5. <${currentLabel}>의 개별 인스턴스들이 서로 잘 구분되어 있나요?`,
+      label: `Q6. <${currentLabel}>에 해당하는 영역만 보았을 때, 개별 인스턴스들이 서로 잘 구분되어 있나요?`,
       type: 'single_choice',
       options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
-      required: true,
-    },
-    {
-      id: 'adopt',
-      label: 'Q6. 현재 노드에서 라벨과 마스크 결과는 데이터로 사용하기에 충분한가요?',
-      type: 'single_choice',
-      options: ['채택', '보류', '기각', '판단불가'],
       required: true,
     },
   ];
@@ -537,12 +532,8 @@ export function applyAnswerChange(annotations, imageId, mode, questionId, value,
   const bucket = getAnswersBucket(next, imageId, mode, nodeId);
   bucket.answers[questionId] = value;
 
-  if (mode === 'node' && questionId === 'label' && (value === '아님' || value === '판단불가')) {
-    bucket.answers.parent_child = '판단불가';
-    bucket.answers.mask_extent = ['판단불가'];
-    bucket.answers.mask_quality = '실패';
-    bucket.answers.instance = '판단불가';
-    bucket.answers.adopt = '기각';
+  if (mode === 'node' && questionId === 'label' && (value === '아니오' || value === '판단불가')) {
+    Object.assign(bucket.answers, NODE_QUESTION_AUTOFILL_ON_LABEL_REJECT);
   }
 
   bucket.updated_at = nowIso();
