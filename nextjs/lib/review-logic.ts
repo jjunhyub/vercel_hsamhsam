@@ -102,7 +102,7 @@ export function nodeQuestionsFor(record, nodeId) {
       id: 'mask_missing',
       label: `Q3. 마스크가 <${currentLabel}>에 해당하는 개체들을 전부 포함하고 있나요?`,
       type: 'single_choice',
-      options: ['예', '약간 놓침', '많이 놓침', '판단불가'],
+      options: ['모두 포함함', '약간 놓침', '많이 놓침', '판단불가'],
       required: true,
     },
     {
