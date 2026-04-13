@@ -738,8 +738,10 @@ textarea {
 
 .imageModalImage {
   display: block;
-  width: 80%;
-  height: 80%;
+  width: auto;
+  height: auto;
+  max-width: 88%;
+  max-height: 88%;
   object-fit: contain;
   transform-origin: center;
   transition: transform 0.05s linear;

@@ -86,7 +86,7 @@ export function nodeQuestionsFor(record, nodeId) {
   return [
     {
       id: 'label',
-      label: `Q1. 마스크가 가리키는 영역에 <${currentLabel}>이(가) 포함되어 있나요?`,
+      label: `Q1. 마스크가 가리키는 영역에 <${currentLabel}>이(가) 존재하나요?`,
       type: 'single_choice',
       options: ['예', '아니오', '판단불가'],
       required: true,
@@ -100,9 +100,9 @@ export function nodeQuestionsFor(record, nodeId) {
     },
     {
       id: 'mask_missing',
-      label: `Q3. 마스크가 <${currentLabel}>에 해당하는 개체를 놓치고 있나요?`,
+      label: `Q3. 마스크가 <${currentLabel}>에 해당하는 개체들을 전부 포함하고 있나요?`,
       type: 'single_choice',
-      options: ['놓치지 않음', '약간 놓침', '많이 놓침', '판단불가'],
+      options: ['예', '약간 놓침', '많이 놓침', '판단불가'],
       required: true,
     },
     {
@@ -114,14 +114,14 @@ export function nodeQuestionsFor(record, nodeId) {
     },
     {
       id: 'mask_quality',
-      label: `Q5. <${currentLabel}>에 해당하는 영역만 보았을 때, 마스크의 윤곽과 모양이 실제 영역을 잘 반영하고 있나요?`,
+      label: `Q5. 마스크에서 <${currentLabel}>에 해당하는 영역만 보았을 때, 마스크의 윤곽과 모양이 실제 영역을 잘 반영하고 있나요?`,
       type: 'single_choice',
       options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
       required: true,
     },
     {
       id: 'instance',
-      label: `Q6. <${currentLabel}>에 해당하는 영역만 보았을 때, 개별 인스턴스들이 서로 잘 구분되어 있나요?`,
+      label: `Q6. 마스크에서 <${currentLabel}>에 해당하는 영역만 보았을 때, 개별 인스턴스들이 서로 잘 구분되어 있나요?`,
       type: 'single_choice',
       options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
       required: true,
