@@ -93,7 +93,7 @@ export function nodeQuestionsFor(record, nodeId) {
     },
     {
       id: 'decomposition',
-      label: `Q2. <${currentLabel}>의 자식 중 <${currentLabel}>의 하위 요소로 보기 어려운 항목이 있나요?`,
+      label: `Q2. <${currentLabel}>의 자식 중 <${currentLabel}>의 하위 요소로 적절하지 않은 항목이 있나요?`,
       type: 'single_choice',
       options: ['없음', '조금 있음', '많이 있음', '판단불가'],
       required: true,
