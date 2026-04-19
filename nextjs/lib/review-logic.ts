@@ -82,6 +82,8 @@ export function displayRootIds(record) {
 
 export function nodeQuestionsFor(record, nodeId) {
   const currentLabel = humanLabel(nodeId).replace(/_/g, ' ');
+  const childIds = record?.nodes?.[nodeId]?.children || [];
+  const hasChildren = childIds.length > 0;
 
   return [
     {
@@ -93,9 +95,13 @@ export function nodeQuestionsFor(record, nodeId) {
     },
     {
       id: 'decomposition',
-      label: `Q2. <${currentLabel}>의 자식 중 <${currentLabel}>의 하위 요소로 적절하지 않은 항목이 있나요?`,
+      label: hasChildren
+        ? `Q2. <${currentLabel}>의 자식 중 <${currentLabel}>의 하위 요소로 적절하지 않은 항목이 있나요?`
+        : 'Q2. 더이상 새로운 노드로 분해되지 않는 것이 적절한가요?',
       type: 'single_choice',
-      options: ['없음', '조금 있음', '많이 있음', '판단불가'],
+      options: hasChildren
+        ? ['없음', '조금 있음', '많이 있음', '판단불가']
+        : ['예', '아니오', '판단불가'],
       required: true,
     },
     {
