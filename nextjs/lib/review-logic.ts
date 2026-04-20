@@ -94,10 +94,38 @@ export function nodeQuestionsFor(record, nodeId) {
       required: true,
     },
     {
+      id: 'mask_missing',
+      label: `Q2. 마스크가 <${currentLabel}>에 해당하는 개체들을 전부 포함하고 있나요?`,
+      type: 'single_choice',
+      options: ['모두 포함함', '약간 놓침', '많이 놓침', '판단불가'],
+      required: true,
+    },
+    {
+      id: 'mask_extra',
+      label: `Q3. 마스크가 <${currentLabel}> 이외의 다른 개체를 포함하고 있나요?`,
+      type: 'single_choice',
+      options: ['포함하지 않음', '약간 포함', '많이 포함', '판단불가'],
+      required: true,
+    },
+    {
+      id: 'instance',
+      label: `Q4. 마스크에서 <${currentLabel}>에 해당하는 영역만 보았을 때, 개별 인스턴스들이 서로 잘 구분되어 있나요?`,
+      type: 'single_choice',
+      options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
+      required: true,
+    },
+    {
+      id: 'mask_quality',
+      label: `Q5. 마스크에서 <${currentLabel}>에 해당하는 영역만 보았을 때, 마스크의 윤곽과 모양이 보이는 영역을 잘 반영하고 있나요?`,
+      type: 'single_choice',
+      options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
+      required: true,
+    },
+    {
       id: 'decomposition',
       label: hasChildren
-        ? `Q2. <${currentLabel}>의 자식 중 <${currentLabel}>의 하위 요소로 적절하지 않은 항목이 있나요?`
-        : 'Q2. 더이상 새로운 노드로 분해되지 않는 것이 적절한가요?',
+        ? `Q6. <${currentLabel}>의 자식 중 하위 요소로 보기 어려운 항목이 있나요?`
+        : `Q6. <${currentLabel}>를 여기서 더 세분화하지 않는 것이 적절한가요?`,
       type: 'single_choice',
       options: hasChildren
         ? ['없음', '조금 있음', '많이 있음', '판단불가']
@@ -105,31 +133,14 @@ export function nodeQuestionsFor(record, nodeId) {
       required: true,
     },
     {
-      id: 'mask_missing',
-      label: `Q3. 마스크가 <${currentLabel}>에 해당하는 개체들을 전부 포함하고 있나요?`,
+      id: 'label_missing',
+      label: hasChildren
+        ? `Q7. <${currentLabel}>의 자식 중 아직 잡아내지 못한 항목이 더 있나요?`
+        : `Q7. <${currentLabel}>를 여기서 더 세분화하지 않는 것이 적절한가요?`,
       type: 'single_choice',
-      options: ['모두 포함함', '약간 놓침', '많이 놓침', '판단불가'],
-      required: true,
-    },
-    {
-      id: 'mask_extra',
-      label: `Q4. 마스크가 <${currentLabel}> 이외의 다른 개체를 포함하고 있나요?`,
-      type: 'single_choice',
-      options: ['포함하지 않음', '약간 포함', '많이 포함', '판단불가'],
-      required: true,
-    },
-    {
-      id: 'instance',
-      label: `Q5. 마스크에서 <${currentLabel}>에 해당하는 영역만 보았을 때, 개별 인스턴스들이 서로 잘 구분되어 있나요?`,
-      type: 'single_choice',
-      options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
-      required: true,
-    },
-    {
-      id: 'mask_quality',
-      label: `Q6. 마스크에서 <${currentLabel}>에 해당하는 영역만 보았을 때, 마스크의 윤곽과 모양이 실제 영역을 잘 반영하고 있나요?`,
-      type: 'single_choice',
-      options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
+      options: hasChildren
+        ? ['없음', '조금 있음', '많이 있음', '판단불가']
+        : ['예', '아니오', '판단불가'],
       required: true,
     },
   ];
@@ -537,6 +548,14 @@ export function applyAnswerChange(annotations, imageId, mode, questionId, value,
   const next = structuredClone(annotations || {});
   const bucket = getAnswersBucket(next, imageId, mode, nodeId);
   bucket.answers[questionId] = value;
+
+  if (mode === 'node' && (questionId === 'decomposition' || questionId === 'other_issue')) {
+    const mirroredQuestionId = questionId === 'decomposition' ? 'other_issue' : 'decomposition';
+    const leafSharedValues = ['예', '아니오', '판단불가'];
+    if (leafSharedValues.includes(value)) {
+      bucket.answers[mirroredQuestionId] = value;
+    }
+  }
 
   if (mode === 'node' && questionId === 'label' && (value === '아니오' || value === '판단불가')) {
     Object.assign(bucket.answers, NODE_QUESTION_AUTOFILL_ON_LABEL_REJECT);
