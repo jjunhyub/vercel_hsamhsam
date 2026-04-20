@@ -20,7 +20,7 @@ export const TREE_PANEL_TOP_PAD_PX = 12;
 
 const NODE_QUESTION_AUTOFILL_ON_LABEL_REJECT = {
   decomposition: '판단불가',
-  label_missing: '판단불가',
+  missing_child: '판단불가',
   mask_missing: '판단불가',
   mask_extra: '판단불가',
   mask_quality: '실패',
@@ -550,8 +550,8 @@ export function applyAnswerChange(annotations, imageId, mode, questionId, value,
   const bucket = getAnswersBucket(next, imageId, mode, nodeId);
   bucket.answers[questionId] = value;
 
-  if (mode === 'node' && (questionId === 'decomposition' || questionId === 'other_issue')) {
-    const mirroredQuestionId = questionId === 'decomposition' ? 'other_issue' : 'decomposition';
+  if (mode === 'node' && (questionId === 'decomposition' || questionId === 'missing_child')) {
+    const mirroredQuestionId = questionId === 'decomposition' ? 'missing_child' : 'decomposition';
     const leafSharedValues = ['예', '아니오', '판단불가'];
     if (leafSharedValues.includes(value)) {
       bucket.answers[mirroredQuestionId] = value;
