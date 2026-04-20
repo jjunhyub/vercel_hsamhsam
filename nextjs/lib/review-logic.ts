@@ -19,12 +19,12 @@ export const TREE_ROW_GAP_PX = 24;
 export const TREE_PANEL_TOP_PAD_PX = 12;
 
 const NODE_QUESTION_AUTOFILL_ON_LABEL_REJECT = {
-  decomposition: '판단불가',
-  missing_child: '판단불가',
   mask_missing: '판단불가',
   mask_extra: '판단불가',
-  mask_quality: '실패',
   instance: '판단불가',
+  mask_quality: '실패',
+  decomposition: '판단불가',
+  missing_child: '판단불가',
 };
 
 export function translatedLabel(imageId, nodeId, translationMap) {
