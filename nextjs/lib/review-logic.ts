@@ -136,7 +136,7 @@ export function nodeQuestionsFor(record, nodeId) {
     {
       id: 'missing_child',
       label: hasChildren
-        ? `Q7. <${currentLabel}>의 자식 중 아직 잡아내지 못한 항목이 더 있나요?`
+        ? `Q7. <${currentLabel}>의 자식으로 포함되었어야 할 중요한 하위 요소가 더 있나요?`
         : `Q7. <${currentLabel}>를 여기서 더 세분화하지 않는 것이 적절한가요?`,
       type: 'single_choice',
       options: hasChildren
