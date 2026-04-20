@@ -102,7 +102,7 @@ export function nodeQuestionsFor(record, nodeId) {
     },
     {
       id: 'mask_extra',
-      label: `Q3. 마스크가 <${currentLabel}> 이외의 다른 개체를 포함하고 있나요?`,
+      label: `Q3. 마스크가 <${currentLabel}> 외의 다른 개체를 포함하고 있나요?`,
       type: 'single_choice',
       options: ['포함하지 않음', '약간 포함', '많이 포함', '판단불가'],
       required: true,
@@ -133,7 +133,7 @@ export function nodeQuestionsFor(record, nodeId) {
       required: true,
     },
     {
-      id: 'label_missing',
+      id: 'missing_child',
       label: hasChildren
         ? `Q7. <${currentLabel}>의 자식 중 아직 잡아내지 못한 항목이 더 있나요?`
         : `Q7. <${currentLabel}>를 여기서 더 세분화하지 않는 것이 적절한가요?`,
