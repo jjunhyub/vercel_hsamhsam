@@ -20,6 +20,7 @@ export const TREE_PANEL_TOP_PAD_PX = 12;
 
 const NODE_QUESTION_AUTOFILL_ON_LABEL_REJECT = {
   decomposition: '판단불가',
+  label_missing: '판단불가',
   mask_missing: '판단불가',
   mask_extra: '판단불가',
   mask_quality: '실패',
