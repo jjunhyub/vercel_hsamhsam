@@ -22,7 +22,7 @@ const NODE_QUESTION_AUTOFILL_ON_LABEL_REJECT = {
   mask_missing: '판단불가',
   mask_extra: '판단불가',
   instance: '판단불가',
-  mask_quality: '실패',
+  mask_quality: '판단불가',
   decomposition: '판단불가',
   missing_child: '판단불가',
 };
