@@ -1,0 +1,27 @@
+﻿# reviewer progress v6
+
+- admin: 3/20 images started, 2/20 fully complete, node completion 2.51%
+- user1: 0/50 images started, 0/50 fully complete, node completion 0.0%
+- user10: 30/50 images started, 30/50 fully complete, node completion 59.9%
+- user11: 18/50 images started, 17/50 fully complete, node completion 29.2%
+- user12: 0/50 images started, 0/50 fully complete, node completion 0.0%
+- user13: 5/50 images started, 5/50 fully complete, node completion 12.08%
+- user14: 0/50 images started, 0/50 fully complete, node completion 0.0%
+- user15: 1/50 images started, 0/50 fully complete, node completion 0.31%
+- user16: 33/50 images started, 33/50 fully complete, node completion 69.57%
+- user17: 0/50 images started, 0/50 fully complete, node completion 0.0%
+- user18: 50/50 images started, 50/50 fully complete, node completion 100.0%
+- user19: 16/50 images started, 15/50 fully complete, node completion 39.59%
+- user2: 21/50 images started, 20/50 fully complete, node completion 51.67%
+- user20: 37/50 images started, 37/50 fully complete, node completion 68.26%
+- user21: 0/50 images started, 0/50 fully complete, node completion 0.0%
+- user22: 0/50 images started, 0/50 fully complete, node completion 0.0%
+- user23: 0/50 images started, 0/50 fully complete, node completion 0.0%
+- user24: 12/50 images started, 5/50 fully complete, node completion 10.63%
+- user3: 28/50 images started, 28/50 fully complete, node completion 60.77%
+- user4: 1/50 images started, 0/50 fully complete, node completion 0.22%
+- user5: 30/50 images started, 28/50 fully complete, node completion 35.09%
+- user6: 19/50 images started, 12/50 fully complete, node completion 35.48%
+- user7: 42/50 images started, 42/50 fully complete, node completion 75.15%
+- user8: 50/50 images started, 50/50 fully complete, node completion 100.0%
+- user9: 23/50 images started, 21/50 fully complete, node completion 50.72%

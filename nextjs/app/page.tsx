@@ -13,6 +13,9 @@ export default async function HomePage({ searchParams }) {
   if (!session) {
     redirect('/login');
   }
+  if (session.reviewerId === 'admin') {
+    redirect('/admin');
+  }
 
   const params = (await searchParams) || {};
 

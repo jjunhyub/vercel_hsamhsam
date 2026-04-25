@@ -1,0 +1,17 @@
+
+> hsam-review-nextjs@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.2 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://165.194.27.194:3000
+- Environments: .env.local
+✓ Ready in 623ms
+Creating turbopack project {
+  dir: 'C:\\Users\\junhy\\Documents\\2026\\vercel\\nextjs',
+  testMode: true
+}
+
+ GET /admin 307 in 1984ms (next.js: 1794ms, application-code: 191ms)
+ HEAD /admin 307 in 57ms (next.js: 18ms, application-code: 39ms)
+✓ Compiled in 16ms

@@ -888,6 +888,302 @@ textarea {
   background: rgba(255, 255, 255, 0.02);
 }
 
+.analyticsShell {
+  min-height: 100vh;
+  padding: 1.4rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.analyticsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: var(--shadow);
+}
+
+.analyticsHeader h1,
+.analyticsBand h2 {
+  margin: 0;
+}
+
+.analyticsHeader p,
+.analyticsSectionHeader p {
+  margin: 0.28rem 0 0;
+  color: var(--muted);
+}
+
+.analyticsEyebrow {
+  margin-bottom: 0.25rem;
+  color: #93c5fd;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.analyticsHeaderActions {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.analyticsMetricsGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.analyticsMetric,
+.analyticsBand {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.analyticsMetric {
+  padding: 0.85rem;
+}
+
+.analyticsMetricLabel,
+.analyticsMetricHint,
+.questionDistributionMeta small,
+.questionDistributionCount small,
+.rankRow small {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.analyticsMetricValue {
+  margin-top: 0.2rem;
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.analyticsMetricHint {
+  margin-top: 0.15rem;
+}
+
+.analyticsBand {
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.analyticsSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.analyticsSelect {
+  min-width: 230px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.62rem 0.7rem;
+  background: rgba(15, 23, 42, 0.92);
+  color: var(--text);
+}
+
+.analyticsUserRows {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.analyticsUserRow {
+  display: grid;
+  grid-template-columns: 130px minmax(190px, 1fr) 132px 76px 86px 120px 150px;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 0.55rem 0.6rem;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--text);
+  text-align: left;
+}
+
+.analyticsUserRow:hover,
+.analyticsUserRow.isActive {
+  border-color: rgba(96, 165, 250, 0.5);
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.analyticsUserName {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.analyticsUserName span {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.analyticsUserBarCell,
+.timelineRow,
+.rankRow {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) auto;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.miniBar,
+.analyticsStackedBar,
+.analyticsEmptyBar {
+  height: 0.72rem;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.18);
+  overflow: hidden;
+}
+
+.analyticsEmptyNotice {
+  padding: 0.85rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.miniBarFill {
+  height: 100%;
+  border-radius: inherit;
+  background: #60a5fa;
+}
+
+.miniBarFill.is-green {
+  background: var(--success);
+}
+
+.miniBarFill.is-red {
+  background: var(--danger);
+}
+
+.analyticsRate {
+  font-weight: 700;
+}
+
+.analyticsRate.isBad {
+  color: #fecaca;
+}
+
+.analyticsRate.isNonideal {
+  color: #fde68a;
+}
+
+.questionDistributionList {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.questionDistributionRow {
+  display: grid;
+  grid-template-columns: 180px minmax(300px, 1fr) 140px;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.13);
+}
+
+.questionDistributionMeta {
+  display: grid;
+  gap: 0.13rem;
+}
+
+.questionDistributionMeta strong {
+  color: #bfdbfe;
+}
+
+.questionDistributionMeta span {
+  font-weight: 700;
+}
+
+.analyticsStackedBar {
+  display: flex;
+  height: 1.05rem;
+}
+
+.analyticsStackedSegment {
+  height: 100%;
+}
+
+.questionLegendLine {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.questionLegendLine i {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  margin-right: 0.28rem;
+}
+
+.questionDistributionCount {
+  display: grid;
+  gap: 0.15rem;
+  justify-items: end;
+  font-weight: 800;
+}
+
+.analyticsTwoColumn {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.leafGrid,
+.timelineList,
+.rankList {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.leafRow {
+  display: grid;
+  grid-template-columns: 110px 58px minmax(120px, 1fr) 76px minmax(120px, 1fr);
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.leafRow span,
+.leafRow label {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.timelineRow {
+  grid-template-columns: 100px minmax(160px, 1fr) 80px;
+}
+
+.rankRow {
+  grid-template-columns: 32px minmax(90px, 1fr) minmax(120px, 1fr) 70px 96px;
+}
+
+.rankRow span {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.rankRow em {
+  color: #fecaca;
+  font-style: normal;
+  font-weight: 800;
+}
+
 @media (max-width: 1100px) {
   .mainGrid {
     grid-template-columns: 1fr;
@@ -907,5 +1203,16 @@ textarea {
 
   .topBarActions {
     justify-content: flex-start;
+  }
+
+  .analyticsMetricsGrid,
+  .analyticsTwoColumn {
+    grid-template-columns: 1fr;
+  }
+
+  .analyticsUserRow,
+  .questionDistributionRow,
+  .leafRow {
+    grid-template-columns: 1fr;
   }
 }
