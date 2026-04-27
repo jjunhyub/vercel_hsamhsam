@@ -4,9 +4,12 @@
 import { useMemo, useState } from 'react';
 
 const CATEGORY_COLOR = {
+  goodStrong: '#1f8f3a',
+  goodSoft: '#74b816',
   good: '#2f9e44',
   warning: '#f59f00',
   bad: '#e03131',
+  badStrong: '#9d0208',
   uncertain: '#868e96',
   other: '#4c6ef5',
   blank: '#495057',
@@ -26,6 +29,10 @@ function shortDate(value: string) {
   return value.replace('T', ' ').slice(0, 16);
 }
 
+function colorFor(item) {
+  return CATEGORY_COLOR[item.tone] || CATEGORY_COLOR[item.category] || CATEGORY_COLOR.other;
+}
+
 function StackedBar({ breakdown }) {
   const rows = (breakdown || []).filter((item) => item.count > 0);
   if (!rows.length) return <div className="analyticsEmptyBar" />;
@@ -37,7 +44,7 @@ function StackedBar({ breakdown }) {
           className="analyticsStackedSegment"
           style={{
             width: `${Math.max(item.ratio * 100, 0.6)}%`,
-            background: CATEGORY_COLOR[item.category] || CATEGORY_COLOR.other,
+            background: colorFor(item),
           }}
           title={`${item.answer}: ${count(item.count)} (${percent(item.ratio)})`}
         />
@@ -160,7 +167,7 @@ export default function AdminAnalyticsDashboard({ analytics }) {
         <div className="analyticsSectionHeader">
           <div>
             <h2>{selectedUser ? `${selectedUser.reviewerId} Question Distribution` : 'Overall Question Distribution'}</h2>
-            <p>Green is good, yellow is minor or acceptable, red is bad, gray is uncertain.</p>
+            <p>Green shades are good, yellow is minor or acceptable, red shades are bad, gray is uncertain.</p>
           </div>
         </div>
 
@@ -177,7 +184,7 @@ export default function AdminAnalyticsDashboard({ analytics }) {
                 <div className="questionLegendLine">
                   {(question.breakdown || []).slice(0, 5).map((item) => (
                     <span key={item.answer}>
-                      <i style={{ background: CATEGORY_COLOR[item.category] || CATEGORY_COLOR.other }} />
+                      <i style={{ background: colorFor(item) }} />
                       {item.answer || '-'} {count(item.count)} ({percent(item.ratio)})
                     </span>
                   ))}
@@ -213,7 +220,7 @@ export default function AdminAnalyticsDashboard({ analytics }) {
                 <div className="questionLegendLine">
                   {(question.breakdown || []).slice(0, 5).map((item) => (
                     <span key={item.answer}>
-                      <i style={{ background: CATEGORY_COLOR[item.category] || CATEGORY_COLOR.other }} />
+                      <i style={{ background: colorFor(item) }} />
                       {item.answer || '-'} {count(item.count)} ({percent(item.ratio)})
                     </span>
                   ))}

@@ -101,6 +101,20 @@ function categoryFor(questionId: string, answer: string) {
   return answer ? 'other' : 'blank';
 }
 
+function toneFor(questionId: string, answer: string, category: string) {
+  if (questionId === 'overall_consistency') {
+    if (answer === '\uB9DE\uC74C') return 'goodStrong';
+    if (answer === '\uB300\uCCB4\uB85C \uB9DE\uC74C') return 'goodSoft';
+  }
+  if ((questionId === 'instance' || questionId === 'mask_quality') && answer === '\uC2E4\uD328') {
+    return 'badStrong';
+  }
+  if ((questionId === 'instance' || questionId === 'mask_quality') && answer === '\uBD80\uC815\uD655') {
+    return 'bad';
+  }
+  return category;
+}
+
 function severityFor(questionId: string, answer: string) {
   const category = categoryFor(questionId, answer);
   if (category === 'bad') return 2;
@@ -128,12 +142,16 @@ function increment(map, key: string, amount = 1) {
 
 function breakdownFromCounts(counts, questionId: string, total: number) {
   return Object.entries(counts || {})
-    .map(([answer, count]) => ({
-      answer,
-      count,
-      ratio: total ? count / total : 0,
-      category: categoryFor(questionId, answer),
-    }))
+    .map(([answer, count]) => {
+      const category = categoryFor(questionId, answer);
+      return {
+        answer,
+        count,
+        ratio: total ? count / total : 0,
+        category,
+        tone: toneFor(questionId, answer, category),
+      };
+    })
     .sort((a, b) => b.count - a.count || String(a.answer).localeCompare(String(b.answer)));
 }
 
