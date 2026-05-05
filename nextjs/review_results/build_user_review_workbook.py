@@ -35,71 +35,49 @@ QUESTION_SLOTS = [
 ]
 
 GOOD = {
-    "Q1": {"\uc608", "\ub9de\uc74c"},
-    "Q2": {"\ubaa8\ub450 \ud3ec\ud568\ud568"},
-    "Q3": {"\ud3ec\ud568\ud558\uc9c0 \uc54a\uc74c"},
-    "Q4": {"\uc815\ud655"},
-    "Q5": {"\uc815\ud655"},
-    "Q6": {"\uc5c6\uc74c", "\ub9de\uc74c"},
-    "Q7": {"\uc5c6\uc74c"},
-    "Q8": {"\uc608", "\ub9de\uc74c"},
+    "Q1": {"\uc608"},  # 예, 맞음
+    "Q2": {"\ubaa8\ub450 \ud3ec\ud568\ud568"},  # 모두 포함함
+    "Q3": {"\ud3ec\ud568\ud558\uc9c0 \uc54a\uc74c"},  # 포함하지 않음
+    "Q4": {"\uc815\ud655"},  # 정확
+    "Q5": {"\uc815\ud655"},  # 정확
+    "Q6": {"\uc5c6\uc74c"},  # 없음
+    "Q7": {"\uc5c6\uc74c"},  # 없음
+    "Q8": {"\uc608"},  # 예
 }
 
 SOFT = {
-    "Q1": {"\ud310\ub2e8\ubd88\uac00", "\ub300\uccb4\ub85c \ub9de\uc74c", "\ubd80\ubd84\uc801\uc73c\ub85c \ub9de\uc74c", "\uc560\ub9e4\ud568"},
-    "Q2": {"\uc57d\uac04 \ub193\uce68", "\ud310\ub2e8\ubd88\uac00"},
-    "Q3": {"\uc57d\uac04 \ud3ec\ud568", "\ud310\ub2e8\ubd88\uac00"},
-    "Q4": {"\uc218\uc6a9 \uac00\ub2a5", "\ud310\ub2e8\ubd88\uac00"},
-    "Q5": {"\uc218\uc6a9 \uac00\ub2a5", "\ud310\ub2e8\ubd88\uac00"},
-    "Q6": {"\uc870\uae08 \uc788\uc74c", "\ud310\ub2e8\ubd88\uac00"},
-    "Q7": {"\uc870\uae08 \uc788\uc74c", "\ud310\ub2e8\ubd88\uac00"},
-    "Q8": {"\ud310\ub2e8\ubd88\uac00"},
+    "Q1": {"\ud310\ub2e8\ubd88\uac00"},  # 판단불가
+    "Q2": {"\uc57d\uac04 \ub193\uce68", "\ud310\ub2e8\ubd88\uac00"},  # 약간 놓침, 판단불가
+    "Q3": {"\uc57d\uac04 \ud3ec\ud568", "\ud310\ub2e8\ubd88\uac00"},  # 약간 포함, 판단불가
+    "Q4": {"\uc218\uc6a9 \uac00\ub2a5", "\ud310\ub2e8\ubd88\uac00"},  # 수용 가능, 판단불가
+    "Q5": {"\uc218\uc6a9 \uac00\ub2a5", "\ud310\ub2e8\ubd88\uac00"},  # 수용 가능, 판단불가
+    "Q6": {"\uc870\uae08 \uc788\uc74c", "\ud310\ub2e8\ubd88\uac00"},  # 조금 있음, 판단불가
+    "Q7": {"\uc870\uae08 \uc788\uc74c", "\ud310\ub2e8\ubd88\uac00"},  # 조금 있음, 판단불가
+    "Q8": {"\ud310\ub2e8\ubd88\uac00"},  # 판단불가
 }
 
 CRITICAL = {
-    "Q1": {"\uc544\ub2c8\uc624", "\uc544\ub2d8"},
-    "Q2": {"\ub9ce\uc774 \ub193\uce68"},
-    "Q3": {"\ub9ce\uc774 \ud3ec\ud568"},
-    "Q4": {"\ubd80\uc815\ud655", "\uc2e4\ud328"},
-    "Q5": {"\ubd80\uc815\ud655", "\uc2e4\ud328"},
-    "Q6": {"\ub9ce\uc774 \uc788\uc74c", "\uc544\ub2c8\uc624", "\uc544\ub2d8"},
-    "Q7": {"\ub9ce\uc774 \uc788\uc74c", "\uc544\ub2c8\uc624"},
-    "Q8": {"\uc544\ub2c8\uc624", "\uc544\ub2d8"},
+    "Q1": {"\uc544\ub2c8\uc624"},  # 아니오, 아님
+    "Q2": {"\ub9ce\uc774 \ub193\uce68"},  # 많이 놓침
+    "Q3": {"\ub9ce\uc774 \ud3ec\ud568"},  # 많이 포함
+    "Q4": {"\ubd80\uc815\ud655", "\uc2e4\ud328"},  # 부정확, 실패
+    "Q5": {"\ubd80\uc815\ud655", "\uc2e4\ud328"},  # 부정확, 실패
+    "Q6": {"\ub9ce\uc774 \uc788\uc74c"},  # 많이 있음
+    "Q7": {"\ub9ce\uc774 \uc788\uc74c"},  # 많이 있음
+    "Q8": {"\uc544\ub2c8\uc624"},  # 아니오
 }
 
 MAIN_NODE_COLUMNS = [
-    "reviewer_id",
+    "id",
     "image_id",
-    "node_id",
     "path_label",
     "label",
-    "top_level_label",
-    "parent_node_id",
-    "parent_label",
     "depth",
     "is_leaf",
     "child_count",
-    "mask_path",
-    "mask_original_path",
-    "mask_original_full_path",
-    "mask_bbox_width_px",
-    "mask_bbox_height_px",
-    "mask_bbox_pixel_area",
-    "mask_bbox_pct_of_image",
-    "mask_bbox_size_bucket",
+    "bbox_pct",
+    "bbox_size",
     "instance_count",
-    "node_updated_at_kst",
-    "applicable_question_count",
-    "answered_question_count",
-    "question_completion_pct",
-    "answered_question_slots",
-    "critical_issue_question_count",
-    "soft_issue_question_count",
-    "issue_score",
-    "has_critical_issue",
-    "has_any_issue",
-    "critical_issue_questions",
-    "soft_issue_questions",
     "answer_q1_label",
     "answer_q2_mask_missing",
     "answer_q3_mask_extra",
@@ -108,7 +86,6 @@ MAIN_NODE_COLUMNS = [
     "answer_q6_decomposition_nonleaf",
     "answer_q7_missing_child_nonleaf",
     "answer_q8_leaf_stop",
-    "leaf_q8_source",
 ]
 
 
@@ -136,9 +113,12 @@ def version_number(path: Path) -> int:
 
 
 def latest_input() -> Path:
+    final_csv = Path("review_annotations.csv")
+    if final_csv.exists():
+        return final_csv
     candidates = sorted(Path(".").glob("review_annotations_v*.csv"), key=lambda p: (version_number(p), p.stat().st_mtime), reverse=True)
     if not candidates:
-        raise FileNotFoundError("No review_annotations_v*.csv found.")
+        raise FileNotFoundError("No review_annotations.csv or review_annotations_v*.csv found.")
     return candidates[0]
 
 
@@ -245,7 +225,7 @@ def bbox_metrics(node: dict[str, Any], image_area: float | None) -> tuple[Any, A
     w = max(0, x2 - x1)
     h = max(0, y2 - y1)
     area = w * h
-    area_pct = round((area / image_area) * 100, 4) if image_area else ""
+    area_pct = round((area / image_area) * 100, 2) if image_area else ""
     if area_pct == "":
         bucket = "missing"
     elif area_pct < 0.1:
@@ -377,32 +357,26 @@ def build_rows(input_csv: Path, manifest: dict[str, dict[str, Any]]) -> dict[str
 
                     row = {
                         "reviewer_id": reviewer,
+                        "id": reviewer,
                         "image_id": image_id,
                         "node_id": node_id,
                         "path_label": path_label(node_id),
                         "label": label,
                         "top_level_label": top_label(node_id),
-                        "parent_node_id": parent_id,
-                        "parent_label": label_from_node(parent_id),
                         "depth": depth(node_id),
                         "is_leaf": str(is_leaf),
                         "child_count": len(children),
-                        "mask_path": node_meta.get("mask_path", ""),
-                        "mask_original_path": node_meta.get("mask_original_path", ""),
-                        "mask_original_full_path": node_meta.get("mask_original_full_path", ""),
-                        "mask_bbox_width_px": w,
-                        "mask_bbox_height_px": h,
-                        "mask_bbox_pixel_area": area,
-                        "mask_bbox_pct_of_image": area_pct,
-                        "mask_bbox_size_bucket": area_bucket,
+                        "bbox_pct": area_pct,
+                        "bbox_size": area_bucket,
                         "instance_count": len(node_meta.get("instance_paths") or []) if isinstance(node_meta, dict) else "",
-                        "node_updated_at_kst": iso_kst((node_payload or {}).get("updated_at")),
                         "applicable_question_count": len(slots),
                         "answered_question_count": len(answered),
                         "question_completion_pct": pct(len(answered), len(slots)),
                         "answered_question_slots": "|".join(slot for slot, _, _ in answered),
                         "critical_issue_question_count": len(critical_questions),
                         "soft_issue_question_count": len(soft_questions),
+                        "critical": len(critical_questions),
+                        "soft": len(soft_questions),
                         "issue_score": issue_score,
                         "has_critical_issue": str(bool(critical_questions)),
                         "has_any_issue": str(bool(critical_questions or soft_questions)),
@@ -424,15 +398,10 @@ def build_rows(input_csv: Path, manifest: dict[str, dict[str, Any]]) -> dict[str
             tree_answers = tree_summary.get("answers") or {}
             tree_answers = {k: answer_value(v) for k, v in tree_answers.items() if has_answer(v)}
             if tree_answers:
-                answered_questions = sorted(k for k in ["missing_critical_nodes", "overall_consistency", "summary_comment"] if tree_answers.get(k, "") != "")
-                required_answered = sum(1 for k in ["overall_consistency", "missing_critical_nodes"] if tree_answers.get(k, ""))
                 tree_rows.append({
+                    "id": reviewer,
                     "reviewer_id": reviewer,
                     "image_id": image_id,
-                    "tree_updated_at_kst": iso_kst(tree_summary.get("updated_at")),
-                    "answer_count": len(tree_answers),
-                    "required_completion_pct": pct(required_answered, 2),
-                    "answered_questions": "|".join(answered_questions),
                     "answer_overall_consistency": tree_answers.get("overall_consistency", ""),
                     "answer_missing_critical_nodes": tree_answers.get("missing_critical_nodes", ""),
                     "answer_summary_comment": tree_answers.get("summary_comment", ""),
@@ -448,6 +417,8 @@ def summarize(main_rows: list[dict[str, Any]], tree_rows: list[dict[str, Any]], 
     by_user_image = defaultdict(list)
     by_question_user = defaultdict(Counter)
     by_question = defaultdict(Counter)
+    by_question_user_q1_yes = defaultdict(Counter)
+    by_question_q1_yes = defaultdict(Counter)
     by_label = defaultdict(list)
     by_node = defaultdict(list)
     chart_data = []
@@ -470,18 +441,28 @@ def summarize(main_rows: list[dict[str, Any]], tree_rows: list[dict[str, Any]], 
             if value:
                 by_question_user[(row["reviewer_id"], slot)][value] += 1
                 by_question[slot][value] += 1
+        if row["answer_q1_label"] == "\uc608":
+            for slot, value in values.items():
+                if slot == "Q1" or not value:
+                    continue
+                by_question_user_q1_yes[(row["reviewer_id"], slot)][value] += 1
+                by_question_q1_yes[slot][value] += 1
 
     tree_by_user = Counter(row["reviewer_id"] for row in tree_rows)
+    tree_keys = {(row["reviewer_id"], row["image_id"]) for row in tree_rows}
+    tree_images_by_user = defaultdict(set)
+    for row in tree_rows:
+        tree_images_by_user[row["reviewer_id"]].add(row["image_id"])
     user_progress = []
     for reviewer, rows in sorted(by_user.items(), key=lambda item: user_sort_key(item[0])):
         applicable = sum(int(row["applicable_question_count"]) for row in rows)
         answered = sum(int(row["answered_question_count"]) for row in rows)
         critical = sum(row["has_critical_issue"] == "True" for row in rows)
         any_issue = sum(row["has_any_issue"] == "True" for row in rows)
-        dates = {date_kst(row["node_updated_at_kst"]) for row in rows if row["node_updated_at_kst"]}
+        image_ids = {row["image_id"] for row in rows} | tree_images_by_user[reviewer]
         user_progress.append({
-            "reviewer_id": reviewer,
-            "images_answered": len({row["image_id"] for row in rows}),
+            "id": reviewer,
+            "images_answered": len(image_ids),
             "nodes_answered": len(rows),
             "applicable_question_total": applicable,
             "answered_question_total": answered,
@@ -493,14 +474,13 @@ def summarize(main_rows: list[dict[str, Any]], tree_rows: list[dict[str, Any]], 
             "any_issue_node_rate_pct": pct(any_issue, len(rows)),
             "avg_issue_score": mean([float(row["issue_score"]) for row in rows]),
             "avg_depth": mean([float(row["depth"]) for row in rows]),
-            "active_days_kst": len([d for d in dates if d]),
-            "last_node_updated_at_kst": max([row["node_updated_at_kst"] for row in rows if row["node_updated_at_kst"]] or [""]),
         })
         chart_data.append({"chart": "user_nodes", "reviewer_id": reviewer, "nodes_answered": len(rows)})
 
-    tree_keys = {(row["reviewer_id"], row["image_id"]) for row in tree_rows}
     user_image_summary = []
-    for (reviewer, image_id), rows in sorted(by_user_image.items(), key=lambda item: (user_sort_key(item[0][0]), item[0][1])):
+    image_keys = set(by_user_image) | tree_keys
+    for reviewer, image_id in sorted(image_keys, key=lambda item: (user_sort_key(item[0]), item[1])):
+        rows = by_user_image.get((reviewer, image_id), [])
         applicable = sum(int(row["applicable_question_count"]) for row in rows)
         answered = sum(int(row["answered_question_count"]) for row in rows)
         critical = sum(row["has_critical_issue"] == "True" for row in rows)
@@ -519,7 +499,6 @@ def summarize(main_rows: list[dict[str, Any]], tree_rows: list[dict[str, Any]], 
             "avg_issue_score": mean([float(row["issue_score"]) for row in rows]),
             "avg_depth": mean([float(row["depth"]) for row in rows]),
             "has_tree_summary": str((reviewer, image_id) in tree_keys),
-            "last_node_updated_at_kst": max([row["node_updated_at_kst"] for row in rows if row["node_updated_at_kst"]] or [""]),
         })
 
     user_question_summary = []
@@ -531,6 +510,26 @@ def summarize(main_rows: list[dict[str, Any]], tree_rows: list[dict[str, Any]], 
         user_question_summary.append({
             "reviewer_id": reviewer,
             "question_slot": slot,
+            "response_count": total,
+            "unique_answers": len(counter),
+            "most_common_answer": most_answer,
+            "most_common_answer_count": most_count,
+            "critical_issue_responses": critical,
+            "critical_issue_response_rate_pct": pct(critical, total),
+            "soft_issue_responses": soft,
+            "soft_issue_response_rate_pct": pct(soft, total),
+        })
+
+    user_question_q1_yes = []
+    for (reviewer, slot), counter in sorted(by_question_user_q1_yes.items(), key=lambda item: (user_sort_key(item[0][0]), item[0][1])):
+        total = sum(counter.values())
+        most_answer, most_count = counter.most_common(1)[0]
+        critical = sum(count for answer, count in counter.items() if severity(slot, answer) >= 2)
+        soft = sum(count for answer, count in counter.items() if severity(slot, answer) == 1)
+        user_question_q1_yes.append({
+            "reviewer_id": reviewer,
+            "question_slot": slot,
+            "scope": "Q1_yes_only",
             "response_count": total,
             "unique_answers": len(counter),
             "most_common_answer": most_answer,
@@ -553,6 +552,53 @@ def summarize(main_rows: list[dict[str, Any]], tree_rows: list[dict[str, Any]], 
                 "response_pct": pct(count, total),
                 "severity_level": severity(slot, answer),
             })
+
+    question_dist_q1_yes = []
+    for slot, counter in sorted(by_question_q1_yes.items()):
+        total = sum(counter.values())
+        for answer, count in sorted(counter.items(), key=lambda item: (severity(slot, item[0]), item[0])):
+            question_dist_q1_yes.append({
+                "question_slot": slot,
+                "scope": "Q1_yes_only",
+                "answer_value": answer,
+                "response_count": count,
+                "question_total": total,
+                "response_pct": pct(count, total),
+                "severity_level": severity(slot, answer),
+            })
+
+    q1_filter_summary = []
+    for reviewer, rows in sorted(by_user.items(), key=lambda item: user_sort_key(item[0])):
+        q1_counts = Counter(row["answer_q1_label"] for row in rows)
+        q1_yes_rows = [row for row in rows if row["answer_q1_label"] == "\uc608"]
+        all_q2_q8 = 0
+        q1_yes_q2_q8 = 0
+        for row in rows:
+            values = [
+                row["answer_q2_mask_missing"],
+                row["answer_q3_mask_extra"],
+                row["answer_q4_instance"],
+                row["answer_q5_mask_quality"],
+                row["answer_q6_decomposition_nonleaf"],
+                row["answer_q7_missing_child_nonleaf"],
+                row["answer_q8_leaf_stop"],
+            ]
+            answered = sum(1 for value in values if value)
+            all_q2_q8 += answered
+            if row["answer_q1_label"] == "\uc608":
+                q1_yes_q2_q8 += answered
+        q1_filter_summary.append({
+            "reviewer_id": reviewer,
+            "total_nodes": len(rows),
+            "q1_yes_nodes": len(q1_yes_rows),
+            "q1_yes_node_pct": pct(len(q1_yes_rows), len(rows)),
+            "q1_no_nodes": q1_counts["\uc544\ub2c8\uc624"],
+            "q1_uncertain_nodes": q1_counts["\ud310\ub2e8\ubd88\uac00"],
+            "q1_other_nodes": sum(count for answer, count in q1_counts.items() if answer not in {"\uc608", "\uc544\ub2c8\uc624", "\ud310\ub2e8\ubd88\uac00"}),
+            "q2_to_q8_responses_all": all_q2_q8,
+            "q2_to_q8_responses_q1_yes_only": q1_yes_q2_q8,
+            "q2_to_q8_responses_excluded_by_q1": all_q2_q8 - q1_yes_q2_q8,
+        })
 
     problem_labels = []
     for label, rows in by_label.items():
@@ -611,19 +657,22 @@ def summarize(main_rows: list[dict[str, Any]], tree_rows: list[dict[str, Any]], 
     metadata = [
         {"metric": "generated_at_utc", "value": datetime.now(timezone.utc).isoformat()},
         {"metric": "source_file", "value": str(input_csv.resolve())},
-        {"metric": "main_node_rows", "value": len(main_rows)},
+        {"metric": "main_node_summary_rows", "value": len(main_rows)},
         {"metric": "tree_summary_rows", "value": len(tree_rows)},
         {"metric": "included_reviewers", "value": "|".join(sorted(by_user, key=user_sort_key))},
         {"metric": "source_reviewers", "value": "|".join(source_reviewers)},
     ]
     graphs = [{"Review Graph Overview": "All chart source data is in chart_data."}]
     return {
-        "main_node_rows": main_rows,
+        "main_node_summary": main_rows,
         "tree_summary": tree_rows,
         "user_progress": user_progress,
         "user_image_summary": user_image_summary,
         "user_question_summary": user_question_summary,
         "question_distribution": question_distribution,
+        "q1_filter_summary": q1_filter_summary,
+        "user_question_q1_yes": user_question_q1_yes,
+        "question_dist_q1_yes": question_dist_q1_yes,
         "problem_labels": problem_labels,
         "problem_nodes": problem_nodes,
         "column_guide": column_guide,
@@ -673,18 +722,23 @@ def cell(row: int, col: int, column: str, value: Any, header: bool = False) -> s
 
 def columns_for(name: str, rows: list[dict[str, Any]]) -> list[str]:
     preferred = {
-        "main_node_rows": MAIN_NODE_COLUMNS,
-        "tree_summary": ["reviewer_id", "image_id", "tree_updated_at_kst", "answer_count", "required_completion_pct", "answered_questions", "answer_overall_consistency", "answer_missing_critical_nodes", "answer_summary_comment"],
-        "user_progress": ["reviewer_id", "images_answered", "nodes_answered", "applicable_question_total", "answered_question_total", "question_completion_pct", "tree_summaries_answered", "critical_issue_nodes", "critical_issue_node_rate_pct", "any_issue_nodes", "any_issue_node_rate_pct", "avg_issue_score", "avg_depth", "active_days_kst", "last_node_updated_at_kst"],
-        "user_image_summary": ["reviewer_id", "image_id", "nodes_answered", "applicable_question_total", "answered_question_total", "question_completion_pct", "critical_issue_nodes", "critical_issue_node_rate_pct", "any_issue_nodes", "any_issue_node_rate_pct", "avg_issue_score", "avg_depth", "has_tree_summary", "last_node_updated_at_kst"],
+        "main_node_summary": MAIN_NODE_COLUMNS,
+        "tree_summary": ["id", "image_id", "answer_overall_consistency", "answer_missing_critical_nodes", "answer_summary_comment"],
+        "user_progress": ["id", "nodes_answered", "critical_issue_nodes", "critical_issue_node_rate_pct", "any_issue_nodes", "any_issue_node_rate_pct", "avg_issue_score", "avg_depth"],
+        "user_image_summary": ["reviewer_id", "image_id", "nodes_answered", "applicable_question_total", "answered_question_total", "question_completion_pct", "critical_issue_nodes", "critical_issue_node_rate_pct", "any_issue_nodes", "any_issue_node_rate_pct", "avg_issue_score", "avg_depth", "has_tree_summary"],
         "user_question_summary": ["reviewer_id", "question_slot", "response_count", "unique_answers", "most_common_answer", "most_common_answer_count", "critical_issue_responses", "critical_issue_response_rate_pct", "soft_issue_responses", "soft_issue_response_rate_pct"],
         "question_distribution": ["question_slot", "answer_value", "response_count", "question_total", "response_pct", "severity_level"],
+        "q1_filter_summary": ["reviewer_id", "total_nodes", "q1_yes_nodes", "q1_yes_node_pct", "q1_no_nodes", "q1_uncertain_nodes", "q1_other_nodes", "q2_to_q8_responses_all", "q2_to_q8_responses_q1_yes_only", "q2_to_q8_responses_excluded_by_q1"],
+        "user_question_q1_yes": ["reviewer_id", "question_slot", "scope", "response_count", "unique_answers", "most_common_answer", "most_common_answer_count", "critical_issue_responses", "critical_issue_response_rate_pct", "soft_issue_responses", "soft_issue_response_rate_pct"],
+        "question_dist_q1_yes": ["question_slot", "scope", "answer_value", "response_count", "question_total", "response_pct", "severity_level"],
         "problem_labels": ["rank_critical_issue_rate", "label", "top_level_label", "node_rows", "reviewer_count", "image_count", "critical_issue_nodes", "critical_issue_node_rate_pct", "any_issue_nodes", "any_issue_node_rate_pct", "avg_issue_score", "avg_depth", "top_critical_issue_questions"],
         "problem_nodes": ["rank_critical_issue_rate", "image_id", "node_id", "path_label", "label", "top_level_label", "depth", "is_leaf", "node_rows", "reviewer_count", "critical_issue_nodes", "critical_issue_node_rate_pct", "any_issue_nodes", "any_issue_node_rate_pct", "avg_issue_score"],
         "column_guide": ["field_name", "meaning"],
         "metadata": ["metric", "value"],
     }.get(name, [])
     cols = list(preferred)
+    if name in {"main_node_summary", "tree_summary", "user_progress"}:
+        return cols
     for row in rows:
         for key in row:
             if key not in cols:
@@ -704,7 +758,7 @@ def sheet_xml(rows: list[dict[str, Any]], cols: list[str]) -> str:
 
 
 def write_xlsx(path: Path, sheets: dict[str, list[dict[str, Any]]]) -> None:
-    order = ["main_node_rows", "tree_summary", "user_progress", "user_image_summary", "user_question_summary", "question_distribution", "problem_labels", "problem_nodes", "column_guide", "metadata", "chart_data", "graphs"]
+    order = ["main_node_summary", "tree_summary", "user_progress", "user_image_summary", "user_question_summary", "question_distribution", "q1_filter_summary", "user_question_q1_yes", "question_dist_q1_yes", "problem_labels", "problem_nodes", "column_guide", "metadata", "chart_data", "graphs"]
     names = [name for name in order if name in sheets]
     workbook_sheets = "".join(f'<sheet name="{xlsx_escape(name[:31])}" sheetId="{i}" r:id="rId{i}"/>' for i, name in enumerate(names, 1))
     workbook = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>{workbook_sheets}</sheets></workbook>'''

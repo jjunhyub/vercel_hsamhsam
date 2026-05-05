@@ -1,0 +1,10 @@
+﻿question,question_name,answer,severity,count,total,pct
+T1,overall_consistency,맞음,good,475,1000,47.5
+T1,overall_consistency,대체로 맞음,soft,443,1000,44.3
+T1,overall_consistency,부분적으로 맞음,soft,71,1000,7.1
+T1,overall_consistency,아님,critical,10,1000,1
+T1,overall_consistency,판단불가,soft,1,1000,0.1
+T2,missing_critical_nodes,없음,good,505,1000,50.5
+T2,missing_critical_nodes,조금 있음,soft,416,1000,41.6
+T2,missing_critical_nodes,많이 있음,critical,77,1000,7.7
+T2,missing_critical_nodes,판단불가,soft,2,1000,0.2

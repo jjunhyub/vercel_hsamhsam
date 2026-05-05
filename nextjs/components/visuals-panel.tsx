@@ -3,6 +3,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { getInspectorPills, nodeAssets, translatedLabel, translatedPathLabels } from '../lib/review-logic';
+import { uiText } from '../lib/i18n';
 
 const EMPTY_DERIVED = {
   overlay: '',
@@ -51,12 +52,12 @@ function AspectFrame({ width, height, children, dark = true, className = '' }) {
   );
 }
 
-function FigureImageButton({ figure, onOpen }) {
+function FigureImageButton({ figure, onOpen, language }) {
   if (!figure.src) {
     return (
       <AspectFrame width={figure.fullSize?.[0]} height={figure.fullSize?.[1]}>
         <div className="framePlaceholder">
-          <span className="framePlaceholderText">Loading...</span>
+          <span className="framePlaceholderText">{uiText(language, 'visual.loading')}</span>
         </div>
       </AspectFrame>
     );
@@ -67,7 +68,7 @@ function FigureImageButton({ figure, onOpen }) {
       type="button"
       className="figureImageButton"
       onClick={onOpen}
-      aria-label={`${figure.title} 확대 보기`}
+      aria-label={uiText(language, 'modal.zoomAria', { title: figure.title })}
     >
       <AspectFrame width={figure.fullSize?.[0]} height={figure.fullSize?.[1]} className="isInteractive">
         <img className="frameImage" src={figure.src} alt={figure.title} loading="lazy" />
@@ -76,7 +77,7 @@ function FigureImageButton({ figure, onOpen }) {
   );
 }
 
-function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabel }) {
+function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabel, language }) {
   const activeFigure = figures[activeIndex];
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -189,7 +190,7 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabe
       className="imageModalOverlay"
       role="dialog"
       aria-modal="true"
-      aria-label={`${activeFigure.title} 확대 보기`}
+      aria-label={uiText(language, 'modal.zoomAria', { title: activeFigure.title })}
       onClick={onClose}
     >
       <div className="imageModalContent" onClick={(event) => event.stopPropagation()}>
@@ -197,7 +198,7 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabe
           type="button"
           className="imageModalClose"
           onClick={onClose}
-          aria-label="확대 보기 닫기"
+          aria-label={uiText(language, 'modal.closeAria')}
         >
           <span className="imageModalIcon">×</span>
         </button>
@@ -208,7 +209,7 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabe
               type="button"
               className="imageModalNav imageModalNavLeft"
               onClick={onPrev}
-              aria-label="이전 이미지"
+              aria-label={uiText(language, 'modal.prevAria')}
             >
               <span className="imageModalIcon">‹</span>
             </button>
@@ -216,7 +217,7 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabe
               type="button"
               className="imageModalNav imageModalNavRight"
               onClick={onNext}
-              aria-label="다음 이미지"
+              aria-label={uiText(language, 'modal.nextAria')}
             >
               <span className="imageModalIcon">›</span>
             </button>
@@ -225,7 +226,7 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabe
 
         <div className="imageModalMeta">
           <div className="imageModalTitle">{activeFigure.title}</div>
-          <div className="imageModalContext">{`현재: ${contextLabel}`}</div>
+          <div className="imageModalContext">{`${uiText(language, 'modal.current')}: ${contextLabel}`}</div>
           <div className="imageModalCount">
             {activeIndex + 1} / {figures.length}
           </div>
@@ -253,7 +254,7 @@ function ImageModal({ figures, activeIndex, onClose, onPrev, onNext, contextLabe
   );
 }
 
-function useDerivedFigures(imageId, rootPath, coloredPath, fullSize, leaf) {
+function useDerivedFigures(imageId, rootPath, coloredPath, fullSize, leaf, language) {
   const [rootImgEl, setRootImgEl] = useState(null);
   const [derived, setDerived] = useState(EMPTY_DERIVED);
 
@@ -432,28 +433,28 @@ function useDerivedFigures(imageId, rootPath, coloredPath, fullSize, leaf) {
     () => [
       {
         key: `derived-overlay-${imageId}-${leaf}`,
-        title: '오버레이',
+        title: uiText(language, 'visual.overlay'),
         src: derived.overlay,
         fullSize,
       },
       {
         key: `derived-original-${imageId}-${leaf}`,
-        title: '마스크 적용 원본',
+        title: uiText(language, 'visual.maskedOriginal'),
         src: derived.maskOriginalFull,
         fullSize,
       },
       {
         key: `derived-mask-${imageId}-${leaf}`,
-        title: '마스크',
+        title: uiText(language, 'visual.mask'),
         src: derived.mask,
         fullSize,
       },
     ],
-    [derived.mask, derived.maskOriginalFull, derived.overlay, fullSize, imageId, leaf]
+    [derived.mask, derived.maskOriginalFull, derived.overlay, fullSize, imageId, leaf, language]
   );
 }
 
-export function TreeVisualsPanel({ record }) {
+export function TreeVisualsPanel({ record, language }) {
   const [activeFigureIndex, setActiveFigureIndex] = useState(null);
 
   const figures = useMemo(() => {
@@ -464,7 +465,7 @@ export function TreeVisualsPanel({ record }) {
     if (record?.root_image_path) {
       nextFigures.push({
         key: `tree-root-original-${imageId}`,
-        title: '원본 이미지',
+        title: uiText(language, 'visual.originalImage'),
         src: buildAssetUrl(imageId, record.root_image_path),
         fullSize,
       });
@@ -473,7 +474,7 @@ export function TreeVisualsPanel({ record }) {
     if (record?.others_others_path) {
       nextFigures.push({
         key: `tree-others-others-${imageId}`,
-        title: '남은 영역',
+        title: uiText(language, 'visual.remainingArea'),
         src: buildAssetUrl(imageId, record.others_others_path),
         fullSize,
       });
@@ -482,14 +483,14 @@ export function TreeVisualsPanel({ record }) {
     if (record?.all_instances_overlay_path) {
       nextFigures.push({
         key: `tree-all-instances-overlay-${imageId}`,
-        title: '전체 오버레이',
+        title: uiText(language, 'visual.fullOverlay'),
         src: buildAssetUrl(imageId, record.all_instances_overlay_path),
         fullSize,
       });
     }
 
     return nextFigures;
-  }, [record]);
+  }, [record, language]);
 
   const modalFigures = useMemo(
     () => figures.filter((figure) => Boolean(figure.src)),
@@ -535,7 +536,7 @@ export function TreeVisualsPanel({ record }) {
       <section className="sectionCard">
         <div className="sectionHeaderWithMeta">
           <div>
-            <h2 className="sectionTitle">전체 트리 평가</h2>
+            <h2 className="sectionTitle">{uiText(language, 'visual.treeReview')}</h2>
           </div>
         </div>
 
@@ -543,12 +544,12 @@ export function TreeVisualsPanel({ record }) {
           <div className="visualsGrid treeVisualsGrid">
             {figures.map((figure) => (
               <FigureCard key={figure.key} title={figure.title}>
-                <FigureImageButton figure={figure} onOpen={() => handleOpenFigure(figure)} />
+                <FigureImageButton figure={figure} onOpen={() => handleOpenFigure(figure)} language={language} />
               </FigureCard>
             ))}
           </div>
         ) : (
-          <div className="emptyBox">전체 트리 검토용 이미지를 찾지 못했습니다.</div>
+          <div className="emptyBox">{uiText(language, 'visual.noTreeImages')}</div>
         )}
       </section>
 
@@ -558,31 +559,34 @@ export function TreeVisualsPanel({ record }) {
         onClose={handleCloseModal}
         onPrev={handlePrevFigure}
         onNext={handleNextFigure}
-        contextLabel="전체 트리"
+        contextLabel={uiText(language, 'app.fullTree')}
+        language={language}
       />
     </>
   );
 }
 
-export default function VisualsPanel({ record, nodeId, translationMap }) {
+export default function VisualsPanel({ record, nodeId, translationMap, language }) {
   const assets = useMemo(() => nodeAssets(record, nodeId), [record, nodeId]);
   const [activeFigureIndex, setActiveFigureIndex] = useState(null);
   const [showInstances, setShowInstances] = useState(false);
 
   const leaf = String(nodeId || '').split('__').at(-1) || nodeId;
-  const currentNodeLabel = translatedLabel(record.image_id, nodeId, translationMap);
+  const currentNodeLabel = translatedLabel(record.image_id, nodeId, translationMap, language);
   const instanceCount = assets.instance_paths?.length || 0;
   const breadcrumbSegments = useMemo(
-    () => translatedPathLabels(record.image_id, nodeId, translationMap),
-    [nodeId, record.image_id, translationMap]
+    () => translatedPathLabels(record.image_id, nodeId, translationMap, language),
+    [nodeId, record.image_id, translationMap, language]
   );
 
   const pills = useMemo(
     () =>
-      getInspectorPills(record, nodeId, translationMap).filter(
-        (pill) => !pill.startsWith('현재:') && !pill.startsWith('경로:')
+      getInspectorPills(record, nodeId, translationMap, language).filter(
+        (pill) =>
+          !pill.startsWith(`${uiText(language, 'inspector.current')}:`) &&
+          !pill.startsWith(`${uiText(language, 'inspector.path')}:`)
       ),
-    [record, nodeId, translationMap]
+    [record, nodeId, translationMap, language]
   );
 
   const derivedFigures = useDerivedFigures(
@@ -590,7 +594,8 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
     assets.root_original,
     assets.instances_colored,
     assets.full_size,
-    leaf
+    leaf,
+    language
   );
 
   const derivedReady = useMemo(() => {
@@ -606,7 +611,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
     if (assets.root_original) {
       nextFigures.push({
         key: `root-original-${record.image_id}`,
-        title: '원본 이미지',
+        title: uiText(language, 'visual.originalImage'),
         src: buildAssetUrl(record.image_id, assets.root_original),
         fullSize: assets.full_size,
       });
@@ -619,7 +624,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
     if (assets.instances_colored) {
       nextFigures.push({
         key: `instances-colored-${record.image_id}-${nodeId}`,
-        title: '인스턴스',
+        title: uiText(language, 'visual.instances'),
         src: derivedReady ? buildAssetUrl(record.image_id, assets.instances_colored) : '',
         fullSize: assets.full_size,
       });
@@ -633,6 +638,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
     derivedReady,
     derivedFigures,
     leaf,
+    language,
     nodeId,
     record.image_id,
   ]);
@@ -641,11 +647,11 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
     () =>
       (assets.instance_paths || []).map((instancePath, index) => ({
         key: `instance-${record.image_id}-${nodeId}-${index}`,
-        title: `Instance ${index + 1}`,
+        title: uiText(language, 'visual.instanceItem', { index: index + 1 }),
         src: buildAssetUrl(record.image_id, instancePath),
         fullSize: assets.full_size,
       })),
-    [assets.full_size, assets.instance_paths, nodeId, record.image_id]
+    [assets.full_size, assets.instance_paths, nodeId, record.image_id, language]
   );
 
   const modalFigures = useMemo(
@@ -705,7 +711,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
             <div className="visualsTitleRow">
               <h2 className="sectionTitle">{currentNodeLabel}</h2>
               {breadcrumbSegments.length ? (
-                <div className="visualsBreadcrumb" aria-label="Node path">
+                <div className="visualsBreadcrumb" aria-label={uiText(language, 'visual.nodePathAria')}>
                   {breadcrumbSegments.map((segment, index) => (
                     <React.Fragment key={`${segment}-${index}`}>
                       <span
@@ -743,7 +749,9 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
                 onClick={handleToggleInstances}
                 aria-expanded={showInstances}
               >
-                {showInstances ? `인스턴스 숨기기 (${instanceCount})` : `인스턴스 보기 (${instanceCount})`}
+                {showInstances
+                  ? uiText(language, 'visual.hideInstances', { count: instanceCount })
+                  : uiText(language, 'visual.showInstances', { count: instanceCount })}
               </button>
             </div>
           ) : null}
@@ -753,24 +761,24 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
           <div className="visualsGrid">
             {figures.map((figure) => (
               <FigureCard key={figure.key} title={figure.title}>
-                <FigureImageButton figure={figure} onOpen={() => handleOpenFigure(figure)} />
+                <FigureImageButton figure={figure} onOpen={() => handleOpenFigure(figure)} language={language} />
               </FigureCard>
             ))}
           </div>
         ) : (
-          <div className="emptyBox">노드 검토용 이미지를 찾지 못했습니다.</div>
+          <div className="emptyBox">{uiText(language, 'visual.noNodeImages')}</div>
         )}
 
         {showInstances ? (
           <div className="instancesPanel">
             <div className="instancesPanelHeader">
-              <div className="instancesPanelTitle">Instances</div>
-              <div className="instancesPanelMeta">{instanceCount} items</div>
+              <div className="instancesPanelTitle">{uiText(language, 'visual.instances')}</div>
+              <div className="instancesPanelMeta">{uiText(language, 'visual.items', { count: instanceCount })}</div>
             </div>
             <div className="instancesGrid">
               {instanceFigures.map((figure) => (
                 <FigureCard key={figure.key} title={figure.title}>
-                  <FigureImageButton figure={figure} onOpen={() => handleOpenFigure(figure)} />
+                  <FigureImageButton figure={figure} onOpen={() => handleOpenFigure(figure)} language={language} />
                 </FigureCard>
               ))}
             </div>
@@ -785,6 +793,7 @@ export default function VisualsPanel({ record, nodeId, translationMap }) {
         onPrev={handlePrevFigure}
         onNext={handleNextFigure}
         contextLabel={currentNodeLabel}
+        language={language}
       />
     </>
   );

@@ -2,8 +2,11 @@
 'use client';
 
 import { useState } from 'react';
+import LanguageToggle, { useLanguagePreference } from './language-toggle';
+import { uiText } from '../lib/i18n';
 
 export default function LoginForm() {
+  const [language, setLanguage] = useLanguagePreference();
   const [reviewerId, setReviewerId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -27,7 +30,7 @@ export default function LoginForm() {
 
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
-        setError(payload?.error || '로그인에 실패했습니다.');
+        setError(payload?.code ? uiText(language, `login.error.${payload.code}`) : payload?.error || uiText(language, 'login.failed'));
         setStatus('idle');
         return;
       }
@@ -35,35 +38,37 @@ export default function LoginForm() {
       setStatus('redirecting');
       window.location.replace('/');
     } catch (err) {
-      setError('로그인 요청 중 오류가 발생했습니다.');
+      setError(uiText(language, 'login.requestFailed'));
       setStatus('idle');
     }
   }
 
   return (
     <form className={`loginCard ${pending ? 'isPending' : ''}`} onSubmit={onSubmit}>
-      {/* <div className="loginBadge">Reviewer Access</div> */}
-      <h1 className="loginTitle">Reviewer Login</h1>
+      <div className="loginCardHeader">
+        <h1 className="loginTitle">{uiText(language, 'login.title')}</h1>
+        <LanguageToggle language={language} onLanguageChange={setLanguage} />
+      </div>
 
-      <label className="fieldLabel" htmlFor="reviewer-id">Reviewer ID</label>
+      <label className="fieldLabel" htmlFor="reviewer-id">{uiText(language, 'login.reviewerId')}</label>
       <input
         id="reviewer-id"
         className="textField"
         value={reviewerId}
         onChange={(event) => setReviewerId(event.target.value)}
-        placeholder="아이디를 입력하세요."
+        placeholder={uiText(language, 'login.reviewerPlaceholder')}
         autoComplete="username"
         disabled={pending}
       />
 
-      <label className="fieldLabel" htmlFor="reviewer-password">Password</label>
+      <label className="fieldLabel" htmlFor="reviewer-password">{uiText(language, 'login.password')}</label>
       <input
         id="reviewer-password"
         className="textField"
         type="password"
         value={password}
         onChange={(event) => setPassword(event.target.value)}
-        placeholder="비밀번호를 입력하세요."
+        placeholder={uiText(language, 'login.passwordPlaceholder')}
         autoComplete="current-password"
         disabled={pending}
       />
@@ -71,12 +76,16 @@ export default function LoginForm() {
       {error ? <div className="errorBox">{error}</div> : null}
 
       <button className="primaryButton" type="submit" disabled={pending}>
-        {status === 'redirecting' ? '이동 중...' : pending ? '로그인 중...' : '로그인'}
+        {status === 'redirecting'
+          ? uiText(language, 'login.redirecting')
+          : pending
+            ? uiText(language, 'login.submitting')
+            : uiText(language, 'login.submit')}
       </button>
 
       {pending ? (
         <div className="loginStatusText">
-          {status === 'redirecting' ? '로그인 확인 완료. 페이지로 이동하고 있습니다.' : '아이디와 비밀번호를 확인하고 있습니다.'}
+          {status === 'redirecting' ? uiText(language, 'login.redirectMessage') : uiText(language, 'login.checking')}
         </div>
       ) : null}
     </form>

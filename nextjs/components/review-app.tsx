@@ -6,15 +6,18 @@ import HierarchyTree from './hierarchy-tree';
 import ImageList from './image-list';
 import QuestionPanel from './question-panel';
 import VisualsPanel, { TreeVisualsPanel } from './visuals-panel';
+import LanguageToggle, { useLanguagePreference } from './language-toggle';
 import {
   applyAnswerChange,
   firstReviewableNodeId,
-  humanLabel,
   missingReport,
+  translatedLabel,
 } from '../lib/review-logic';
 import { normalizeTranslationJson } from '../lib/translation';
+import { dateLocaleFor, uiText } from '../lib/i18n';
 
 export default function ReviewApp({ reviewerId, records, initialAnnotations, initialSelection }) {
+  const [language, setLanguage] = useLanguagePreference();
   const [annotations, setAnnotations] = useState(initialAnnotations || {});
   const [selectedImageId, setSelectedImageId] = useState(initialSelection?.imageId || Object.keys(records || {})[0] || null);
   const [selectedMode, setSelectedMode] = useState(initialSelection?.mode || 'node');
@@ -92,7 +95,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
 
     savingRef.current = true;
     if (!force) {
-      setSaveStatus((prev) => ({ ...prev, status: 'saving', message: '저장 중...' }));
+      setSaveStatus((prev) => ({ ...prev, status: 'saving', message: '' }));
     }
 
     try {
@@ -104,27 +107,27 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
 
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
-        throw new Error(payload?.error || '저장에 실패했습니다.');
+        throw new Error(payload?.error || uiText(language, 'app.saveFailed'));
       }
 
       dirtyRef.current = false;
       setSaveStatus({
         status: 'saved',
         savedAt: payload?.savedAt || new Date().toISOString(),
-        message: '클라우드에 저장됨',
+        message: '',
       });
       return true;
     } catch (error) {
       setSaveStatus({
         status: 'error',
         savedAt: null,
-        message: error instanceof Error ? error.message : '저장에 실패했습니다.',
+        message: error instanceof Error ? error.message : uiText(language, 'app.saveFailed'),
       });
       return false;
     } finally {
       savingRef.current = false;
     }
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -157,7 +160,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
       return next;
     });
     dirtyRef.current = true;
-    setSaveStatus({ status: 'dirty', savedAt: null, message: '저장되지 않은 변경사항' });
+    setSaveStatus({ status: 'dirty', savedAt: null, message: '' });
   }, [selectedImageId]);
 
   const handleSelectImage = useCallback((imageId) => {
@@ -188,22 +191,27 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
     return missingReport(annotations, selectedImageId, selectedRecord);
   }, [annotations, selectedImageId, selectedRecord]);
 
+  const saveStatusMessage = saveStatus.status === 'error' && saveStatus.message
+    ? saveStatus.message
+    : uiText(language, `saveStatus.${saveStatus.status || 'idle'}`);
+
   if (!imageIds.length) {
     return (
       <main className="appShell">
         <header className="topBar">
           <div>
             <div className="topBarTitle">{process.env.NEXT_PUBLIC_APP_TITLE || 'H-SAM Review Tool'}</div>
-            <div className="topBarMeta">Reviewer ID: {reviewerId}</div>
+            <div className="topBarMeta">{uiText(language, 'app.reviewerId')}: {reviewerId}</div>
           </div>
           <div className="topBarActions">
-            <button className="secondaryButton" onClick={handleLogout}>로그아웃</button>
+            <LanguageToggle language={language} onLanguageChange={setLanguage} />
+            <button className="secondaryButton" onClick={handleLogout}>{uiText(language, 'app.logout')}</button>
           </div>
         </header>
 
         <div className="emptyStateCard">
-          <h1>할당된 이미지가 없습니다.</h1>
-          <p>Reviewer <strong>{reviewerId}</strong> 에게 연결된 review_assignments 행이 없습니다.</p>
+          <h1>{uiText(language, 'app.noAssignedTitle')}</h1>
+          <p>{uiText(language, 'app.noAssignedBody', { reviewerId })}</p>
         </div>
       </main>
     );
@@ -214,16 +222,17 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
       <header className="topBar">
         <div>
           <div className="topBarTitle">{process.env.NEXT_PUBLIC_APP_TITLE || 'H-SAM Review Tool'}</div>
-          <div className="topBarMeta">Reviewer ID: {reviewerId}</div>
+          <div className="topBarMeta">{uiText(language, 'app.reviewerId')}: {reviewerId}</div>
         </div>
 
         <div className="topBarActions">
+          <LanguageToggle language={language} onLanguageChange={setLanguage} />
           <div className={`saveBadge is-${saveStatus.status}`}>
-            {saveStatus.message || '대기 중'}
-            {saveStatus.savedAt ? ` · ${new Date(saveStatus.savedAt).toLocaleString('ko-KR')}` : ''}
+            {saveStatusMessage}
+            {saveStatus.savedAt ? ` · ${new Date(saveStatus.savedAt).toLocaleString(dateLocaleFor(language))}` : ''}
           </div>
-          <button className="secondaryButton" onClick={() => saveNow(true)}>☁️ 클라우드에 저장</button>
-          <button className="secondaryButton" onClick={handleLogout}>로그아웃</button>
+          <button className="secondaryButton" onClick={() => saveNow(true)}>{uiText(language, 'app.saveToCloud')}</button>
+          <button className="secondaryButton" onClick={handleLogout}>{uiText(language, 'app.logout')}</button>
         </div>
       </header>
 
@@ -233,6 +242,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
           annotations={annotations}
           selectedImageId={selectedImageId}
           onSelectImage={handleSelectImage}
+          language={language}
         />
 
         <section className="contentColumn">
@@ -247,6 +257,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
                 onSelectNode={handleSelectNode}
                 onSelectTreeSummary={handleSelectTreeSummary}
                 translationMap={translationMap}
+                language={language}
               />
 
               {selectedMode === 'node' && selectedNodeId ? (
@@ -256,6 +267,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
                     record={selectedRecord}
                     nodeId={selectedNodeId}
                     translationMap={translationMap}
+                    language={language}
                   />
                   <QuestionPanel
                     record={selectedRecord}
@@ -265,6 +277,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
                     nodeId={selectedNodeId}
                     onAnswerChange={handleAnswerChange}
                     translationMap={translationMap}
+                    language={language}
                   />
                 </>
               ) : (
@@ -272,6 +285,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
                   <TreeVisualsPanel
                     key={`${selectedImageId}:tree`}
                     record={selectedRecord}
+                    language={language}
                   />
                   <QuestionPanel
                     record={selectedRecord}
@@ -281,6 +295,7 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
                     nodeId={null}
                     onAnswerChange={handleAnswerChange}
                     translationMap={translationMap}
+                    language={language}
                   />
                 </>
               )}
@@ -288,13 +303,15 @@ export default function ReviewApp({ reviewerId, records, initialAnnotations, ini
               {selectedMissingReport &&
               (selectedMissingReport.missing_nodes.length || selectedMissingReport.tree_missing.length) ? (
                 <section className="sectionCard">
-                  <h2 className="sectionTitle">남은 항목</h2>
+                  <h2 className="sectionTitle">{uiText(language, 'app.missingItems')}</h2>
                   <div className="pillCloud">
                     {selectedMissingReport.missing_nodes.map((item) => (
-                      <span className="finalizePill" key={item.node_id}>{humanLabel(item.node_id)}</span>
+                      <span className="finalizePill" key={item.node_id}>
+                        {translatedLabel(selectedImageId, item.node_id, translationMap, language)}
+                      </span>
                     ))}
                     {selectedMissingReport.tree_missing.length ? (
-                      <span className="finalizePill">전체 트리</span>
+                      <span className="finalizePill">{uiText(language, 'app.fullTree')}</span>
                     ) : null}
                   </div>
                 </section>

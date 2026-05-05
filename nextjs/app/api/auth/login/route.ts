@@ -22,13 +22,13 @@ export async function POST(request) {
   }
 
   if (!reviewerId) {
-    return NextResponse.json({ error: 'Reviewer ID를 입력하세요.' }, { status: 400 });
+    return NextResponse.json({ code: 'missingReviewerId', error: 'Reviewer ID is required.' }, { status: 400 });
   }
   if (!password) {
-    return NextResponse.json({ error: '비밀번호를 입력하세요.' }, { status: 400 });
+    return NextResponse.json({ code: 'missingPassword', error: 'Password is required.' }, { status: 400 });
   }
   if (!verifyReviewerPassword(reviewerId, password)) {
-    return NextResponse.json({ error: '등록되지 않았거나 비밀번호가 올바르지 않습니다.' }, { status: 401 });
+    return NextResponse.json({ code: 'invalidCredentials', error: 'Reviewer ID or password is incorrect.' }, { status: 401 });
   }
 
   const response = NextResponse.json({ ok: true });

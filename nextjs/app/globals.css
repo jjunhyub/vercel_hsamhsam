@@ -103,6 +103,41 @@ textarea {
   white-space: nowrap;
 }
 
+.languageToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  padding: 0.42rem 0.7rem;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text);
+  white-space: nowrap;
+  transition: transform 0.12s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.languageToggle:hover {
+  transform: translateY(-1px);
+  border-color: rgba(96, 165, 250, 0.42);
+}
+
+.languageToggle.isOn {
+  border-color: rgba(37, 99, 235, 0.62);
+  background: rgba(37, 99, 235, 0.16);
+}
+
+.languageToggleLabel {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.languageToggleState {
+  color: #f8fafc;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
 .loginPage,
 .errorPage {
   min-height: 100vh;
@@ -125,6 +160,30 @@ textarea {
 
 .loginCard .primaryButton {
   margin-top: 1.5rem;
+}
+
+.loginCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.loginCardHeader .loginTitle {
+  min-width: 0;
+}
+
+.errorCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.errorCardHeader h1 {
+  min-width: 0;
+  margin: 0;
 }
 
 .loginCard.isPending .textField {

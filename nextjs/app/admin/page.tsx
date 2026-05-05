@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import AdminAnalyticsDashboard from '../../components/admin-analytics-dashboard';
+import LocalizedErrorCard from '../../components/localized-error-card';
 import { getSession } from '../../lib/auth/session';
 import { loadAdminAnalytics } from '../../lib/admin-analytics';
 
@@ -18,10 +19,10 @@ export default async function AdminPage() {
   } catch (error) {
     return (
       <main className="errorPage">
-        <div className="errorPageCard">
-          <h1>Admin analytics failed to load</h1>
-          <p>{error instanceof Error ? error.message : String(error)}</p>
-        </div>
+        <LocalizedErrorCard
+          titleKey="error.adminLoadTitle"
+          message={error instanceof Error ? error.message : String(error)}
+        />
       </main>
     );
   }

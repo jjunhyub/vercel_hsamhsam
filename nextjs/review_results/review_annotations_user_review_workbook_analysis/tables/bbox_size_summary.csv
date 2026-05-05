@@ -1,0 +1,4 @@
+﻿bbox_size,nodes,q1_no_pct,critical_rate_all_pct,critical_rate_q1_yes_pct,any_issue_rate_q1_yes_pct,avg_depth,avg_bbox_pct
+large,13314,3.06,19.28,16.89,54.32,1.8567,27.5559
+medium,6352,5.23,19.11,15.01,45.95,2.3215,2.5762
+small,5736,9.92,24.3,16.7,45.65,2.7228,0.4202

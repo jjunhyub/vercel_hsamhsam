@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import ReviewApp from '../components/review-app';
+import LocalizedErrorCard from '../components/localized-error-card';
 import { getSession } from '../lib/auth/session';
 import { firstReviewableNodeId } from '../lib/review-logic';
 import { loadReviewPageData } from '../lib/review-data';
@@ -57,10 +58,10 @@ export default async function HomePage({ searchParams }) {
   } catch (error) {
     return (
       <main className="errorPage">
-        <div className="errorPageCard">
-          <h1>데이터를 불러오지 못했습니다.</h1>
-          <p>{error instanceof Error ? error.message : String(error)}</p>
-        </div>
+        <LocalizedErrorCard
+          titleKey="error.dataLoadTitle"
+          message={error instanceof Error ? error.message : String(error)}
+        />
       </main>
     );
   }

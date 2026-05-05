@@ -1,0 +1,17 @@
+﻿metric,value,note
+users,20,Expected user1-user20.
+user_image_pairs,1000,Includes zero-reviewable-node images if present.
+unique_images,1000,Unique image IDs present in workbook.
+node_rows,25402,Rows in main_node_summary.
+tree_summary_rows,1000,Rows in tree_summary.
+leaf_nodes,17509,68.93% of node rows.
+nonleaf_nodes,7893,
+q1_yes_nodes,23583,92.84% of node rows.
+q1_no_nodes,1309,5.15% of node rows.
+q1_uncertain_nodes,510,2.01% of node rows.
+critical_issue_nodes_all,5175,20.37% of all nodes.
+any_issue_nodes_all,13711,53.98% of all nodes.
+critical_issue_nodes_q1_yes_only,3864,"16.38% among Q1=yes nodes, Q2-Q8 only."
+any_issue_nodes_q1_yes_only,11892,"50.43% among Q1=yes nodes, Q2-Q8 only."
+avg_depth,2.1685,
+avg_bbox_pct,15.182,"bbox area percentage of image, averaged over node rows."

@@ -16,12 +16,13 @@ import {
   allNodesConfirmed,
   buildTreeConnectorPaths,
   computeHierarchyLayout,
-  humanLabel,
   isReviewableNode,
   nodeConfirmed,
   reviewProgress,
+  translatedLabel,
   treeSummaryConfirmed,
 } from '../lib/review-logic';
+import { uiText } from '../lib/i18n';
 
 function buttonWidthForLabel(label) {
   const text = String(label || '');
@@ -29,8 +30,8 @@ function buttonWidthForLabel(label) {
   return Math.max(TREE_BUTTON_MIN_WIDTH_PX, Math.min(TREE_BUTTON_MAX_WIDTH_PX, width));
 }
 
-function getNodeLabel(_imageId, nodeId, _translationMap) {
-  return nodeId === TREE_SUMMARY_NODE_ID ? 'Full-Tree' : humanLabel(nodeId);
+function getNodeLabel(imageId, nodeId, translationMap, language) {
+  return translatedLabel(imageId, nodeId, translationMap, language);
 }
 
 function displayImageId(imageId) {
@@ -49,13 +50,14 @@ export default function HierarchyTree({
   onSelectNode,
   onSelectTreeSummary,
   translationMap,
+  language,
 }) {
   const imageId = record?.image_id;
   const displayId = displayImageId(imageId);
   const [done, total] = reviewProgress(annotations, imageId, record);
   const treeDone = treeSummaryConfirmed(annotations, imageId);
   const treeEnabled = allNodesConfirmed(annotations, imageId, record);
-  const summaryLabel = getNodeLabel(imageId, TREE_SUMMARY_NODE_ID, translationMap);
+  const summaryLabel = getNodeLabel(imageId, TREE_SUMMARY_NODE_ID, translationMap, language);
   const summaryWidth = buttonWidthForLabel(summaryLabel);
 
   const layout = useMemo(
@@ -63,11 +65,12 @@ export default function HierarchyTree({
       computeHierarchyLayout(record, {
         imageId,
         translationMap,
+        language,
         getNodeLabel,
         getNodeWidth: (nodeId) =>
-          buttonWidthForLabel(getNodeLabel(imageId, nodeId, translationMap)),
+          buttonWidthForLabel(getNodeLabel(imageId, nodeId, translationMap, language)),
       }),
-    [record, imageId, translationMap]
+    [record, imageId, translationMap, language]
   );
 
   const connectorPaths = useMemo(
@@ -88,9 +91,9 @@ export default function HierarchyTree({
     >
       <div className="sectionHeaderWithMeta">
         <div>
-          <h2 className="sectionTitle">전체 트리</h2>
+          <h2 className="sectionTitle">{uiText(language, 'hierarchy.title')}</h2>
           <div className="sectionSubtle">
-            <strong>{displayId}</strong> · 진행도 {done}/{total} · 전체 트리 질문 {treeDone ? '완료' : '미완료'}
+            <strong>{displayId}</strong> · {uiText(language, 'hierarchy.progress')} {done}/{total} · {uiText(language, 'hierarchy.treeQuestion')} {treeDone ? uiText(language, 'hierarchy.complete') : uiText(language, 'hierarchy.incomplete')}
           </div>
         </div>
       </div>
@@ -156,7 +159,7 @@ export default function HierarchyTree({
               (TREE_ROW_HEIGHT_PX - TREE_BUTTON_HEIGHT_PX) / 2;
 
             const left = layout.nodeLefts[nodeId];
-            const label = getNodeLabel(imageId, nodeId, translationMap);
+            const label = getNodeLabel(imageId, nodeId, translationMap, language);
             const width = Math.max(layout.nodeWidths[nodeId] || 0, buttonWidthForLabel(label));
 
             const actualNode = record.nodes?.[nodeId];
@@ -188,7 +191,7 @@ export default function HierarchyTree({
       </div>
 
       {/* {!treeEnabled ? (
-        <div className="sectionHint">모든 노드를 완료해야 전체 트리 질문이 활성화됩니다.</div>
+        <div className="sectionHint">{uiText(language, 'hierarchy.disabledHint')}</div>
       ) : null} */}
     </section>
   );

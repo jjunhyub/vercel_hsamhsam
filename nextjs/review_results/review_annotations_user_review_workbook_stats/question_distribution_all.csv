@@ -1,0 +1,33 @@
+﻿scope,question,question_name,answer,count,total,pct
+all,Q1,label,예,23583,25402,92.84
+all,Q1,label,아니오,1309,25402,5.15
+all,Q1,label,판단불가,510,25402,2.01
+all,Q2,mask_missing,모두 포함함,16928,25402,66.64
+all,Q2,mask_missing,약간 놓침,4398,25402,17.31
+all,Q2,mask_missing,많이 놓침,2322,25402,9.14
+all,Q2,mask_missing,판단불가,1754,25402,6.9
+all,Q3,mask_extra,포함하지 않음,20830,25402,82.0
+all,Q3,mask_extra,약간 포함,2153,25402,8.48
+all,Q3,mask_extra,판단불가,1762,25402,6.94
+all,Q3,mask_extra,많이 포함,657,25402,2.59
+all,Q4,instance,정확,21703,25402,85.44
+all,Q4,instance,판단불가,1755,25402,6.91
+all,Q4,instance,수용 가능,1342,25402,5.28
+all,Q4,instance,부정확,536,25402,2.11
+all,Q4,instance,실패,66,25402,0.26
+all,Q5,mask_quality,정확,18788,25402,73.96
+all,Q5,mask_quality,수용 가능,3932,25402,15.48
+all,Q5,mask_quality,판단불가,1752,25402,6.9
+all,Q5,mask_quality,부정확,817,25402,3.22
+all,Q5,mask_quality,실패,113,25402,0.44
+all,Q6,decomposition_nonleaf,없음,7205,7893,91.28
+all,Q6,decomposition_nonleaf,조금 있음,381,7893,4.83
+all,Q6,decomposition_nonleaf,판단불가,206,7893,2.61
+all,Q6,decomposition_nonleaf,많이 있음,101,7893,1.28
+all,Q7,missing_child_nonleaf,없음,7113,7893,90.12
+all,Q7,missing_child_nonleaf,조금 있음,541,7893,6.85
+all,Q7,missing_child_nonleaf,판단불가,195,7893,2.47
+all,Q7,missing_child_nonleaf,많이 있음,44,7893,0.56
+all,Q8,leaf_stop,예,15787,17509,90.17
+all,Q8,leaf_stop,판단불가,1480,17509,8.45
+all,Q8,leaf_stop,아니오,242,17509,1.38

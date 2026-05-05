@@ -3,12 +3,14 @@
 
 import { useMemo, useState } from 'react';
 import { imageComplete, reviewProgress } from '../lib/review-logic';
+import { uiText } from '../lib/i18n';
 
 export default function ImageList({
   records,
   annotations,
   selectedImageId,
   onSelectImage,
+  language,
 }) {
   const [sortMode, setSortMode] = useState('grouped');
   const imageIds = Object.keys(records || {});
@@ -50,17 +52,21 @@ export default function ImageList({
   return (
     <aside className="leftSidebar">
       <div className="sidebarHeaderRow">
-        <div className="sidebarSectionHeader">이미지</div>
+        <div className="sidebarSectionHeader">{uiText(language, 'imageList.title')}</div>
         <button
           type="button"
           className="sidebarToggleButton"
           onClick={() => setSortMode((prev) => (prev === 'grouped' ? 'default' : 'grouped'))}
         >
-          {sortMode === 'grouped' ? '추천 순서' : '기본 순서'}
+          {sortMode === 'grouped' ? uiText(language, 'imageList.recommendedOrder') : uiText(language, 'imageList.defaultOrder')}
         </button>
       </div>
       <div className="sidebarCount">
-        전체 진행도 {completedImageCount}/{imageIds.length} ({overallProgress.toFixed(1)}%)
+        {uiText(language, 'imageList.overallProgress', {
+          completed: completedImageCount,
+          total: imageIds.length,
+          percent: overallProgress.toFixed(1),
+        })}
       </div>
 
       <div className="imageListScroller">
@@ -82,8 +88,8 @@ export default function ImageList({
               onClick={() => onSelectImage(imageId)}
             >
               <div className="imageListItemTitle">{icon} {displayId}</div>
-              <div className="imageListItemMeta">진행도: {done}/{total}</div>
-              <div className="imageListItemMeta">{progress.toFixed(1)}% 완료</div>
+              <div className="imageListItemMeta">{uiText(language, 'imageList.progress', { done, total })}</div>
+              <div className="imageListItemMeta">{uiText(language, 'imageList.complete', { percent: progress.toFixed(1) })}</div>
             </button>
           );
         })}

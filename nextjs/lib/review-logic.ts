@@ -1,6 +1,7 @@
 // @ts-nocheck
 
 import { humanLabel, nowIso } from './utils';
+import { isEnglish, uiText } from './i18n';
 
 export const TREE_SUMMARY_NODE_ID = '__tree_summary__';
 
@@ -27,28 +28,29 @@ const NODE_QUESTION_AUTOFILL_ON_LABEL_REJECT = {
   missing_child: '판단불가',
 };
 
-export function translatedLabel(imageId, nodeId, translationMap) {
+export function translatedLabel(imageId, nodeId, translationMap, language = 'ko') {
   if (!nodeId) return '-';
-  const base = humanLabel(nodeId);
+  if (nodeId === TREE_SUMMARY_NODE_ID) return uiText(language, 'app.fullTree');
+
+  const base = humanLabel(nodeId).replace(/_/g, ' ');
   const entry = translationMap?.[String(imageId)]?.[String(nodeId)];
   if (!entry) return base;
 
   const ko = String(entry.ko || '').trim();
-  const en = String(entry.en || '').trim();
-  if (ko && ko !== '전체 장면' && ko.toLowerCase() !== en.toLowerCase()) {
-    return `${base} (${ko})`;
-  }
-  return base;
+  const en = String(entry.en || base).trim() || base;
+
+  if (isEnglish(language)) return en;
+  return ko || en || base;
 }
 
-export function translatedPathLabels(imageId, nodeId, translationMap) {
+export function translatedPathLabels(imageId, nodeId, translationMap, language = 'ko') {
   const parts = String(nodeId || '').split('__');
   const built = [];
   const acc = [];
 
   for (const part of parts) {
     acc.push(part);
-    built.push(translatedLabel(imageId, acc.join('__'), translationMap));
+    built.push(translatedLabel(imageId, acc.join('__'), translationMap, language));
   }
 
   return built;
@@ -81,10 +83,73 @@ export function displayRootIds(record) {
   return roots;
 }
 
-export function nodeQuestionsFor(record, nodeId) {
-  const currentLabel = humanLabel(nodeId).replace(/_/g, ' ');
+export function nodeQuestionsFor(record, nodeId, opts = {}) {
+  const language = opts.language || 'ko';
+  const currentLabel = translatedLabel(record?.image_id, nodeId, opts.translationMap, language);
   const childIds = record?.nodes?.[nodeId]?.children || [];
   const hasChildren = childIds.length > 0;
+
+  if (isEnglish(language)) {
+    return [
+      {
+        id: 'label',
+        label: `Q1. Does the highlighted mask area contain <${currentLabel}>?`,
+        type: 'single_choice',
+        options: ['예', '아니오', '판단불가'],
+        required: true,
+      },
+      {
+        id: 'mask_missing',
+        label: `Q2. Does the mask include all objects corresponding to <${currentLabel}>?`,
+        type: 'single_choice',
+        options: ['모두 포함함', '약간 놓침', '많이 놓침', '판단불가'],
+        required: true,
+      },
+      {
+        id: 'mask_extra',
+        label: `Q3. Does the mask include objects other than <${currentLabel}>?`,
+        type: 'single_choice',
+        options: ['포함하지 않음', '약간 포함', '많이 포함', '판단불가'],
+        required: true,
+      },
+      {
+        id: 'instance',
+        label: `Q4. Looking only at the area for <${currentLabel}>, are individual instances separated correctly?`,
+        type: 'single_choice',
+        options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
+        required: true,
+      },
+      {
+        id: 'mask_quality',
+        label: `Q5. Looking only at the area for <${currentLabel}>, do the mask boundaries and shape match the visible area well?`,
+        type: 'single_choice',
+        options: ['정확', '수용 가능', '부정확', '실패', '판단불가'],
+        required: true,
+      },
+      {
+        id: 'decomposition',
+        label: hasChildren
+          ? `Q6. Are any children of <${currentLabel}> difficult to regard as valid subparts?`
+          : `Q6. Is it appropriate not to subdivide <${currentLabel}> any further here?`,
+        type: 'single_choice',
+        options: hasChildren
+          ? ['없음', '조금 있음', '많이 있음', '판단불가']
+          : ['예', '아니오', '판단불가'],
+        required: true,
+      },
+      {
+        id: 'missing_child',
+        label: hasChildren
+          ? `Q7. Are there important subparts that should have been included as children of <${currentLabel}>?`
+          : `Q7. Is it appropriate not to subdivide <${currentLabel}> any further here?`,
+        type: 'single_choice',
+        options: hasChildren
+          ? ['없음', '조금 있음', '많이 있음', '판단불가']
+          : ['예', '아니오', '판단불가'],
+        required: true,
+      },
+    ];
+  }
 
   return [
     {
@@ -147,7 +212,32 @@ export function nodeQuestionsFor(record, nodeId) {
   ];
 }
 
-export function treeQuestionsFor() {
+export function treeQuestionsFor(language = 'ko') {
+  if (isEnglish(language)) {
+    return [
+      {
+        id: 'overall_consistency',
+        label: 'Does the full tree appropriately decompose the image?',
+        type: 'single_choice',
+        options: ['맞음', '대체로 맞음', '부분적으로 맞음', '아님', '판단불가'],
+        required: true,
+      },
+      {
+        id: 'missing_critical_nodes',
+        label: 'Are there meaningful elements in the remaining area?',
+        type: 'single_choice',
+        options: ['없음', '조금 있음', '많이 있음', '판단불가'],
+        required: true,
+      },
+      {
+        id: 'summary_comment',
+        label: 'Additional comments',
+        type: 'text',
+        required: false,
+      },
+    ];
+  }
+
   return [
     {
       id: 'overall_consistency',
@@ -272,11 +362,25 @@ export function missingReport(annotations, imageId, record) {
   return { missing_nodes: missingNodes, tree_missing: treeMissing };
 }
 
-export function getInspectorPills(record, nodeId, translationMap) {
+export function getInspectorPills(record, nodeId, translationMap, language = 'ko') {
   const node = record?.nodes?.[nodeId];
   const imageId = record?.image_id;
+  const labels = {
+    current: uiText(language, 'inspector.current'),
+    parent: uiText(language, 'inspector.parent'),
+    children: uiText(language, 'inspector.children'),
+    depth: uiText(language, 'inspector.depth'),
+    path: uiText(language, 'inspector.path'),
+  };
+
   if (!node) {
-    return ['현재: -', '부모: -', '자식: -', '깊이: -', '경로: -'];
+    return [
+      `${labels.current}: -`,
+      `${labels.parent}: -`,
+      `${labels.children}: -`,
+      `${labels.depth}: -`,
+      `${labels.path}: -`,
+    ];
   }
 
   const parentId = node.parent;
@@ -286,18 +390,18 @@ export function getInspectorPills(record, nodeId, translationMap) {
     return !(childNode?.actual && !isReviewableNode(childId));
   });
 
-  const currentText = translatedLabel(imageId, nodeId, translationMap);
-  const parentText = parentId ? translatedLabel(imageId, parentId, translationMap) : '-';
-  const childLabels = children.map((childId) => translatedLabel(imageId, childId, translationMap));
+  const currentText = translatedLabel(imageId, nodeId, translationMap, language);
+  const parentText = parentId ? translatedLabel(imageId, parentId, translationMap, language) : '-';
+  const childLabels = children.map((childId) => translatedLabel(imageId, childId, translationMap, language));
   const childrenText = childLabels.length ? childLabels.join(', ') : '-';
-  const prettyPath = translatedPathLabels(imageId, nodeId, translationMap).join(' → ');
+  const prettyPath = translatedPathLabels(imageId, nodeId, translationMap, language).join(' → ');
 
   return [
-    `현재: ${currentText}`,
-    `부모: ${parentText}`,
-    `자식: ${childrenText}`,
-    `깊이: ${depth}`,
-    `경로: ${prettyPath}`,
+    `${labels.current}: ${currentText}`,
+    `${labels.parent}: ${parentText}`,
+    `${labels.children}: ${childrenText}`,
+    `${labels.depth}: ${depth}`,
+    `${labels.path}: ${prettyPath}`,
   ];
 }
 

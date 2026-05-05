@@ -1,0 +1,30 @@
+﻿scope,question,question_name,answer,count,total,pct
+q1_yes_only,Q2,mask_missing,모두 포함함,16922,23583,71.76
+q1_yes_only,Q2,mask_missing,약간 놓침,4395,23583,18.64
+q1_yes_only,Q2,mask_missing,많이 놓침,2234,23583,9.47
+q1_yes_only,Q2,mask_missing,판단불가,32,23583,0.14
+q1_yes_only,Q3,mask_extra,포함하지 않음,20825,23583,88.31
+q1_yes_only,Q3,mask_extra,약간 포함,2150,23583,9.12
+q1_yes_only,Q3,mask_extra,많이 포함,565,23583,2.4
+q1_yes_only,Q3,mask_extra,판단불가,43,23583,0.18
+q1_yes_only,Q4,instance,정확,21620,23583,91.68
+q1_yes_only,Q4,instance,수용 가능,1337,23583,5.67
+q1_yes_only,Q4,instance,부정확,533,23583,2.26
+q1_yes_only,Q4,instance,실패,60,23583,0.25
+q1_yes_only,Q4,instance,판단불가,33,23583,0.14
+q1_yes_only,Q5,mask_quality,정확,18716,23583,79.36
+q1_yes_only,Q5,mask_quality,수용 가능,3923,23583,16.63
+q1_yes_only,Q5,mask_quality,부정확,813,23583,3.45
+q1_yes_only,Q5,mask_quality,실패,99,23583,0.42
+q1_yes_only,Q5,mask_quality,판단불가,32,23583,0.14
+q1_yes_only,Q6,decomposition_nonleaf,없음,7185,7697,93.35
+q1_yes_only,Q6,decomposition_nonleaf,조금 있음,379,7697,4.92
+q1_yes_only,Q6,decomposition_nonleaf,많이 있음,95,7697,1.23
+q1_yes_only,Q6,decomposition_nonleaf,판단불가,38,7697,0.49
+q1_yes_only,Q7,missing_child_nonleaf,없음,7090,7697,92.11
+q1_yes_only,Q7,missing_child_nonleaf,조금 있음,540,7697,7.02
+q1_yes_only,Q7,missing_child_nonleaf,많이 있음,44,7697,0.57
+q1_yes_only,Q7,missing_child_nonleaf,판단불가,23,7697,0.3
+q1_yes_only,Q8,leaf_stop,예,15640,15886,98.45
+q1_yes_only,Q8,leaf_stop,아니오,240,15886,1.51
+q1_yes_only,Q8,leaf_stop,판단불가,6,15886,0.04

@@ -1,0 +1,3 @@
+﻿group,nodes,q1_no_pct,q1_uncertain_pct,critical_rate_all_pct,any_issue_rate_all_pct,critical_rate_q1_yes_pct,any_issue_rate_q1_yes_pct,q8_yes,q8_no,q8_uncertain,avg_depth,avg_bbox_pct
+leaf,17509,6.61,2.66,22.63,55.41,17.64,50.85,15787,242,1480,2.3616,10.9415
+nonleaf,7893,1.91,0.57,15.36,50.8,13.78,49.55,0,0,0,1.74,24.5887

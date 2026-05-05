@@ -1,0 +1,7 @@
+﻿priority,topic,evidence,suggested_action,source_table
+P0,Use Q1=yes conditioned statistics,5.15% of node rows.; 2.01% of node rows.,"Report Q1 distribution separately, then analyze Q2-Q8 on Q1=yes nodes to avoid auto-filled uncertain answers dominating mask quality statistics.",question_distribution_q1_yes
+P1,Label-level pruning candidate,mullion removes 0.19% of critical nodes at 0.05% node loss.,Inspect high-benefit labels before training/evaluation; prune only if they are systematic ontology artifacts or impossible/ambiguous labels.,label_pruning_candidates
+P1,Depth-sensitive quality,Depth 5 has 28.0% Q1=yes critical rate across 181 nodes.,Use depth-stratified reporting and consider stricter review or pruning for deep nodes if the high-depth risk persists.,depth_summary
+P1,Image-level outlier,Image 000000012953 has 80.0% all-critical rate over 5 nodes.,Open top image outliers manually; bad images can drive label statistics and should be fixed or excluded before model conclusions.,image_risk
+P2,Whole-tree quality,Tree-level critical answer count is 87/2000 (4.35%).,Use tree-level answers as an image-level filter or as a covariate when interpreting node-level error rates.,tree_summary_distribution
+P2,Size-sensitive quality,bbox_size=large has 16.89% Q1=yes critical rate.,Report bbox-size-stratified metrics; small objects may need different pruning/review policy than large masks.,bbox_size_summary

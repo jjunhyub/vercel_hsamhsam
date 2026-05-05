@@ -1,0 +1,3 @@
+﻿group,nodes,q1_yes,q1_no,q1_uncertain,q1_no_pct,q8_yes,q8_no,q8_uncertain,q8_total
+leaf,17509,15886,1158,465,6.61,15787,242,1480,17509
+nonleaf,7893,7697,151,45,1.91,0,0,0,0

@@ -6,29 +6,34 @@ import {
   nodeQuestionsFor,
   treeQuestionsFor,
 } from '../lib/review-logic';
+import { answerOptionLabel, uiText } from '../lib/i18n';
 
-function SingleChoiceQuestion({ question, value, onChange }) {
+function SingleChoiceQuestion({ question, value, onChange, language }) {
   return (
     <div className="questionCard">
       <div className="questionLabel">{question.label}</div>
       <div className="choiceRow">
-        {question.options.map((option) => (
-          <label className="choiceChip" key={option}>
-            <input
-              type="radio"
-              name={question.id}
-              checked={value === option}
-              onChange={() => onChange(option)}
-            />
-            <span>{option}</span>
-          </label>
-        ))}
+        {question.options.map((option) => {
+          const optionLabel = answerOptionLabel(option, language);
+          return (
+            <label className="choiceChip" key={option}>
+              <input
+                type="radio"
+                name={question.id}
+                checked={value === option}
+                onChange={() => onChange(option)}
+                aria-label={optionLabel}
+              />
+              <span>{optionLabel}</span>
+            </label>
+          );
+        })}
       </div>
     </div>
   );
 }
 
-function MultiChoiceQuestion({ question, value, onChange }) {
+function MultiChoiceQuestion({ question, value, onChange, language }) {
   const selected = Array.isArray(value) ? value : [];
 
   function toggle(option) {
@@ -42,16 +47,20 @@ function MultiChoiceQuestion({ question, value, onChange }) {
     <div className="questionCard">
       <div className="questionLabel">{question.label}</div>
       <div className="choiceRow">
-        {question.options.map((option) => (
-          <label className="choiceChip" key={option}>
-            <input
-              type="checkbox"
-              checked={selected.includes(option)}
-              onChange={() => toggle(option)}
-            />
-            <span>{option}</span>
-          </label>
-        ))}
+        {question.options.map((option) => {
+          const optionLabel = answerOptionLabel(option, language);
+          return (
+            <label className="choiceChip" key={option}>
+              <input
+                type="checkbox"
+                checked={selected.includes(option)}
+                onChange={() => toggle(option)}
+                aria-label={optionLabel}
+              />
+              <span>{optionLabel}</span>
+            </label>
+          );
+        })}
       </div>
     </div>
   );
@@ -79,13 +88,16 @@ export default function QuestionPanel({
   nodeId,
   onAnswerChange,
   translationMap,
+  language,
 }) {
-  const questions = mode === 'tree' ? treeQuestionsFor() : nodeQuestionsFor(record, nodeId);
+  const questions = mode === 'tree'
+    ? treeQuestionsFor(language)
+    : nodeQuestionsFor(record, nodeId, { language, translationMap });
   const answers = getAnswersBucket(annotations, imageId, mode, nodeId)?.answers || {};
 
   const headerTitle = mode === 'tree'
-    ? '전체 트리 질문'
-    : '노드 질문';
+    ? uiText(language, 'questions.treeTitle')
+    : uiText(language, 'questions.nodeTitle');
 
   return (
     <section className="sectionCard">
@@ -106,10 +118,26 @@ export default function QuestionPanel({
           const onChange = (nextValue) => onAnswerChange(mode, question.id, nextValue, nodeId);
 
           if (question.type === 'single_choice') {
-            return <SingleChoiceQuestion key={question.id} question={question} value={value} onChange={onChange} />;
+            return (
+              <SingleChoiceQuestion
+                key={question.id}
+                question={question}
+                value={value}
+                onChange={onChange}
+                language={language}
+              />
+            );
           }
           if (question.type === 'multi_choice') {
-            return <MultiChoiceQuestion key={question.id} question={question} value={value} onChange={onChange} />;
+            return (
+              <MultiChoiceQuestion
+                key={question.id}
+                question={question}
+                value={value}
+                onChange={onChange}
+                language={language}
+              />
+            );
           }
           return <TextQuestion key={question.id} question={question} value={value} onChange={onChange} />;
         })}

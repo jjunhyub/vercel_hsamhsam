@@ -1,0 +1,36 @@
+﻿Q1 Yes + No,,,,,,,,,,,,,,,,
+scope,question,question_name,answer,severity,count,total,pct,,Q1 Yes,,,,,,,
+all_answers,Q1,label_exists,예,good,23583,25402,92.84,,,,,,,,,
+all_answers,Q1,label_exists,아니오,critical,1309,25402,5.15,,,,,,,,,
+all_answers,Q1,label_exists,판단불가,soft,510,25402,2.01,,scope,question,question_name,answer,severity,count,total,pct
+all_answers,Q2,mask_missing,모두 포함함,good,16928,25402,66.64,,q1_yes_only_q2_q8,Q2,mask_missing,모두 포함함,good,16922,23583,71.76
+all_answers,Q2,mask_missing,약간 놓침,soft,4398,25402,17.31,,q1_yes_only_q2_q8,Q2,mask_missing,약간 놓침,soft,4395,23583,18.64
+all_answers,Q2,mask_missing,많이 놓침,critical,2322,25402,9.14,,q1_yes_only_q2_q8,Q2,mask_missing,많이 놓침,critical,2234,23583,9.47
+all_answers,Q2,mask_missing,판단불가,soft,1754,25402,6.9,,q1_yes_only_q2_q8,Q2,mask_missing,판단불가,soft,32,23583,0.14
+all_answers,Q3,mask_extra,포함하지 않음,good,20830,25402,82,,q1_yes_only_q2_q8,Q3,mask_extra,포함하지 않음,good,20825,23583,88.31
+all_answers,Q3,mask_extra,약간 포함,soft,2153,25402,8.48,,q1_yes_only_q2_q8,Q3,mask_extra,약간 포함,soft,2150,23583,9.12
+all_answers,Q3,mask_extra,많이 포함,critical,657,25402,2.59,,q1_yes_only_q2_q8,Q3,mask_extra,많이 포함,critical,565,23583,2.4
+all_answers,Q3,mask_extra,판단불가,soft,1762,25402,6.94,,q1_yes_only_q2_q8,Q3,mask_extra,판단불가,soft,43,23583,0.18
+all_answers,Q4,instance_separation,정확,good,21703,25402,85.44,,q1_yes_only_q2_q8,Q4,instance_separation,정확,good,21620,23583,91.68
+all_answers,Q4,instance_separation,수용 가능,soft,1342,25402,5.28,,q1_yes_only_q2_q8,Q4,instance_separation,수용 가능,soft,1337,23583,5.67
+all_answers,Q4,instance_separation,부정확,critical,536,25402,2.11,,q1_yes_only_q2_q8,Q4,instance_separation,부정확,critical,533,23583,2.26
+all_answers,Q4,instance_separation,실패,critical,66,25402,0.26,,q1_yes_only_q2_q8,Q4,instance_separation,실패,critical,60,23583,0.25
+all_answers,Q4,instance_separation,판단불가,soft,1755,25402,6.91,,q1_yes_only_q2_q8,Q4,instance_separation,판단불가,soft,33,23583,0.14
+all_answers,Q5,mask_quality,정확,good,18788,25402,73.96,,q1_yes_only_q2_q8,Q5,mask_quality,정확,good,18716,23583,79.36
+all_answers,Q5,mask_quality,수용 가능,soft,3932,25402,15.48,,q1_yes_only_q2_q8,Q5,mask_quality,수용 가능,soft,3923,23583,16.63
+all_answers,Q5,mask_quality,부정확,critical,817,25402,3.22,,q1_yes_only_q2_q8,Q5,mask_quality,부정확,critical,813,23583,3.45
+all_answers,Q5,mask_quality,실패,critical,113,25402,0.44,,q1_yes_only_q2_q8,Q5,mask_quality,실패,critical,99,23583,0.42
+all_answers,Q5,mask_quality,판단불가,soft,1752,25402,6.9,,q1_yes_only_q2_q8,Q5,mask_quality,판단불가,soft,32,23583,0.14
+all_answers,Q6,decomposition_nonleaf,없음,good,7205,7893,91.28,,q1_yes_only_q2_q8,Q6,decomposition_nonleaf,없음,good,7185,7697,93.35
+all_answers,Q6,decomposition_nonleaf,조금 있음,soft,381,7893,4.83,,q1_yes_only_q2_q8,Q6,decomposition_nonleaf,조금 있음,soft,379,7697,4.92
+all_answers,Q6,decomposition_nonleaf,많이 있음,critical,101,7893,1.28,,q1_yes_only_q2_q8,Q6,decomposition_nonleaf,많이 있음,critical,95,7697,1.23
+all_answers,Q6,decomposition_nonleaf,판단불가,soft,206,7893,2.61,,q1_yes_only_q2_q8,Q6,decomposition_nonleaf,판단불가,soft,38,7697,0.49
+all_answers,Q7,missing_child_nonleaf,없음,good,7113,7893,90.12,,q1_yes_only_q2_q8,Q7,missing_child_nonleaf,없음,good,7090,7697,92.11
+all_answers,Q7,missing_child_nonleaf,조금 있음,soft,541,7893,6.85,,q1_yes_only_q2_q8,Q7,missing_child_nonleaf,조금 있음,soft,540,7697,7.02
+all_answers,Q7,missing_child_nonleaf,많이 있음,critical,44,7893,0.56,,q1_yes_only_q2_q8,Q7,missing_child_nonleaf,많이 있음,critical,44,7697,0.57
+all_answers,Q7,missing_child_nonleaf,판단불가,soft,195,7893,2.47,,q1_yes_only_q2_q8,Q7,missing_child_nonleaf,판단불가,soft,23,7697,0.3
+all_answers,Q8,leaf_stop,예,good,15787,17509,90.17,,q1_yes_only_q2_q8,Q8,leaf_stop,예,good,15640,15886,98.45
+all_answers,Q8,leaf_stop,아니오,critical,242,17509,1.38,,q1_yes_only_q2_q8,Q8,leaf_stop,아니오,critical,240,15886,1.51
+all_answers,Q8,leaf_stop,판단불가,soft,1480,17509,8.45,,q1_yes_only_q2_q8,Q8,leaf_stop,판단불가,soft,6,15886,0.04
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
